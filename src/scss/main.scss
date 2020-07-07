@@ -1,0 +1,9 @@
+@import "./settings/reset";
+@import "./settings/fonts";
+@import "./settings/colors";
+@import "./settings/mixins";
+
+body {
+  background: #eee;
+  font-size: 14px;
+}
