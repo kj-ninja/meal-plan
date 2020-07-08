@@ -1,0 +1,49 @@
+@import '../../scss/settings/variables';
+@import '../../scss/settings/colors';
+
+.dashboard {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  .dashboard__panel {
+    width: 250px;
+    height: calc(100vh - 70px);
+    background-color: #e69851;
+    font-size: 20px;
+    .dashboard__list {
+      li {
+        position: relative;
+        a {
+          display: block;
+          width: 100%;
+          color: #fff;
+          height: 70px;
+          line-height: 70px;
+          padding: 0 0 0 15px;
+          box-sizing: border-box;
+          &:hover {
+            font-weight: 600;
+          }
+        }
+        .active {
+          font-weight: 600;
+          &:after {
+            font-family: 'Font Awesome 5 Free';
+            content: "\f061";
+            position: absolute;
+            right: 15px;
+          }
+        }
+      }
+
+    }
+
+  }
+  .dashboard__container {
+    width: calc(100% - 250px);
+    background-image: url("../../assets/app-background.png");
+    .dashboard__buttons {
+      width: 350px;
+    }
+  }
+}

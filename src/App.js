@@ -4,6 +4,7 @@ import Layout from "./containers/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./containers/Auth/Login";
 import Register from "./containers/Auth/Register";
+import Dashboard from "./containers/Dashboard/Dashboard";
 
 function App() {
     return (
@@ -11,7 +12,8 @@ function App() {
             <Switch>
                 <Route path="/login" component={Login}/>
                 <Route path="/register" component={Register}/>
-                <Route path="/" component={Home}/>
+                <Route path="/dashboard" component={Dashboard}/>
+                <Route path="/" component={Dashboard}/>
             </Switch>
         </Layout>
     );

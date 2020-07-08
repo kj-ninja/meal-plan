@@ -1,5 +1,6 @@
 @import '../../../scss/settings/fonts';
 @import '../../../scss/settings/mixins';
+@import '../../../scss/settings/colors';
 
 .call-to-action__overlay {
   position: absolute;
@@ -47,7 +48,7 @@
       border: 0;
       padding: 12px 18px;
       border-radius: 5px;
-      background-color: #FF6600;
+      background-color: $effects-color;
       color: #fff;
       font-size: 20px;
       &:hover {
