@@ -1,0 +1,16 @@
+@import '../../scss/settings/variables';
+
+footer {
+  width: 100%;
+  margin: 80px 0;
+  .footer__container {
+    max-width: $container;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    a, p {
+      color: #E58A20;
+    }
+  }
+}
