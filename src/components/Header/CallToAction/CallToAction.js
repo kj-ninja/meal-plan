@@ -9,7 +9,7 @@ const CallToAction = () => {
             <section className="call-to-action">
                 <div className="call-to-action__container">
                     <p>“To keep the body in good health is a duty…otherwise we shall not be able to keep the mind strong
-                        and clear.” – Buddha</p>
+                        and clear.” – <span>Buddha</span></p>
                     <button>Plan you meals!</button>
                 </div>
 

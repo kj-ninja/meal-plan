@@ -1,15 +1,18 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 import Layout from "./containers/Layout/Layout";
-import CallToAction from "./components/Header/CallToAction/CallToAction";
-import About from "./components/About/About";
-import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import Login from "./containers/Auth/Login";
+import Register from "./containers/Auth/Register";
 
 function App() {
     return (
         <Layout>
-            <CallToAction/>
-            <About/>
-            <Footer/>
+            <Switch>
+                <Route path="/login" component={Login}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/" component={Home}/>
+            </Switch>
         </Layout>
     );
 }

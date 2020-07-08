@@ -1,15 +1,17 @@
 @import '../../scss/settings/variables';
 @import '../../scss/settings/mixins';
+@import '../../scss/settings/colors';
 
 .about {
   width: 100%;
   .about__container {
     max-width: $container;
-    margin: 100px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     @include tablet() {
+      margin: 100px auto;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -41,6 +43,15 @@
         margin-bottom: 25px;
       }
       button {
+        border: 0;
+        padding: 10px 15px;
+        border-radius: 5px;
+        background-color: #919191;
+        color: #fff;
+        font-size: 14px;
+        &:hover {
+          background-color: $basic-color;
+        }
       }
     }
   }
