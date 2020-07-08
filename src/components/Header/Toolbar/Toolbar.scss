@@ -1,15 +1,18 @@
-@import '../../../scss/settings/_variables.scss';
-@import '../../../scss/settings/_colors.scss';
-@import '../../../scss/settings/_fonts.scss';
-
+@import '../../../scss/settings/_variables';
+@import '../../../scss/settings/_colors';
+@import '../../../scss/settings/_fonts';
+@import '../../../scss/settings/mixins';
 
 header {
   width: 100%;
   background-color: $side-color;
+  position: relative;
+  z-index: 90;
   .header__container {
     max-width: $container;
     height: 70px;
     margin: 0 auto;
+    padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,5 +29,21 @@ header {
         color: #E58A20;
       }
     }
+    .hamburger {
+      font-size: 36px;
+      cursor: pointer;
+      color: #fff;
+      @include tablet() {
+        display: none;
+      }
+    }
+    nav {
+      display: none;
+      @include tablet() {
+        display: block;
+      }
+    }
   }
 }
+
+
