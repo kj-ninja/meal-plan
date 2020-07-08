@@ -4,16 +4,16 @@ import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 
 const SideDrawer = (props) => {
-    let attachedClasses = ['side-drawer', 'close'];
+    let attachedClasses = ['header__side-drawer', 'close'];
     if (props.isOpen) {
-        attachedClasses = ['side-drawer', 'open'];
+        attachedClasses = ['header__side-drawer', 'open'];
     }
 
     return (
         <>
             <Backdrop show={props.isOpen} cancel={props.hideDrawer}/>
             <div className={attachedClasses.join(' ')} onClick={props.hideDrawer}>
-                <div className="side-drawer__cross">
+                <div className="header__side-drawer--cross">
                     <i className="fas fa-times cross"/>
                 </div>
                 <nav>

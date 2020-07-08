@@ -1,12 +1,13 @@
 import React from 'react';
 import Layout from "./containers/Layout/Layout";
+import CallToAction from "./components/Header/CallToAction/CallToAction";
 
 function App() {
-  return (
-      <Layout>
-        <p>Tutaj bedzie kolejna sekcja</p>
-      </Layout>
-  );
+    return (
+        <Layout>
+            <CallToAction/>
+        </Layout>
+    );
 }
 
 export default App;

@@ -1,7 +1,7 @@
 @import '../../../scss/settings/mixins';
 @import '../../../scss/settings/colors';
 
-.side-drawer {
+.header__side-drawer {
   position: fixed;
   width: 280px;
   max-width: 70%;
@@ -13,11 +13,11 @@
   padding: 70px 16px;
   transition: transform 0.3s ease-out;
   @include tablet() {
-    .side-drawer {
+    .header__side-drawer {
       display: none;
     }
   }
-  .side-drawer__cross {
+  .header__side-drawer--cross {
     position: absolute;
     top: 10px;
     right: 10px;

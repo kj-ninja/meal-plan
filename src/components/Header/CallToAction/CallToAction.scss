@@ -1,0 +1,37 @@
+@import '../../../scss/settings/fonts';
+
+.call-to-action__overlay {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 670px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.call-to-action__background {
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 670px;
+  background-image: url("../../../assets/cta.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.call-to-action {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  .call-to-action__container {
+    max-width: 450px;
+    margin: 0 auto;
+    p {
+      color: #fff;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 1.25px;
+    }
+  }
+}
