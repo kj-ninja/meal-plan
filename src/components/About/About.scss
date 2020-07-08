@@ -1,0 +1,47 @@
+@import '../../scss/settings/variables';
+@import '../../scss/settings/mixins';
+
+.about {
+  width: 100%;
+  .about__container {
+    max-width: $container;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    @include tablet() {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .about__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+      margin-bottom: 80px;
+      @include tablet() {
+        width: 33%;
+      }
+      i {
+        font-size: 60px;
+        margin-bottom: 25px;
+      }
+      .about__title {
+        font-size: 32px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+      .about__description {
+        max-width: 350px;
+        text-align: center;
+        line-height: 25px;
+        letter-spacing: 1px;
+        margin-bottom: 25px;
+      }
+      button {
+      }
+    }
+  }
+}
