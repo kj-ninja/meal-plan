@@ -1,8 +1,11 @@
 import React from 'react';
+import Layout from "./containers/Layout/Layout";
 
 function App() {
   return (
-    <h1>Meal Plan</h1>
+      <Layout>
+        <p>Tutaj bedzie kolejna sekcja</p>
+      </Layout>
   );
 }
 

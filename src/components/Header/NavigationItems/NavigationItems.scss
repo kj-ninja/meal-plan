@@ -1,0 +1,17 @@
+@import '../../../scss/settings/colors';
+
+.navigation-items {
+  display: flex;
+
+  .navigation-item {
+    a {
+      padding: 23px 20px;
+      color: #fff;
+      &:hover {
+        color: $effects-color;
+      }
+    }
+    .active {
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../scss/settings/_variables.scss';
+@import '../../../scss/settings/_colors.scss';
+@import '../../../scss/settings/_fonts.scss';
+
+
+header {
+  width: 100%;
+  background-color: $side-color;
+  .header__container {
+    max-width: $container;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    a {
+      color: #fff;
+    }
+    h1 {
+      font-size: 35px;
+      font-family: $logo-font;
+      letter-spacing: 3px;
+      margin-top: 8px;
+      span {
+        color: #E58A20;
+      }
+    }
+  }
+}
