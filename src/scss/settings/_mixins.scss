@@ -4,6 +4,12 @@
   }
 }
 
+@mixin middle() {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
 @mixin desktop() {
   @media (min-width: 1200px) {
     @content;

@@ -13,6 +13,13 @@ $single-column: percentage(1 / $grid-columns);
     width: 90%;
     margin: 0 auto;
     text-align: center;
+    .plan__header {
+      padding: 0 0 20px;
+      color: $effects-color;
+      font-size: 22px;
+      font-weight: 600;
+      border-bottom: 1px solid #ccc;
+    }
   }
 
 

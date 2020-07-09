@@ -25,10 +25,11 @@ const Dashboard = (props) => {
                 </ul>
             </aside>
             <div className="dashboard__container">
-                <Route exact path="/dashboard" render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
+                <Route exact path="/dashboard"
+                       render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
                 <Route exact path="/dashboard" component={Plan}/>
-                <Route exact path="/dashboard/add-recipe" component={AddRecipe}/>
-                <Route exact path="/dashboard/add-schedule" component={AddSchedule}/>
+                <Route path="/dashboard/add-recipe" component={AddRecipe}/>
+                <Route path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>
         </section>
     );

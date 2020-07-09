@@ -3,13 +3,6 @@
 $grid-columns: 8;
 $single-column: percentage(1 / $grid-columns);
 
-.plan__header {
-  padding: 10px 0;
-  color: $effects-color;
-  font-size: 24px;
-  font-weight: 600;
-  border-bottom: 1px solid #ccc;
-}
 .plan__days--mobile {
   color: #000;
   font-size: 20px;

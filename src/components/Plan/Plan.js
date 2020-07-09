@@ -12,7 +12,7 @@ const Plan = () => {
         <section className="plan">
             <div className="plan__container">
                 <div className="row">
-                    <div className="col-7 plan__header">Twój plan na <span id="week-number">1</span> tydzień</div>
+                    <div className="col-7 plan__header plan__header">Twój plan na <span id="week-number">1</span> tydzień</div>
                 </div>
 
                 {width < 899 ? <PlanMealsMobileView/> : <PlanMealsDesktopView/>}
