@@ -5,27 +5,30 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  @include tablet() {
-    flex-direction: row;
-  }
   .navigation-item {
     margin-top: 35px;
-    @include tablet() {
-      margin: 0;
-    }
     a {
       padding: 25px 0;
       color: $effects-color;
-      @include tablet() {
-        padding: 23px 20px;
-        color: #fff;
-      }
       &:hover {
         color: $effects-color;
       }
     }
     .active {
       color: $effects-color;
+    }
+  }
+}
+
+@include tablet() {
+  .navigation-items {
+    flex-direction: row;
+    .navigation-item {
+      margin: 0;
+      a {
+        padding: 23px 20px;
+        color: #fff;
+      }
     }
   }
 }

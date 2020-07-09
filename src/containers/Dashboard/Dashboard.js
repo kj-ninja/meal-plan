@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './Dashboard.scss';
+import Widgets from "./Widgets/Widgets";
 
 const Dashboard = () => {
     return (
@@ -14,11 +15,7 @@ const Dashboard = () => {
                 </ul>
             </aside>
             <div className="dashboard__container">
-                <div className="dashboard__buttons">
-                    <i className="far fa-calendar-plus">przepis</i>
-                    <i className="far fa-calendar-plus">plan</i>
-                    <i className="far fa-calendar-plus">zakupy</i>
-                </div>
+                <Widgets/>
             </div>
         </section>
     );
