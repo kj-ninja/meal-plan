@@ -1,10 +1,19 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Route, NavLink} from 'react-router-dom';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Plan from "../../components/Plan/Plan";
+import AddRecipe from "../../components/AddRecipe/AddRecipe";
+import AddSchedule from "../../components/AddSchedule/AddSchedule";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+    const handleAddRecipe = () => {
+        props.history.push('dashboard/add-recipe');
+    };
+    const handleAddSchedule = () => {
+        props.history.push('dashboard/add-schedule');
+    };
+
     return (
         <section className="dashboard">
             <aside className="dashboard__panel">
@@ -16,8 +25,10 @@ const Dashboard = () => {
                 </ul>
             </aside>
             <div className="dashboard__container">
-                <Widgets/>
-                <Plan/>
+                <Route exact path="/dashboard" render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
+                <Route exact path="/dashboard" component={Plan}/>
+                <Route exact path="/dashboard/add-recipe" component={AddRecipe}/>
+                <Route exact path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>
         </section>
     );

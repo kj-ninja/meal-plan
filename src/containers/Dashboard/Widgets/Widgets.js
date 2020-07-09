@@ -1,15 +1,16 @@
 import React from 'react';
+// import {withRouter} from 'react-router-dom';
 import './Widgets.scss';
 
-const Widgets = () => {
+const Widgets = (props) => {
     return (
         <>
             <div className="dashboard__buttons">
-                <div className="dashboard__buttons-item">
+                <div className="dashboard__buttons-item" onClick={props.addRecipe}>
                     <i className="far fa-calendar-plus"/>
                     <span>przepis</span>
                 </div>
-                <div className="dashboard__buttons-item">
+                <div className="dashboard__buttons-item" onClick={props.addSchedule}>
                     <i className="far fa-calendar-plus"/>
                     <span>plan</span>
                 </div>
