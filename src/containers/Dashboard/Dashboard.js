@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
+import Plan from "../../components/Plan/Plan";
 
 const Dashboard = () => {
     return (
@@ -16,6 +17,7 @@ const Dashboard = () => {
             </aside>
             <div className="dashboard__container">
                 <Widgets/>
+                <Plan/>
             </div>
         </section>
     );

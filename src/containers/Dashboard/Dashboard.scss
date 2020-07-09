@@ -1,24 +1,15 @@
-@import '../../scss/settings/variables';
-@import '../../scss/settings/colors';
 @import '../../scss/settings/mixins';
 
 .dashboard {
   max-width: 1700px;
-  height: calc(100vh - 70px);
   margin: 0 auto;
   display: flex;
+  @include desktop() {
+    height: calc(100vh - 70px);
+  }
   .dashboard__panel {
     display: none;
-  }
-  .dashboard__container {
-    width: 100%;
-    background-image: url("../../assets/app-background.png");
-  }
-}
-
-@include desktop() {
-  .dashboard {
-    .dashboard__panel {
+    @include desktop() {
       display: block;
       width: 250px;
       background-color: #e69851;
@@ -50,11 +41,13 @@
         }
       }
     }
-    .dashboard__container {
-      width: calc(100% - 250px);
+  }
+  .dashboard__container {
+    width: 100%;
+    background-image: url("../../assets/app-background.png");
+    padding: 5px;
+    @include desktop() {
       border-right: 1px solid #ccc;
-      display: flex;
-      justify-content: space-between;
     }
   }
 }

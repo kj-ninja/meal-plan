@@ -1,0 +1,63 @@
+@import '../../scss/settings/colors';
+
+$grid-columns: 7;
+$single-column: percentage(1 / $grid-columns);
+
+.plan {
+  max-width: 1200px;
+  margin: 60px auto;
+  border: 1px dashed #ccc;
+  position: relative;
+  background-color: $background-color;
+  .plan__container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+
+  //.previousPlan {
+  //  position: absolute;
+  //  bottom: 20px;
+  //  left: 10px;
+  //  color: $effects-color;
+  //  width: 150px;
+  //  height: 20px;
+  //  i {
+  //    font-size: 2rem;
+  //    margin-right: 10px;
+  //  }
+  //  #previousPlanSpan {
+  //    font-size: 1.15rem;
+  //    position: absolute;
+  //    bottom: -5px;
+  //  }
+  //}
+  //.nextPlan {
+  //  position: absolute;
+  //  bottom: 20px;
+  //  right: 10px;
+  //  color: $effects-color;
+  //  width: 120px;
+  //  height: 20px;
+  //  i {
+  //    font-size: 2rem;
+  //    margin-left: 10px;
+  //  }
+  //  #nextPlanSpan {
+  //    font-size: 1.15rem;
+  //    position: absolute;
+  //    bottom: -5px;
+  //    left: -80px;
+  //  }
+  //}
+  //#actualPlan {
+  //  position: absolute;
+  //  bottom: 22px;
+  //  left: 50%;
+  //  transform: translateX(-50%);
+  //  color: $effects-color;
+  //  height: 10px;
+  //}
+}
+

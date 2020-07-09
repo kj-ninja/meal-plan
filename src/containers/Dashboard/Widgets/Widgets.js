@@ -20,7 +20,7 @@ const Widgets = () => {
             </div>
             <div className="dashboard__info">
                 <i className="fas fa-info-circle"/>
-                <span>Masz już 99 przepisów!</span>
+                <span>Ilość przepisów: 1</span>
             </div>
         </>
     );
