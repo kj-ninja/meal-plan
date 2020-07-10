@@ -35,17 +35,8 @@
     .add-recipe__input-container {
       width: 100%;
       margin-bottom: 15px;
-      @include middle() {
-        display: flex;
-        justify-content: flex-start;
-      }
       label {
         font-size: 20px;
-        @include middle() {
-          width: 170px;
-          margin-right: 10px;
-          box-sizing: border-box;
-        }
       }
       input {
         display: block;
@@ -56,9 +47,6 @@
         font: inherit;
         padding: 6px 10px;
         box-sizing: border-box;
-        @include middle() {
-          max-width: 850px;
-        }
       }
       textarea {
         display: block;
@@ -70,29 +58,15 @@
         padding: 6px 10px;
         box-sizing: border-box;
         resize: none;
-        @include middle() {
-          max-width: 850px;
-        }
       }
       .error-message {}
     }
     .add-recipe__lists-container {
       display: flex;
       flex-direction: column;
-      @media (min-width: 700px) {
-        flex-direction: row;
-      }
       .add-recipe__input-container {
         display: flex;
         flex-direction: column;
-        @include middle() {
-          &:first-of-type {
-            margin-right: 10px;
-          }
-          &:last-of-type {
-            margin-left: 10px;
-          }
-        }
         label {
           font-size: 22px;
           text-transform: uppercase;
@@ -110,9 +84,6 @@
         margin-top: 10px;
         list-style-type: disc;
         list-style-position: inside;
-        @include middle() {
-          margin-top: 30px;
-        }
       }
       li {
         margin-bottom: 5px;
@@ -121,3 +92,52 @@
   }
 }
 
+@include middle() {
+  .add-recipe {
+    .add-recipe__header {
+      h3 {}
+      button {
+        &:hover {}
+      }
+    }
+    .add-recipe__form {
+      .add-recipe__input-container {
+        display: flex;
+        justify-content: flex-start;
+        label {
+          width: 170px;
+          margin-right: 10px;
+          box-sizing: border-box;
+        }
+        input {
+          max-width: 850px;
+        }
+        textarea {
+          max-width: 850px;
+        }
+        .error-message {}
+      }
+      .add-recipe__lists-container {
+        @media (min-width: 700px) {
+          flex-direction: row;
+        }
+        .add-recipe__input-container {
+          &:first-of-type {
+            margin-right: 10px;
+          }
+          &:last-of-type {
+            margin-left: 10px;
+          }
+          label {}
+        }
+        ol {}
+        ul {
+          margin-top: 30px;
+        }
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
