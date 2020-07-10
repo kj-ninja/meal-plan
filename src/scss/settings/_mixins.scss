@@ -1,3 +1,5 @@
+@import './colors';
+
 @mixin tablet() {
   @media (min-width: 650px) {
     @content;
@@ -14,4 +16,44 @@
   @media (min-width: 1200px) {
     @content;
   }
+}
+
+@mixin addMockup() {
+  margin: 30px auto;
+  padding: 30px;
+  border: 1px dashed #ccc;
+  background-color: $background-color;
+  max-width: 1100px;
+}
+
+@mixin addHeaderMockup() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+@mixin addInput() {
+  display: block;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font: inherit;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+
+@mixin addTextarea() {
+  display: block;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font: inherit;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  resize: none;
 }

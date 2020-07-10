@@ -73,7 +73,6 @@ const AddRecipe = () => {
                         </ul>
                     </div>
                 </div>
-
             </form>
         </div>
     );

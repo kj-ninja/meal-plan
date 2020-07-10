@@ -1,0 +1,75 @@
+@import '../../scss/settings/colors';
+@import '../../scss/settings/mixins';
+
+.add-schedule {
+  @include addMockup();
+  .add-schedule__header {
+    @include addHeaderMockup();
+    h3 {
+      font-size: 22px;
+      color: $effects-color;
+      font-weight: 600;
+    }
+    button {
+      border: 0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background-color: $effects-color;
+      color: #fff;
+      &:hover {
+        background-color: #fa8f49;
+      }
+    }
+  }
+  .add-schedule__form {
+    padding: 5px;
+    .add-schedule__input-container {
+      width: 100%;
+      margin-bottom: 15px;
+      label {
+        font-size: 20px;
+      }
+      input {
+        @include addInput();
+      }
+      textarea {
+        @include addTextarea();
+      }
+      .error-message {}
+    }
+  }
+}
+
+
+@include middle() {
+  .add-schedule {
+    .add-schedule__header {
+      h3 {}
+      button {
+        &:hover {}
+      }
+    }
+    .add-schedule__form {
+      .add-schedule__input-container {
+        display: flex;
+        justify-content: flex-start;
+        label {
+          width: 170px;
+          margin-right: 10px;
+          box-sizing: border-box;
+        }
+        input {
+          max-width: 850px;
+        }
+        textarea {
+          max-width: 850px;
+        }
+        .error-message {}
+      }
+    }
+  }
+}
+
+#scheduleWeekNumber {
+  width: 50px;
+}

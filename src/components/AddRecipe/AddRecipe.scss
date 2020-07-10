@@ -2,18 +2,9 @@
 @import '../../scss/settings/mixins';
 
 .add-recipe {
-  margin: 30px auto;
-  padding: 30px;
-  border: 1px dashed #ccc;
-  background-color: $background-color;
-  max-width: 1100px;
+  @include addMockup();
   .add-recipe__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    @include addHeaderMockup();
     h3 {
       font-size: 22px;
       color: $effects-color;
@@ -39,25 +30,10 @@
         font-size: 20px;
       }
       input {
-        display: block;
-        width: 100%;
-        outline: none;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        font: inherit;
-        padding: 6px 10px;
-        box-sizing: border-box;
+        @include addInput();
       }
       textarea {
-        display: block;
-        width: 100%;
-        outline: none;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        font: inherit;
-        padding: 6px 10px;
-        box-sizing: border-box;
-        resize: none;
+        @include addTextarea();
       }
       .error-message {}
     }
@@ -113,7 +89,6 @@
 }
 
 
-
 @include middle() {
   .add-recipe {
     .add-recipe__header {
@@ -137,7 +112,6 @@
         textarea {
           max-width: 850px;
         }
-        .error-message {}
       }
       .add-recipe__lists-container {
           flex-direction: row;
@@ -155,7 +129,6 @@
             }
           }
         }
-        ol {}
         ul {
           margin-top: 30px;
         }
