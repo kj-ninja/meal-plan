@@ -9,14 +9,11 @@ const Plan = () => {
 
     return (
         <section className="plan">
-            <div className="plan__container">
                 <div className="row">
                     <div className="col-7 plan__header plan__header">Twój plan na <span id="week-number">1</span> tydzień</div>
                 </div>
 
                 {width < 900 ? <PlanMealsMobileView/> : <PlanMealsDesktopView/>}
-
-            </div>
             {/*<a className="previousPlan"><i className="fas fa-angle-double-left"/><span*/}
             {/*    id="previousPlanSpan">poprzedni</span></a>*/}
             {/*<a href="#" id="actualPlan">aktualny</a>*/}

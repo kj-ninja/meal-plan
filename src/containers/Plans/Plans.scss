@@ -1,0 +1,43 @@
+@import '../../scss/settings/mixins';
+@import '../../scss/settings/colors';
+
+$grid-columns: 12;
+$single-column: percentage(1 / $grid-columns);
+
+.plans {
+  @include mockup();
+  .plans__header {
+    @include addHeaderMockup();
+    h3 {
+      font-size: 22px;
+      color: $effects-color;
+      font-weight: 600;
+    }
+    i {
+      margin-left: 20px;
+      font-size: 30px;
+      color: $success-color;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+  .plans__row.plans__header-row {
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid #ccc;
+  }
+  .plans__row {
+    width: 100%;
+    display: flex;
+    padding: 5px 0 5px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ccc;
+    @for $i from 1 through $grid-columns {
+      .plans__col-#{$i} {
+        width: $single-column * $i;
+        padding: 0 5px;
+        text-align: left;
+      }
+    }
+  }
+}

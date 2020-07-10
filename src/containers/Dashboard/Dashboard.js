@@ -5,6 +5,8 @@ import Widgets from "./Widgets/Widgets";
 import Plan from "../../components/Plan/Plan";
 import AddRecipe from "../../components/AddRecipe/AddRecipe";
 import AddSchedule from "../../components/AddSchedule/AddSchedule";
+import Recipes from "../Recipes/Recipes";
+import Plans from "../Plans/Plans";
 
 const Dashboard = (props) => {
     const handleAddRecipe = () => {
@@ -28,6 +30,8 @@ const Dashboard = (props) => {
                 <Route exact path="/dashboard"
                        render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
                 <Route exact path="/dashboard" component={Plan}/>
+                <Route exact path="/recipes" component={Recipes}/>
+                <Route exact path="/plans" component={Plans}/>
                 <Route path="/dashboard/add-recipe" component={AddRecipe}/>
                 <Route path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>

@@ -2,7 +2,7 @@
 @import '../../scss/settings/mixins';
 
 .add-recipe {
-  @include addMockup();
+  @include mockup();
   .add-recipe__header {
     @include addHeaderMockup();
     h3 {

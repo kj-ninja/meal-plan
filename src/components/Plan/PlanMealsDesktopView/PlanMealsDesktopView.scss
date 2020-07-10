@@ -22,3 +22,7 @@ $single-column: percentage(1 / $grid-columns);
     }
   }
 }
+
+.row.plan__meals {
+  border-bottom: 1px solid #ccc;
+}

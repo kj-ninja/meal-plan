@@ -1,0 +1,40 @@
+@import '../../scss/settings/mixins';
+@import '../../scss/settings/colors';
+
+$grid-columns: 12;
+$single-column: percentage(1 / $grid-columns);
+
+.recipes {
+  @include mockup();
+  .recipes__header {
+    @include addHeaderMockup();
+    h3 {
+      font-size: 22px;
+      color: $effects-color;
+      font-weight: 600;
+    }
+    i {
+      margin-left: 20px;
+      font-size: 30px;
+      color: $success-color;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+  .recipes__row {
+    width: 100%;
+    display: flex;
+    padding: 5px 0 5px;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    @for $i from 1 through $grid-columns {
+      .recipes__col-#{$i} {
+        width: $single-column * $i;
+        padding: 0 5px;
+        text-align: left;
+      }
+    }
+  }
+}

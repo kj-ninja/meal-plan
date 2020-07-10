@@ -1,18 +1,14 @@
 @import '../../scss/settings/colors';
+@import '../../scss/settings/mixins';
 
 $grid-columns: 7;
 $single-column: percentage(1 / $grid-columns);
 
 .plan {
-  max-width: 1200px;
-  margin: 60px auto;
-  border: 1px dashed #ccc;
+  @include mockup();
   position: relative;
-  background-color: $background-color;
-  .plan__container {
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
+  text-align: center;
+  padding-top: 0;
     .plan__header {
       padding: 0 0 20px;
       color: $effects-color;
@@ -20,7 +16,7 @@ $single-column: percentage(1 / $grid-columns);
       font-weight: 600;
       border-bottom: 1px solid #ccc;
     }
-  }
+
 
 
   //.previousPlan {

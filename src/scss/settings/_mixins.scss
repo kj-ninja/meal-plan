@@ -18,12 +18,13 @@
   }
 }
 
-@mixin addMockup() {
+@mixin mockup() {
+  max-width: 1200px;
   margin: 30px auto;
   padding: 30px;
   border: 1px dashed #ccc;
   background-color: $background-color;
-  max-width: 1100px;
+  @content;
 }
 
 @mixin addHeaderMockup() {

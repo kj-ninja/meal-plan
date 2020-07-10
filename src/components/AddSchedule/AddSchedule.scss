@@ -2,7 +2,7 @@
 @import '../../scss/settings/mixins';
 
 .add-schedule {
-  @include addMockup();
+  @include mockup();
   .add-schedule__header {
     @include addHeaderMockup();
     h3 {
