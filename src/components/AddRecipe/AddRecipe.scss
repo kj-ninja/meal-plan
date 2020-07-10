@@ -72,6 +72,15 @@
           text-transform: uppercase;
           margin-top: 5px;
           margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          i {
+            margin-left: 20px;
+            font-size: 30px;
+            color: $success-color;
+            padding: 10px;
+            cursor: pointer;
+          }
         }
       }
       ol {
@@ -87,10 +96,23 @@
       }
       li {
         margin-bottom: 5px;
+        i {
+          margin-left: 10px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        .edit {
+          color: $warning-color;
+        }
+        .trash {
+          color: $trash-color;
+        }
       }
     }
   }
 }
+
+
 
 @include middle() {
   .add-recipe {
@@ -118,9 +140,8 @@
         .error-message {}
       }
       .add-recipe__lists-container {
-        @media (min-width: 700px) {
           flex-direction: row;
-        }
+        margin-top: 30px;
         .add-recipe__input-container {
           &:first-of-type {
             margin-right: 10px;
@@ -128,7 +149,11 @@
           &:last-of-type {
             margin-left: 10px;
           }
-          label {}
+          label {
+            i {
+              font-size: 40px;
+            }
+          }
         }
         ol {}
         ul {
