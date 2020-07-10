@@ -1,9 +1,13 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
+import useWindowWidth from "../../functions/customHooks/useWindowWidth";
 import './AddSchedule.scss';
+import AddScheduleMobileView from "./AddScheduleMobileView/AddScheduleMobileView";
+import AddScheduleDesktopView from "./AddScheduleDesktopView/AddScheduleDesktopView";
 
 const AddSchedule = () => {
-    const {register, handleSubmit, errors} = useForm();
+    const {register, handleSubmit, errors, control} = useForm();
+    const width = useWindowWidth();
 
     const handleAddSchedule = (data) => {
         console.log(data);
@@ -39,13 +43,17 @@ const AddSchedule = () => {
                     <label htmlFor="scheduleWeekNumber">Numer tygodnia</label>
                     <input name="scheduleWeekNumber"
                            ref={register({required: true, pattern: /^[1-9]+[0-9]*$/})}
-                              id="scheduleWeekNumber"
+                           id="scheduleWeekNumber"
                     />
                     {errors.scheduleWeekNumber ?
                         <p className="error-message">{errors.scheduleWeekNumber.message}</p> : null}
                     {errors.scheduleWeekNumber?.type === "pattern" &&
                     <p className="error-message">Podany numer musi być liczbą pozytywną</p>}
                 </div>
+
+                {width < 900 ? <AddScheduleMobileView control={control}/> : <AddScheduleDesktopView control={control}/>}
+
+                <button type="submit">Wyslij</button>
             </form>
         </div>
     );

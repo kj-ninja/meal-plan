@@ -1,7 +1,6 @@
 import React from 'react';
 import './Plan.scss';
 import useWindowWidth from '../../functions/customHooks/useWindowWidth';
-
 import PlanMealsMobileView from "./PlanMealsMobileView/PlanMealsMobileView";
 import PlanMealsDesktopView from "./PlanMealsDesktopView/PlanMealsDesktopView";
 
@@ -15,7 +14,7 @@ const Plan = () => {
                     <div className="col-7 plan__header plan__header">Twój plan na <span id="week-number">1</span> tydzień</div>
                 </div>
 
-                {width < 899 ? <PlanMealsMobileView/> : <PlanMealsDesktopView/>}
+                {width < 900 ? <PlanMealsMobileView/> : <PlanMealsDesktopView/>}
 
             </div>
             {/*<a className="previousPlan"><i className="fas fa-angle-double-left"/><span*/}

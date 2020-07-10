@@ -1,0 +1,30 @@
+@import '../../../scss/settings/colors';
+
+$grid-columns: 2;
+$single-column: percentage(1 / $grid-columns);
+
+.add-schedule__days--mobile {
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+}
+.add-schedule__row--mobile {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  @for $i from 1 through $grid-columns {
+    .add-schedule__col-#{$i}--mobile {
+      width: $single-column * $i;
+      padding: 0 5px;
+      text-align: left;
+    }
+  }
+  .add-schedule__col-2--mobile.day, .add-schedule__col-1--mobile.day {
+    text-align: center;
+  }
+}
+.add-schedule__last-row--mobile {
+  border-bottom: 1px solid transparent;
+}
+
+
