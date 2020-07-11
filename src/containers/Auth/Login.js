@@ -1,13 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
+import {auth} from "../../store/actions/auth";
 import './Auth.scss';
 
-const Login = () => {
+const Login = (props) => {
     const {register, handleSubmit, errors} = useForm();
 
     const handleLogin = data => {
-        alert(JSON.stringify(data));
+        props.auth(data.email, data.password, 'login');
     };
 
     return (
@@ -50,4 +52,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default connect(null, {auth})(Login);
