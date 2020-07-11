@@ -1,32 +1,34 @@
 @import '../../../scss/settings/colors';
+@import '../../../scss/settings/mixins';
 
 $grid-columns: 8;
 $single-column: percentage(1 / $grid-columns);
 
-.plan__days--mobile {
-  color: #000;
-  font-size: 20px;
-  font-weight: 600;
-  border-bottom: 1px solid #ccc;
-}
-.row--mobile {
-  width: 100%;
-  display: flex;
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
-  @for $i from 1 through $grid-columns {
-    .col-#{$i}--mobile {
-      width: $single-column * $i;
-      padding: 0 5px;
-      text-align: left;
-    }
+.plan--mobile {
+  @include mockup();
+  padding: 15px;
+  .plan__header--mobile {
+    @include mockupHeader();
+    font-size: 22px;
+    padding-bottom: 15px;
   }
-  .col-8--mobile.day, .col-4--mobile.day {
+  .plan__row--mobile.plan__days--mobile {
+    @include mockupDays();
     text-align: center;
   }
-}
-.last-row--mobile {
-  border-bottom: 1px solid transparent;
+  .plan__row--mobile {
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    @for $i from 1 through $grid-columns {
+      .plan__col-#{$i}--mobile {
+        width: $single-column * $i;
+        padding: 0 10px;
+      }
+    }
+  }
 }
 
 

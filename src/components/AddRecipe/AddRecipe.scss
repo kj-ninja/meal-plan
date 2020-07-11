@@ -3,13 +3,9 @@
 
 .add-recipe {
   @include mockup();
+  padding: 15px;
   .add-recipe__header {
     @include addHeaderMockup();
-    h3 {
-      font-size: 22px;
-      color: $effects-color;
-      font-weight: 600;
-    }
     button {
       border: 0;
       padding: 8px 12px;
@@ -51,11 +47,7 @@
           display: flex;
           align-items: center;
           i {
-            margin-left: 20px;
-            font-size: 30px;
-            color: $success-color;
-            padding: 10px;
-            cursor: pointer;
+            @include addIcon();
           }
         }
       }
@@ -72,31 +64,16 @@
       }
       li {
         margin-bottom: 5px;
-        i {
-          margin-left: 10px;
-          font-size: 20px;
-          cursor: pointer;
-        }
-        .edit {
-          color: $warning-color;
-        }
-        .trash {
-          color: $trash-color;
-        }
+      @include actionIcons();
       }
     }
   }
 }
 
-
 @include middle() {
   .add-recipe {
-    .add-recipe__header {
-      h3 {}
-      button {
-        &:hover {}
-      }
-    }
+    padding: 25px;
+    .add-recipe__header {}
     .add-recipe__form {
       .add-recipe__input-container {
         display: flex;
@@ -128,6 +105,9 @@
               font-size: 40px;
             }
           }
+        }
+        ol {
+          margin-bottom: 0;
         }
         ul {
           margin-top: 30px;

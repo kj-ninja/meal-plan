@@ -3,13 +3,9 @@
 
 .add-schedule {
   @include mockup();
+  padding: 15px;
   .add-schedule__header {
     @include addHeaderMockup();
-    h3 {
-      font-size: 22px;
-      color: $effects-color;
-      font-weight: 600;
-    }
     button {
       border: 0;
       padding: 8px 12px;
@@ -40,15 +36,10 @@
   }
 }
 
-
 @include middle() {
   .add-schedule {
-    .add-schedule__header {
-      h3 {}
-      button {
-        &:hover {}
-      }
-    }
+    padding: 25px;
+    .add-schedule__header {}
     .add-schedule__form {
       .add-schedule__input-container {
         display: flex;

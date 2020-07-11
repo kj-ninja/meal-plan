@@ -19,11 +19,11 @@ const AddScheduleMobileView = ({control}) => {
     return (
         <>
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
-                <div className="add-schedule__col-2--mobile day">Monday</div>
-                <div className="add-schedule__col-2--mobile day">Tuesday</div>
+                <div className="add-schedule__col-2--mobile">Monday</div>
+                <div className="add-schedule__col-2--mobile">Tuesday</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row--mobile plan__meals" key={i}>
+                <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
                             as={ReactSelect}
@@ -55,11 +55,11 @@ const AddScheduleMobileView = ({control}) => {
                 </div>
             ))}
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
-                <div className="add-schedule__col-2--mobile day">Sroda</div>
-                <div className="add-schedule__col-2--mobile day">Czwartek</div>
+                <div className="add-schedule__col-2--mobile">Sroda</div>
+                <div className="add-schedule__col-2--mobile">Czwartek</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row--mobile plan__meals" key={i}>
+                <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
                             as={ReactSelect}
@@ -92,11 +92,11 @@ const AddScheduleMobileView = ({control}) => {
             ))}
 
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
-                <div className="add-schedule__col-2--mobile day">Piatek</div>
-                <div className="add-schedule__col-2--mobile day">Sobota</div>
+                <div className="add-schedule__col-2--mobile">Piatek</div>
+                <div className="add-schedule__col-2--mobile">Sobota</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row--mobile plan__meals" key={i}>
+                <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
                             as={ReactSelect}
@@ -129,10 +129,10 @@ const AddScheduleMobileView = ({control}) => {
             ))}
 
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
-                <div className="add-schedule__col-1--mobile day">Niedziela</div>
+                <div className="add-schedule__col-1--mobile">Niedziela</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row--mobile plan__meals" key={i}>
+                <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-1--mobile">
                         <Controller
                             as={ReactSelect}

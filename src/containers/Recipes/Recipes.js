@@ -9,7 +9,7 @@ const Recipes = () => {
                     <h3>LISTA PRZEPISÓW</h3>
                     <i className="fas fa-plus-square"/>
                 </div>
-                <div className="recipes__row">
+                <div className="recipes__row recipes__row-header">
                     <div className="recipes__col-1 day">
                         ID
                     </div>

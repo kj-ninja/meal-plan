@@ -21,9 +21,23 @@
 @mixin mockup() {
   max-width: 1200px;
   margin: 30px auto;
-  padding: 30px;
   border: 1px dashed #ccc;
   background-color: $background-color;
+  @content;
+}
+
+@mixin mockupHeader() {
+  text-align: center;
+  color: $effects-color;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  @content;
+}
+
+@mixin mockupDays() {
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
   @content;
 }
 
@@ -34,6 +48,11 @@
   border-bottom: 2px solid #ccc;
   padding-bottom: 5px;
   margin-bottom: 10px;
+  h3 {
+    font-size: 22px;
+    color: $effects-color;
+    font-weight: 600;
+  }
 }
 
 @mixin addInput() {
@@ -57,4 +76,26 @@
   padding: 6px 10px;
   box-sizing: border-box;
   resize: none;
+}
+
+@mixin addIcon() {
+  margin-left: 20px;
+  font-size: 30px;
+  color: $success-color;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@mixin actionIcons() {
+  i {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .edit {
+    color: $warning-color;
+  }
+  .trash {
+    color: $trash-color;
+  }
 }

@@ -15,15 +15,15 @@ const days = [
 const AddScheduleDesktopView = ({control}) => {
     return (
         <>
-            <div className="add-schedule__row add-schedule__days">
-                <div className="add-schedule__col-1 day"/>
-                <div className="add-schedule__col-1 day">SNIADANIE</div>
-                <div className="add-schedule__col-1 day">DRUGIE SNIADANIE</div>
-                <div className="add-schedule__col-1 day">OBIAD</div>
-                <div className="add-schedule__col-1 day">KOLACJA</div>
+            <div className="add-schedule__row add-schedule__meals">
+                <div className="add-schedule__col-1"/>
+                <div className="add-schedule__col-1">SNIADANIE</div>
+                <div className="add-schedule__col-1">DRUGIE SNIADANIE</div>
+                <div className="add-schedule__col-1">OBIAD</div>
+                <div className="add-schedule__col-1">KOLACJA</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row add-schedule__meals">
+                <div className="add-schedule__row">
                     <div className="add-schedule__col-1 scheduleDay">{day.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller

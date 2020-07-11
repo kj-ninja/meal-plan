@@ -9,7 +9,7 @@ const Plans = () => {
                     <h3>LISTA PLANOW</h3>
                     <i className="fas fa-plus-square"/>
                 </div>
-                <div className="plans__row plans__header-row">
+                <div className="plans__row plans__row-header">
                     <div className="plans__col-1">
                         ID
                     </div>

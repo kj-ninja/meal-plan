@@ -1,28 +1,30 @@
 @import '../../../scss/settings/colors';
+@import '../../../scss/settings/mixins';
 
 $grid-columns: 7;
 $single-column: percentage(1 / $grid-columns);
 
-.row.plan__days {
-  color: #000;
-  font-size: 20px;
-  font-weight: 600;
-  border-bottom: 1px solid #ccc;
-  padding: 0 0 20px;
-}
-.row {
-  width: 100%;
-  display: flex;
-  padding: 20px 0;
-  margin: 10px 0;
-  @for $i from 1 through $grid-columns {
-    .col-#{$i} {
-      width: $single-column * $i;
-      //padding: 5px 10px;
+.plan {
+  @include mockup();
+  padding: 25px;
+  .plan__header {
+    @include mockupHeader();
+    font-size: 22px;
+    padding-bottom: 25px;
+  }
+  .row.plan__days {
+    @include mockupDays();
+  }
+  .row {
+    width: 100%;
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    @for $i from 1 through $grid-columns {
+      .col-#{$i} {
+        width: $single-column * $i;
+        padding: 0 10px;
+      }
     }
   }
-}
-
-.row.plan__meals {
-  border-bottom: 1px solid #ccc;
 }
