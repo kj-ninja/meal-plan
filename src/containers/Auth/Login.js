@@ -18,23 +18,30 @@ const Login = () => {
                         name="email"
                         placeholder="E-mail"
                         ref={register({
-                            required: true,
+                            required: "Required",
                             pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Invalid email address"
                             }
                         })}
                     />
-                    {errors.email ? <p className="error-message">{errors.email.message}</p> : null}
+                    {errors.email && <p className="error-message">{errors.email.message}</p>}
                 </div>
                 <div className="input__container">
                     <input
                         type="password"
                         name="password"
                         placeholder="Password"
-                        ref={register({required: true, minLength: 6})}
+                        ref={register({
+                            required: "Required",
+                            minLength: 6
+                        })}
                     />
-                    {errors.password ? <p className="error-message">{errors.password.message}</p> : null}
+                    {errors.password && <p className="error-message">{errors.password.message}</p>}
+                    {errors.password?.type === "minLength" &&
+                    <p className="error-message">Must be at least 6 characters</p>}
                 </div>
+
                 <button type="submit">Submit</button>
             </form>
             <p>Didn't register yet?</p>

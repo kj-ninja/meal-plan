@@ -1,32 +1,12 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import * as Yup from "yup";
 import './Auth.scss';
 
-const SignupSchema = Yup.object().shape({
-    email: Yup.string()
-        .email('Email should be valid')
-        .required('Email is required'),
-    password: Yup.string()
-        .required('Field is required')
-        .min(6, 'Password should have more than 6 characters'),
-    changepassword: Yup.string().when("password", {
-        is: val => (!!(val && val.length > 0)),
-        then: Yup.string().oneOf(
-            [Yup.ref("password")],
-            "Both passwords should be the same"
-        )
-    })
-});
-
 const Auth = () => {
-    const {register, handleSubmit, errors} = useForm({
-        validationSchema: SignupSchema
-    });
-
+    const {register, handleSubmit, errors, watch} = useForm();
 
     const handleRegister = data => {
-        alert(JSON.stringify(data));
+        console.log('dupa');
     };
 
     return (
@@ -36,20 +16,38 @@ const Auth = () => {
                     <input
                         name="email"
                         placeholder="E-mail"
-                        ref={register}
+                        ref={register({
+                            required: "Required",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Invalid email address"
+                            }
+                        })}
                     />
-                    {errors.email ? <p className="error-message">{errors.email.message}</p> : null}
+                    {errors.email && <p className="error-message">{errors.email.message}</p>}
+                </div>
+                <div className="input__container">
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        ref={register({
+                            required: "Required",
+                            minLength: 6
+                        })}
+                    />
+                    {errors.password && <p className="error-message">{errors.password.message}</p>}
+                    {errors.password?.type === "minLength" &&
+                    <p className="error-message">Must be at least 6 characters</p>}
 
                 </div>
                 <div className="input__container">
-                    <input type="password" name="password" placeholder="Password" ref={register}/>
-                    {errors.password ? <p className="error-message">{errors.password.message}</p> : null}
-
-                </div>
-                <div className="input__container">
-                    <input type="password" name="changepassword" placeholder="Verify password" ref={register}/>
-                    {errors.changepassword ? <p className="error-message">{errors.changepassword.message}</p> : null}
-
+                    <input type="password" name="password2" placeholder="Confirm password" ref={register({
+                        validate: (value) => {
+                            return value === watch('password'); // value is from password2 and watch will return value from password
+                        }
+                    })}/>
+                    {errors.password2 ? <p className="error-message">Both passwords should be the same</p> : null}
                 </div>
                 <button type="submit">Submit</button>
             </form>
