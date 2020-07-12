@@ -1,7 +1,8 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import './CallToAction.scss';
 
-const CallToAction = () => {
+const CallToAction = (props) => {
     return (
         <>
             <div className="call-to-action__overlay"/>
@@ -10,7 +11,7 @@ const CallToAction = () => {
                 <div className="call-to-action__container">
                     <p>“To keep the body in good health is a duty…otherwise we shall not be able to keep the mind strong
                         and clear.” – <span>Buddha</span></p>
-                    <button>Plan you meals!</button>
+                    <button type="button" onClick={()=>props.history.push('/login')}>Plan you meals!</button>
                 </div>
 
             </section>
@@ -18,4 +19,4 @@ const CallToAction = () => {
     );
 };
 
-export default CallToAction;
+export default withRouter(CallToAction);

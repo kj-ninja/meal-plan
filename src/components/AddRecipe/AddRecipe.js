@@ -1,75 +1,96 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addInstruction, addIngredient} from "../../store/actions/addRecipe";
+import {addRecipe} from '../../store/actions/recipes';
 import {useForm} from "react-hook-form";
 import './AddRecipe.scss';
 
-const AddRecipe = () => {
-    const {register, handleSubmit, errors} = useForm();
+const AddRecipe = (props) => {
+    const {register, handleSubmit, errors, getValues, setValue} = useForm();
 
-    const handleAddRecipe = (data) => {
-        console.log(data);
+    const handleAddInstruction = () => {
+        const instruction = getValues('recipeInstructions');
+        props.addInstruction(instruction);
+        setValue('recipeInstructions', '');
+    };
+
+    const handleAddIngredients = () => {
+        const ingredient = getValues('recipeIngredients');
+        props.addIngredient(ingredient);
+        setValue('recipeIngredients', '');
+    };
+
+    const handleAddRecipe = () => {
+        const recipe = {
+            name: getValues('recipeName'),
+            description: getValues('recipeDescription'),
+            instructions: props.instructions,
+            ingredients: props.ingredients
+        }
+        props.addRecipe(props.token, recipe);
     };
 
     return (
         <div className="add-recipe">
-            <div className="add-recipe__header">
-                <h3>Nowy przepis</h3>
-                <button>Zapisz i zamknij</button>
-            </div>
             <form onSubmit={handleSubmit(handleAddRecipe)} className="add-recipe__form">
+                <div className="add-recipe__header">
+                    <h3>Nowy przepis</h3>
+                    <button type="submit">Zapisz i zamknij</button>
+                </div>
+
                 <div className="add-recipe__input-container">
                     <label htmlFor="recipeName">Nazwa przepisu</label>
                     <input name="recipeName"
                            ref={register({required: true})}
                            id="recipeName"
+                           className={errors.recipeName ? 'input-error' : ''}
                     />
-                    {errors.recipeName ? <p className="error-message">{errors.recipeName.message}</p> : null}
                 </div>
 
                 <div className="add-recipe__input-container">
                     <label htmlFor="recipeDescription">Opis przepisu</label>
                     <textarea name="recipeDescription"
-                              ref={register}
+                              ref={register({required: true})}
                               id="recipeDescription"
                               rows={3}
                     />
-                    {errors.recipeDescription ?
-                        <p className="error-message">{errors.recipeDescription.message}</p> : null}
                 </div>
-
 
                 <div className="add-recipe__lists-container">
                     <div className="add-recipe__input-container">
-                        <label htmlFor="recipeInstructions">Instrukcje <i className="fas fa-plus-square"/></label>
+                        <label htmlFor="recipeInstructions">
+                            Instrukcje <i className="fas fa-plus-square" onClick={handleAddInstruction}/>
+                        </label>
                         <textarea name="recipeInstructions"
-                                  ref={register({required: true})}
+                                  ref={register}
                                   id="recipeInstructions"
                                   rows={3}
+                                  className={errors.recipeInstructions ? 'input-error' : ''}
                         />
-                        {errors.recipeInstructions ?
-                            <p className="error-message">{errors.recipeInstructions.message}</p> : null}
                         <ol>
-                            <li>Obierz pyry <i className="fas fa-edit edit"/> <i className="fas fa-trash-alt trash"/></li>
-                            <li>Umyj warzywa</li>
-                            <li>Wrzuc do gara</li>
-                            <li>Smaz 30 min</li>
-                            <li>Opedzluj ze smakiem</li>
+                            {props.instructions.map(instruction => (
+                                <li key={instruction}>
+                                    {instruction}<i className="fas fa-edit edit"/> <i className="fas fa-trash-alt trash"/>
+                                </li>
+                            ))}
                         </ol>
                     </div>
 
                     <div className="add-recipe__input-container">
-                        <label htmlFor="recipeIngredients">Składniki <i className="fas fa-plus-square"/></label>
+                        <label htmlFor="recipeIngredients">
+                            Składniki <i className="fas fa-plus-square" onClick={handleAddIngredients}/>
+                        </label>
                         <input name="recipeIngredients"
-                               ref={register({required: true})}
+                               ref={register}
                                id="recipeIngredients"
+                               className={errors.recipeIngredients ? 'input-error' : ''}
                         />
-                        {errors.recipeIngredients ?
-                            <p className="error-message">{errors.recipeIngredients.message}</p> : null}
                         <ul>
-                            <li>100g maki <i className="fas fa-edit edit"/> <i className="fas fa-trash-alt trash"/></li>
-                            <li>100g cukru</li>
-                            <li>2kg ziemniakow</li>
-                            <li>2kg ziemniakow</li>
-                            <li>2 szt. cebuli</li>
+                            {props.ingredients.map(ingredient => (
+                                <li key={ingredient}>
+                                    {ingredient}<i className="fas fa-edit edit"/> <i className="fas fa-trash-alt trash"/>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -78,4 +99,12 @@ const AddRecipe = () => {
     );
 };
 
-export default AddRecipe;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        instructions: state.addRecipe.instructions,
+        ingredients: state.addRecipe.ingredients
+    }
+};
+
+export default connect(mapStateToProps, {addInstruction, addIngredient, addRecipe})(AddRecipe);

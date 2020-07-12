@@ -31,7 +31,10 @@
       textarea {
         @include addTextarea();
       }
-      .error-message {}
+      .input-error {
+        border: 1px solid red;
+        background-color: #ff000036;
+      }
     }
     .add-recipe__lists-container {
       display: flex;
