@@ -12,9 +12,9 @@ const NavigationItems = (props) => {
         panelItems = (
             <>
                 <li className="navigation-item"><NavLink to="/dashboard">Dashboard</NavLink></li>
-                <li className="navigation-item"><NavLink to="/recipes">Recipes</NavLink></li>
-                <li className="navigation-item"><NavLink to="/plans">Plans</NavLink></li>
-                <li className="navigation-item"><NavLink to="/shopping-list">Shopping list</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/plans">Plans</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>
             </>
         );
     }

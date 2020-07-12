@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../axios-instance";
 
-export const addRecipeStart = () => ({type:actionTypes.ADD_RECIPE_START});
+export const fetchRecipeStart = () => ({type:actionTypes.FETCH_RECIPE_START});
 
 export const addRecipeSuccess = (id, recipe) => {
     return {
@@ -11,16 +11,16 @@ export const addRecipeSuccess = (id, recipe) => {
     }
 };
 
-export const addRecipeFail = (error) => {
+export const fetchRecipeFail = (error) => {
     return {
-        type: actionTypes.ADD_RECIPE_FAIL,
+        type: actionTypes.FETCH_RECIPE_FAIL,
         error: error
     }
 };
 
 export const addRecipe = (token, recipe) => {
     return dispatch => {
-        dispatch(addRecipeStart());
+        dispatch(fetchRecipeStart());
         axios.post('/recipes.json?auth=' + token, recipe, {
         })
             .then(function (res) {
@@ -28,7 +28,29 @@ export const addRecipe = (token, recipe) => {
             })
             .catch(error => {
                 console.log(error);
-                dispatch(addRecipeFail(error));
+                dispatch(fetchRecipeFail(error));
             });
+    };
+};
+
+export const fetchRecipes = (token, userId) => {
+    return dispatch => {
+        dispatch(fetchRecipeStart());
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        axios.get( '/recipes.json' + queryParams)
+            .then( res => {
+                const fetchedRecipes = [];
+                for ( let key in res.data ) {
+                    fetchedRecipes.push( {
+                        ...res.data[key],
+                        id: key
+                    } );
+                }
+                dispatch(addRecipeSuccess(fetchedRecipes));
+            } )
+            .catch( error => {
+                console.log(error);
+                dispatch(fetchRecipeFail(error));
+            } );
     };
 };

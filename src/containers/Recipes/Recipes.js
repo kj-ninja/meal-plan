@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {fetchRecipes} from '../../store/actions/recipes';
 import './Recipes.scss';
 
-const Recipes = () => {
+const Recipes = (props) => {
+
+    useEffect(()=> {
+        props.fetchRecipes(props.token, props.userId);
+    }, []);
+
     return (
         <>
             <div className="recipes">
@@ -45,4 +52,11 @@ const Recipes = () => {
     );
 };
 
-export default Recipes;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+};
+
+export default connect(mapStateToProps, {fetchRecipes})(Recipes);

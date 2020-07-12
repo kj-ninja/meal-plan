@@ -25,7 +25,8 @@ const AddRecipe = (props) => {
             name: getValues('recipeName'),
             description: getValues('recipeDescription'),
             instructions: props.instructions,
-            ingredients: props.ingredients
+            ingredients: props.ingredients,
+            userId: props.userId
         }
         props.addRecipe(props.token, recipe);
     };
@@ -102,6 +103,7 @@ const AddRecipe = (props) => {
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
+        userId: state.auth.userId,
         instructions: state.addRecipe.instructions,
         ingredients: state.addRecipe.ingredients
     }
