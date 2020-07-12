@@ -1,22 +1,53 @@
-import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Layout from "./containers/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./containers/Auth/Login";
 import Register from "./containers/Auth/Register";
 import Dashboard from "./containers/Dashboard/Dashboard";
+import Logout from "./containers/Auth/Logout";
+import {authStateCheck} from "./store/actions/auth";
 
-function App() {
-    return (
-        <Layout>
+function App(props) {
+    const {authStateCheck} = props;
+
+    useEffect(() => {
+        authStateCheck();
+    }, [authStateCheck]);
+
+    let routes = (
+        <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
+            <Route exact path="/" component={Home}/>
+            <Redirect to="/"/>
+        </Switch>
+    );
+
+    if (props.isAuth) {
+        routes = (
             <Switch>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
+                <Route path="/logout" component={Logout}/>
                 <Route path="/dashboard" component={Dashboard}/>
-                <Route path="/" component={Home}/>
+                <Redirect to='/dashboard'/>
             </Switch>
-        </Layout>
+        );
+    }
+
+    return (
+        <>
+            <Layout>
+                {routes}
+            </Layout>
+        </>
     );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token !== null
+    }
+};
+
+export default connect(mapStateToProps, {authStateCheck})(App);

@@ -6,7 +6,7 @@ const initialState = {
     loading: false
 };
 
-const auth = (state=initialState, action) => {
+const auth = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START:
             return {
@@ -28,16 +28,17 @@ const auth = (state=initialState, action) => {
                 error: action.error,
                 loading: false
             };
-        // case actionTypes.AUTH_LOGOUT:
-        //     return {
-        //         ...state,
-        //         token: null
-        //     };
-        // case actionTypes.AUTH_CLEAR_ERROR:
-        //     return {
-        //         ...state,
-        //         error: null
-        //     };
+        case actionTypes.AUTH_LOGOUT:
+            return {
+                ...state,
+                token: null,
+                userId: null
+            };
+        case actionTypes.AUTH_CLEAR_ERROR:
+            return {
+                ...state,
+                error: null
+            };
         default:
             return state;
     }

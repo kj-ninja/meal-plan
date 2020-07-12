@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {auth} from "../../store/actions/auth";
 import './Auth.scss';
 
@@ -11,6 +11,10 @@ const Login = (props) => {
     const handleLogin = data => {
         props.auth(data.email, data.password, 'login');
     };
+
+    if (props.isAuth) {
+        return <Redirect to="/dashboard"/>;
+    }
 
     return (
         <div className="form__container">
@@ -52,4 +56,10 @@ const Login = (props) => {
     );
 };
 
-export default connect(null, {auth})(Login);
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token !== null
+    }
+};
+
+export default connect(mapStateToProps, {auth})(Login);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, NavLink} from 'react-router-dom';
+import {Route, NavLink, Switch} from 'react-router-dom';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Plan from "../../components/Plan/Plan";
@@ -21,19 +21,19 @@ const Dashboard = (props) => {
             <aside className="dashboard__panel">
                 <ul className="dashboard__list">
                     <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-                    <li><NavLink to="/recipes">Recipes</NavLink></li>
-                    <li><NavLink to="/plans">Plans</NavLink></li>
-                    <li><NavLink to="/shopping-list">Shopping list</NavLink></li>
+                    <li><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
+                    <li><NavLink to="/dashboard/plans">Plans</NavLink></li>
+                    <li><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>
                 </ul>
             </aside>
             <div className="dashboard__container">
                 <Route exact path="/dashboard"
                        render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
                 <Route exact path="/dashboard" component={Plan}/>
-                <Route exact path="/recipes" component={Recipes}/>
-                <Route exact path="/plans" component={Plans}/>
-                <Route path="/dashboard/add-recipe" component={AddRecipe}/>
-                <Route path="/dashboard/add-schedule" component={AddSchedule}/>
+                <Route path="/dashboard/recipes" component={Recipes}/>
+                <Route path="/dashboard/plans" component={Plans}/>
+                <Route exact path="/dashboard/add-recipe" component={AddRecipe}/>
+                <Route exact path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>
         </section>
     );

@@ -20,7 +20,7 @@
   }
 }
 
-@include tablet() {
+@include desktop() {
   .navigation-items {
     flex-direction: row;
     .navigation-item {

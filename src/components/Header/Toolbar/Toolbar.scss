@@ -33,13 +33,13 @@ header {
       font-size: 36px;
       cursor: pointer;
       color: #fff;
-      @include tablet() {
+      @include desktop() {
         display: none;
       }
     }
     nav {
       display: none;
-      @include tablet() {
+      @include desktop() {
         display: block;
       }
     }
