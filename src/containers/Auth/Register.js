@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {auth} from "../../store/actions/auth";
-
 import {useForm} from "react-hook-form";
 import './Auth.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
+import {Redirect} from "react-router-dom";
 
 const Register = (props) => {
     const {register, handleSubmit, errors, watch} = useForm();
@@ -12,6 +12,10 @@ const Register = (props) => {
     const handleRegister = data => {
         props.auth(data.email, data.password, 'register');
     };
+
+    if (props.isAuth) {
+        return <Redirect to="/dashboard"/>;
+    }
 
     return (
         <div className="form__container">
@@ -48,7 +52,7 @@ const Register = (props) => {
                 <div className="input__container">
                     <input type="password" name="password2" placeholder="Confirm password" ref={register({
                         validate: (value) => {
-                            return value === watch('password'); // value is from password2 and watch will return value from password
+                            return value === watch('password');
                         }
                     })}/>
                     {errors.password2 ? <p className="error-message">Both passwords should be the same</p> : null}
@@ -64,6 +68,7 @@ const Register = (props) => {
 
 const mapStateToProps = state => {
     return {
+        isAuth: state.auth.token !== null,
         loading: state.auth.loading,
         error: state.auth.error
     }

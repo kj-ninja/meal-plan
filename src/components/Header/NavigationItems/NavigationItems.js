@@ -11,10 +11,10 @@ const NavigationItems = (props) => {
     if (props.isAuth && width < 1200) {
         panelItems = (
             <>
-                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-                <li><NavLink to="/recipes">Recipes</NavLink></li>
-                <li><NavLink to="/plans">Plans</NavLink></li>
-                <li><NavLink to="/shopping-list">Shopping list</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard">Dashboard</NavLink></li>
+                <li className="navigation-item"><NavLink to="/recipes">Recipes</NavLink></li>
+                <li className="navigation-item"><NavLink to="/plans">Plans</NavLink></li>
+                <li className="navigation-item"><NavLink to="/shopping-list">Shopping list</NavLink></li>
             </>
         );
     }
