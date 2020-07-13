@@ -1,13 +1,24 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchRecipes} from '../../store/actions/recipes';
+import {fetchRecipes, deleteRecipe} from '../../store/actions/recipes';
+import {mapRecipeToEdit} from '../../store/actions/addRecipe';
 import './Recipes.scss';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Recipes = (props) => {
 
-    useEffect(()=> {
+    useEffect(() => {
         props.fetchRecipes(props.token, props.userId);
     }, []);
+
+    if (props.loading) {
+        return <Spinner/>;
+    }
+
+    const handleEditRecipe = (recipe) => {
+        props.history.push('/dashboard/add-recipe');
+        props.mapRecipeToEdit(recipe);
+    };
 
     return (
         <>
@@ -18,7 +29,7 @@ const Recipes = (props) => {
                 </div>
                 <div className="recipes__row recipes__row-header">
                     <div className="recipes__col-1 day">
-                        ID
+                        LP
                     </div>
                     <div className="recipes__col-3 day">
                         NAZWA
@@ -30,24 +41,25 @@ const Recipes = (props) => {
                         AKCJE
                     </div>
                 </div>
+                {props.recipes.map((recipe, i) => (
+                    <div className="recipes__row" key={i}>
+                        <div className="recipes__col-1 day">
+                            {i + 1}
+                        </div>
+                        <div className="recipes__col-3 day">
+                            {recipe.name}
+                        </div>
+                        <div className="recipes__col-6 day">
+                            {recipe.description}
+                        </div>
+                        <div className="recipes__col-2 day">
+                            <i className="fas fa-edit edit" onClick={()=>handleEditRecipe(recipe)}/>
+                            <i className="fas fa-trash-alt trash" onClick={()=>props.deleteRecipe(props.token, recipe.id, props.userId)}/>
+                        </div>
+                    </div>
 
-                <div className="recipes__row">
-                    <div className="recipes__col-1 day">
-                        22
-                    </div>
-                    <div className="recipes__col-3 day">
-                        Zapiekanka z ziemniakami
-                    </div>
-                    <div className="recipes__col-6 day">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aperiam culpa
-                        dignissimos dolorum enim facere illum laborum, nam quos!
-                    </div>
-                    <div className="recipes__col-2 day">
-                        <i className="fas fa-edit edit"/> <i className="fas fa-trash-alt trash"/>
-                    </div>
-                </div>
+                ))}
             </div>
-
         </>
     );
 };
@@ -55,8 +67,10 @@ const Recipes = (props) => {
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
-        userId: state.auth.userId
+        userId: state.auth.userId,
+        loading: state.recipes.loading,
+        recipes: state.recipes.recipes
     }
 };
 
-export default connect(mapStateToProps, {fetchRecipes})(Recipes);
+export default connect(mapStateToProps, {fetchRecipes, deleteRecipe, mapRecipeToEdit})(Recipes);

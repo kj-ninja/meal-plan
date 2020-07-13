@@ -39,13 +39,13 @@ const addRecipeReducer = (state = initialState, action) => {
                 return action.instruction
 
             });
-                return {
-                    ...state,
-                    recipe: {
-                        ...state.recipe,
-                        instructions: newInstructions
-                    }
+            return {
+                ...state,
+                recipe: {
+                    ...state.recipe,
+                    instructions: newInstructions
                 }
+            }
         case actionTypes.ADD_INGREDIENT:
             return {
                 ...state,
@@ -79,6 +79,11 @@ const addRecipeReducer = (state = initialState, action) => {
                     ...state.recipe,
                     ingredients: newIngredients
                 }
+            }
+        case actionTypes.MAP_RECIPE_TO_EDIT:
+            return {
+                ...state,
+                recipe: action.recipe
             }
         case actionTypes.IS_EDIT:
             return {

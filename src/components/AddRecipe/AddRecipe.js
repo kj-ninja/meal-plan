@@ -54,6 +54,7 @@ const AddRecipe = (props) => {
             userId: props.userId
         }
         props.addRecipe(props.token, recipe);
+        props.history.push('/dashboard');
     };
 
     const handleEdit = (index, place) => {
@@ -80,6 +81,7 @@ const AddRecipe = (props) => {
                            ref={register({required: true})}
                            id="recipeName"
                            className={errors.recipeName ? 'input-error' : ''}
+                           defaultValue={props.name}
                     />
                 </div>
 
@@ -89,6 +91,7 @@ const AddRecipe = (props) => {
                               ref={register({required: true})}
                               id="recipeDescription"
                               rows={3}
+                              defaultValue={props.description}
                     />
                 </div>
 
@@ -143,6 +146,8 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         userId: state.auth.userId,
+        name: state.addRecipe.recipe.name,
+        description: state.addRecipe.recipe.description,
         instructions: state.addRecipe.recipe.instructions,
         ingredients: state.addRecipe.recipe.ingredients,
         edit: state.addRecipe.isEdit
