@@ -14,6 +14,19 @@ const recipesReducer = (state=initialState, action) => {
                 loading: true,
                 error: null
             }
+        case actionTypes.FETCH_RECIPES_SUCCESS:
+            return {
+                ...state,
+                recipes: action.recipes,
+                loading: false,
+                error: null
+            }
+        case actionTypes.FETCH_RECIPE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.error
+            }
         case actionTypes.ADD_RECIPE_SUCCESS:
             const newRecipe = {
                 ...action.recipe,
@@ -25,12 +38,6 @@ const recipesReducer = (state=initialState, action) => {
                 recipes: state.recipes.concat(newRecipe),
                 error: null
             };
-        case actionTypes.FETCH_RECIPE_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: action.error
-            }
         default:
             return state;
     }

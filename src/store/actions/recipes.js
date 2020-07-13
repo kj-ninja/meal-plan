@@ -3,6 +3,13 @@ import axios from "../../axios-instance";
 
 export const fetchRecipeStart = () => ({type:actionTypes.FETCH_RECIPE_START});
 
+export const fetchRecipesSuccess = (recipes) => {
+    return {
+        type: actionTypes.FETCH_RECIPES_SUCCESS,
+        recipes: recipes
+    }
+};
+
 export const addRecipeSuccess = (id, recipe) => {
     return {
         type: actionTypes.ADD_RECIPE_SUCCESS,
@@ -46,7 +53,7 @@ export const fetchRecipes = (token, userId) => {
                         id: key
                     } );
                 }
-                dispatch(addRecipeSuccess(fetchedRecipes));
+                dispatch(fetchRecipesSuccess(fetchedRecipes));
             } )
             .catch( error => {
                 console.log(error);
