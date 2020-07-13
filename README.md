@@ -1,6 +1,6 @@
 # Meal Plan
 
-##Introduction
+## Introduction
 Meal Plan is an application thanks to which the user is able to save their favorite recipes, and above all can plan their meal.
 
 ## Description
@@ -8,9 +8,9 @@ Nutrition diary, in which you can keep your favorite recipes, plan meals and che
 
 ## Features
 * Application has the ability to Authenticate user handled by Firebase. 
-* Otherwise, adding, editing, deleting recipes from the diary. 
-* Displaying list of recipes. 
-* Creating, reviewing and modifying the weekly nutrition schedule
+* Otherwise, adding, editing, deleting recipes from the diary.
+* Creating, reviewing and modifying the weekly nutrition schedule.
+* Displaying list of recipes and plans.
 
 ### Technologies
 * ReactJS
