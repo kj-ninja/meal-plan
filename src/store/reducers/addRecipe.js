@@ -95,7 +95,9 @@ const addRecipeReducer = (state = initialState, action) => {
         case actionTypes.CLEAR_ADD_RECIPE_FORM:
             return {
                 ...state,
-                recipe: initialState.recipe
+                recipe: initialState.recipe,
+                isListEdit: false,
+                isRecipeEdit: false
             }
         default:
             return state;

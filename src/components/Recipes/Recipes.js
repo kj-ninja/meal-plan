@@ -1,17 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {fetchRecipes, deleteRecipe} from '../../store/actions/recipes';
-import {mapRecipeToEdit} from '../../store/actions/addRecipe';
+import {deleteRecipe} from '../../store/actions/recipes';
+import {mapRecipeToEdit, clearAddRecipeForm} from '../../store/actions/addRecipe';
 import './Recipes.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Recipes = (props) => {
+    const {token, userId, loading} = props;
 
-    useEffect(() => {
-        props.fetchRecipes(props.token, props.userId);
-    }, []);
-
-    if (props.loading) {
+    if (loading) {
         return <Spinner/>;
     }
 
@@ -20,12 +17,17 @@ const Recipes = (props) => {
         props.mapRecipeToEdit(recipe);
     };
 
+    const handleAddRecipe = () => {
+        props.clearAddRecipeForm();
+        props.history.push('/dashboard/add-recipe');
+    };
+
     return (
         <>
             <div className="recipes">
                 <div className="recipes__header">
                     <h3>LISTA PRZEPISÓW</h3>
-                    <i className="fas fa-plus-square"/>
+                    <i className="fas fa-plus-square" onClick={handleAddRecipe}/>
                 </div>
                 <div className="recipes__row recipes__row-header">
                     <div className="recipes__col-1 day">
@@ -53,8 +55,9 @@ const Recipes = (props) => {
                             {recipe.description}
                         </div>
                         <div className="recipes__col-2 day">
-                            <i className="fas fa-edit edit" onClick={()=>handleEditRecipe(recipe)}/>
-                            <i className="fas fa-trash-alt trash" onClick={()=>props.deleteRecipe(props.token, recipe.id, props.userId)}/>
+                            <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
+                            <i className="fas fa-trash-alt trash"
+                               onClick={() => props.deleteRecipe(token, recipe.id, userId)}/>
                         </div>
                     </div>
 
@@ -68,9 +71,8 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         userId: state.auth.userId,
-        loading: state.recipes.loading,
-        recipes: state.recipes.recipes
+        loading: state.recipes.loading
     }
 };
 
-export default connect(mapStateToProps, {fetchRecipes, deleteRecipe, mapRecipeToEdit})(Recipes);
+export default connect(mapStateToProps, {deleteRecipe, mapRecipeToEdit, clearAddRecipeForm})(Recipes);

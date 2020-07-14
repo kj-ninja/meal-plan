@@ -1,7 +1,7 @@
 import React from 'react';
 import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
-import './AddScheduleMobileView.scss';
+import './MobileView.scss';
 
 const recipes = [
     {name: 'Jajoweczka na boczku'},
@@ -15,7 +15,7 @@ const days = [
     {day6: 'Sunday'}
 ];
 
-const AddScheduleMobileView = ({control}) => {
+const MobileView = ({control}) => {
     return (
         <>
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
@@ -153,4 +153,4 @@ const AddScheduleMobileView = ({control}) => {
     );
 };
 
-export default AddScheduleMobileView;
+export default MobileView;

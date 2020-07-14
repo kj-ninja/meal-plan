@@ -22,7 +22,7 @@ const AddRecipe = (props) => {
             const instruction = getValues('recipeInstructions');
             props.editInstruction(props.instructions, instruction, indexToEdit);
             setValue('recipeInstructions', '');
-            props.isListEdit(false);
+            props.listEdit(false);
             setIndexToEdit(null);
         } else {
             const instruction = getValues('recipeInstructions');
@@ -36,7 +36,7 @@ const AddRecipe = (props) => {
             const ingredient = getValues('recipeIngredients');
             props.editIngredient(props.ingredients, ingredient, indexToEdit);
             setValue('recipeIngredients', '');
-            props.isListEdit(false);
+            props.listEdit(false);
             setIndexToEdit(null);
         } else {
             const ingredient = getValues('recipeIngredients');
@@ -70,7 +70,7 @@ const AddRecipe = (props) => {
     };
 
     const handleEditList = (index, place) => {
-        props.isListEdit(true);
+        props.listEdit(true);
         setIndexToEdit(index);
         if (place === 'instructions') {
             setValue('recipeInstructions', props.instructions[index]);

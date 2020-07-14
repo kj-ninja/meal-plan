@@ -64,7 +64,7 @@ export const addRecipe = (token, recipe) => {
 export const deleteRecipe = (token, recipeId, userId) => {
     return dispatch => {
         dispatch(fetchRecipeStart());
-        axios.delete('/recipes/' + recipeId + '.json' + '?auth=' + token)
+        axios.delete('/recipes/' + recipeId + '.json?auth=' + token)
             .then(function (res) {
                 dispatch(fetchRecipes(token, userId));
             })
@@ -78,7 +78,7 @@ export const deleteRecipe = (token, recipeId, userId) => {
 export const editRecipe = (token, recipeId, userId, recipe) => {
     return dispatch => {
         dispatch(fetchRecipeStart());
-        axios.patch('/recipes/' + recipeId + '.json' + '?auth=' + token, recipe)
+        axios.patch('/recipes/' + recipeId + '.json?auth=' + token, recipe)
             .then(function (res) {
                 dispatch(fetchRecipes(token, userId));
             })

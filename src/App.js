@@ -30,7 +30,7 @@ function App(props) {
             <Switch>
                 <Route path="/logout" component={Logout}/>
                 <Route path="/dashboard" component={Dashboard}/>
-                <Redirect to='/dashboard'/>
+                <Redirect to='/dashboard/add-schedule'/>
             </Switch>
         );
     }

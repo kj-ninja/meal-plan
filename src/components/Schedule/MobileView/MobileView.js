@@ -1,7 +1,7 @@
 import React from 'react';
-import './PlanMealsMobileView.scss';
+import './MobileView.scss';
 
-const PlanMealsMobileView = () => {
+const MobileView = () => {
     return (
         <section className="plan--mobile">
             <div className="plan__header--mobile">
@@ -89,4 +89,4 @@ const PlanMealsMobileView = () => {
     );
 };
 
-export default PlanMealsMobileView;
+export default MobileView;

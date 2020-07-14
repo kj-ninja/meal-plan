@@ -1,7 +1,7 @@
 import React from 'react';
-import './PlanMealsDesktopView.scss';
+import './DesktopView.scss';
 
-const PlanMealsDesktopView = () => {
+const DesktopView = () => {
     return (
         <section className="plan">
             <div className="plan__header">
@@ -56,4 +56,4 @@ const PlanMealsDesktopView = () => {
     );
 };
 
-export default PlanMealsDesktopView;
+export default DesktopView;

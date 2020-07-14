@@ -1,7 +1,7 @@
 import React from 'react';
 import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
-import './AddScheduleDesktopView.scss';
+import './DesktopView.scss';
 
 const recipes = [
     {name: 'Jajoweczka na boczku'},
@@ -9,10 +9,11 @@ const recipes = [
     {name: 'Owsianka'}
 ];
 const days = [
-    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+    'monday'
 ];
+// , 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 
-const AddScheduleDesktopView = ({control}) => {
+const DesktopView = ({control}) => {
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -23,7 +24,7 @@ const AddScheduleDesktopView = ({control}) => {
                 <div className="add-schedule__col-1">KOLACJA</div>
             </div>
             {days.map((day, i) => (
-                <div className="add-schedule__row">
+                <div className="add-schedule__row" key={i}>
                     <div className="add-schedule__col-1 scheduleDay">{day.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller
@@ -87,4 +88,4 @@ const AddScheduleDesktopView = ({control}) => {
     );
 };
 
-export default AddScheduleDesktopView;
+export default DesktopView;

@@ -1,7 +1,7 @@
-# Meal Plan
+# Meal Schedule
 
 ## Introduction
-Meal Plan is an application thanks to which the user is able to save their favorite recipes, and above all can plan their meal.
+Meal Schedule is an application thanks to which the user is able to save their favorite recipes, and above all can plan their meal.
 
 ## Description
 Nutrition diary, in which you can keep your favorite recipes, plan meals and check what vegetable or fruit season we have.  

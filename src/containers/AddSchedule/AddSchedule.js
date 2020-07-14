@@ -1,24 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addSchedule} from '../../store/actions/schedules';
 import {useForm} from "react-hook-form";
 import useWindowWidth from "../../functions/customHooks/useWindowWidth";
 import './AddSchedule.scss';
-import AddScheduleMobileView from "./AddScheduleMobileView/AddScheduleMobileView";
-import AddScheduleDesktopView from "./AddScheduleDesktopView/AddScheduleDesktopView";
+import MobileView from "./MobileView/MobileView";
+import DesktopView from "./DesktopView/DesktopView";
 
-const AddSchedule = () => {
+const AddSchedule = (props) => {
     const {register, handleSubmit, errors, control} = useForm();
     const width = useWindowWidth();
 
     const handleAddSchedule = (data) => {
-        console.log(data);
+        const schedule = {...data, userId: props.userId}
+        props.addSchedule(props.token, schedule);
+        console.log(schedule)
     };
+
     return (
         <div className="add-schedule">
-            <div className="add-schedule__header">
-                <h3>Nowy plan</h3>
-                <button>Zapisz i zamknij</button>
-            </div>
             <form onSubmit={handleSubmit(handleAddSchedule)} className="add-schedule__form">
+                <div className="add-schedule__header">
+                    <h3>Nowy plan</h3>
+                    <button type="submit">Zapisz i zamknij</button>
+                </div>
                 <div className="add-schedule__input-container">
                     <label htmlFor="scheduleName">Nazwa planu</label>
                     <input name="scheduleName"
@@ -51,12 +56,19 @@ const AddSchedule = () => {
                     <p className="error-message">Podany numer musi być liczbą pozytywną</p>}
                 </div>
 
-                {width < 900 ? <AddScheduleMobileView control={control}/> : <AddScheduleDesktopView control={control}/>}
+                {width < 900 ? <MobileView control={control}/> : <DesktopView control={control}/>}
 
-                <button type="submit">Wyslij</button>
             </form>
         </div>
     );
 };
 
-export default AddSchedule;
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token,
+        recipes: state.recipes.recipes,
+        userId: state.auth.userId
+    }
+};
+
+export default connect(mapStateToProps, {addSchedule})(AddSchedule);
