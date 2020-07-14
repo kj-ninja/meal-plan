@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {Route, NavLink} from 'react-router-dom';
 import {fetchRecipes} from "../../store/actions/recipes";
 import {clearAddRecipeForm} from "../../store/actions/addRecipeForm";
 import {fetchSchedules} from "../../store/actions/schedules";
 import {clearAddScheduleForm} from '../../store/actions/addScheduleForm';
+import {getActualWeekNumber, getScheduleByWeekNumber} from "../../functions/showScheduleByWeekNumber";
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Schedule from "../../components/Schedule/Schedule";
@@ -15,6 +16,29 @@ import Schedules from "../../components/Schedules/Schedules";
 
 const Dashboard = (props) => {
     const {fetchRecipes, fetchSchedules, token, userId} = props;
+    const [actualWeekNumber, setActualWeekNumber] = useState(getActualWeekNumber(new Date()));
+    const [scheduleToShow, setScheduleToShow] = useState();
+
+    // const showSchedule = (actualWeekNumber, schedules) => {
+    //     const schedule = getScheduleByWeekNumber(actualWeekNumber, schedules);
+    //     if (schedule) {
+    //         setScheduleToShow(schedule)
+    //     } else {
+    //         return null;
+    //     }
+    // }
+    // showSchedule(actualWeekNumber, props.schedules);
+    //
+    // if (scheduleToShow === false) {
+    //     const schedulesByWeekNumber = props.schedules
+    //         .filter(schedule => schedule.weekNumber > actualWeekNumber)
+    //         .sort((a, b) => a - b);
+    //     if (schedulesByWeekNumber[0]) {
+    //         setScheduleToShow(schedulesByWeekNumber[0]);
+    //     } else {
+    //         console.error('brak planów na najbliższy czas');
+    //     }
+    // }
 
     useEffect(() => {
         fetchRecipes(token, userId);
@@ -44,7 +68,8 @@ const Dashboard = (props) => {
             <div className="dashboard__container">
                 <Route exact path="/dashboard"
                        render={() => <Widgets handleAddRecipe={handleAddRecipe} handleAddSchedule={handleAddSchedule}/>}/>
-                <Route exact path="/dashboard" component={Schedule}/>
+                <Route exact path="/dashboard"
+                       render={()=><Schedule weekNumber={showScheduleByWeekNumber}/>} />
 
                 <Route path="/dashboard/recipes"
                        render={()=><Recipes {...props} recipes={props.recipes}/>}/>

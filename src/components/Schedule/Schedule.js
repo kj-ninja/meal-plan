@@ -4,7 +4,7 @@ import useWindowWidth from '../../functions/customHooks/useWindowWidth';
 import MobileView from "./MobileView/MobileView";
 import DesktopView from "./DesktopView/DesktopView";
 
-const Schedule = () => {
+const Schedule = (props) => {
     const width = useWindowWidth();
 
     return (

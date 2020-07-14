@@ -64,7 +64,7 @@ const AddRecipe = (props) => {
                 ingredients: props.ingredients,
                 userId: props.userId
             }
-            props.addRecipeForm(props.token, recipe);
+            props.addRecipe(props.token, recipe);
             props.history.push('/dashboard/recipes');
         }
     };
