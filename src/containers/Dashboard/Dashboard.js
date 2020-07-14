@@ -4,10 +4,10 @@ import {Route, NavLink, Switch} from 'react-router-dom';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Plan from "../../components/Plan/Plan";
-import AddRecipe from "../../components/AddRecipe/AddRecipe";
-import AddSchedule from "../../components/AddSchedule/AddSchedule";
-import Recipes from "../Recipes/Recipes";
-import Plans from "../Plans/Plans";
+import AddRecipe from "../AddRecipe/AddRecipe";
+import AddSchedule from "../AddSchedule/AddSchedule";
+import Recipes from "../../components/Recipes/Recipes";
+import Plans from "../../components/Plans/Plans";
 import {clearAddRecipeForm} from "../../store/actions/addRecipe";
 
 const Dashboard = (props) => {

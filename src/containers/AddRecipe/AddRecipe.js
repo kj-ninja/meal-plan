@@ -5,11 +5,11 @@ import {
     addIngredient,
     deleteInstruction,
     deleteIngredient,
-    isEdit,
+    listEdit,
     editInstruction,
     editIngredient
 } from "../../store/actions/addRecipe";
-import {addRecipe} from '../../store/actions/recipes';
+import {addRecipe, editRecipe} from '../../store/actions/recipes';
 import {useForm} from "react-hook-form";
 import './AddRecipe.scss';
 
@@ -18,11 +18,11 @@ const AddRecipe = (props) => {
     const [indexToEdit, setIndexToEdit] = useState(null);
 
     const handleAddInstruction = () => {
-        if (props.edit) {
+        if (props.isListEdit) {
             const instruction = getValues('recipeInstructions');
             props.editInstruction(props.instructions, instruction, indexToEdit);
             setValue('recipeInstructions', '');
-            props.isEdit(false);
+            props.isListEdit(false);
             setIndexToEdit(null);
         } else {
             const instruction = getValues('recipeInstructions');
@@ -32,11 +32,11 @@ const AddRecipe = (props) => {
     };
 
     const handleAddIngredients = () => {
-        if (props.edit) {
+        if (props.isListEdit) {
             const ingredient = getValues('recipeIngredients');
             props.editIngredient(props.ingredients, ingredient, indexToEdit);
             setValue('recipeIngredients', '');
-            props.isEdit(false);
+            props.isListEdit(false);
             setIndexToEdit(null);
         } else {
             const ingredient = getValues('recipeIngredients');
@@ -46,19 +46,31 @@ const AddRecipe = (props) => {
     };
 
     const handleAddRecipe = () => {
-        const recipe = {
-            name: getValues('recipeName'),
-            description: getValues('recipeDescription'),
-            instructions: props.instructions,
-            ingredients: props.ingredients,
-            userId: props.userId
+        if (props.isRecipeEdit) {
+            const recipe = {
+                name: getValues('recipeName'),
+                description: getValues('recipeDescription'),
+                instructions: props.instructions,
+                ingredients: props.ingredients,
+                userId: props.userId
+            }
+            props.editRecipe(props.token, props.recipeId, props.userId, recipe);
+            props.history.push('/dashboard');
+        } else {
+            const recipe = {
+                name: getValues('recipeName'),
+                description: getValues('recipeDescription'),
+                instructions: props.instructions,
+                ingredients: props.ingredients,
+                userId: props.userId
+            }
+            props.addRecipe(props.token, recipe);
+            props.history.push('/dashboard');
         }
-        props.addRecipe(props.token, recipe);
-        props.history.push('/dashboard');
     };
 
-    const handleEdit = (index, place) => {
-        props.isEdit(true);
+    const handleEditList = (index, place) => {
+        props.isListEdit(true);
         setIndexToEdit(index);
         if (place === 'instructions') {
             setValue('recipeInstructions', props.instructions[index]);
@@ -110,7 +122,7 @@ const AddRecipe = (props) => {
                             {props.instructions.map((instruction, i) => (
                                 <li key={instruction}>
                                     {instruction}
-                                    <i className="fas fa-edit edit" onClick={() => handleEdit(i, 'instructions')}/>
+                                    <i className="fas fa-edit edit" onClick={() => handleEditList(i, 'instructions')}/>
                                     <i className="fas fa-trash-alt trash" onClick={() => props.deleteInstruction(i)}/>
                                 </li>
                             ))}
@@ -130,7 +142,7 @@ const AddRecipe = (props) => {
                             {props.ingredients.map((ingredient, i) => (
                                 <li key={ingredient}>
                                     {ingredient}
-                                    <i className="fas fa-edit edit" onClick={() => handleEdit(i, 'ingredients')}/>
+                                    <i className="fas fa-edit edit" onClick={() => handleEditList(i, 'ingredients')}/>
                                     <i className="fas fa-trash-alt trash" onClick={() => props.deleteIngredient(i)}/>
                                 </li>
                             ))}
@@ -150,7 +162,9 @@ const mapStateToProps = state => {
         description: state.addRecipe.recipe.description,
         instructions: state.addRecipe.recipe.instructions,
         ingredients: state.addRecipe.recipe.ingredients,
-        edit: state.addRecipe.isEdit
+        isRecipeEdit: state.addRecipe.isRecipeEdit,
+        isListEdit: state.addRecipe.isListEdit,
+        recipeId: state.addRecipe.recipe.id
     }
 };
 
@@ -160,7 +174,8 @@ export default connect(mapStateToProps, {
     deleteInstruction,
     deleteIngredient,
     addRecipe,
-    isEdit,
+    listEdit,
     editInstruction,
-    editIngredient
+    editIngredient,
+    editRecipe
 })(AddRecipe);

@@ -7,7 +7,8 @@ const initialState = {
         instructions: [],
         ingredients: []
     },
-    isEdit: false
+    isListEdit: false,
+    isRecipeEdit: false
 }
 
 const addRecipeReducer = (state = initialState, action) => {
@@ -83,12 +84,13 @@ const addRecipeReducer = (state = initialState, action) => {
         case actionTypes.MAP_RECIPE_TO_EDIT:
             return {
                 ...state,
-                recipe: action.recipe
+                recipe: action.recipe,
+                isRecipeEdit: true
             }
-        case actionTypes.IS_EDIT:
+        case actionTypes.LIST_EDIT:
             return {
                 ...state,
-                isEdit: action.payload
+                isListEdit: action.payload
             }
         case actionTypes.CLEAR_ADD_RECIPE_FORM:
             return {

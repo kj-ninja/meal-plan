@@ -47,5 +47,5 @@ export const editIngredient = (ingredients, ingredient, index) => {
 };
 
 export const mapRecipeToEdit = (recipe) => ({type: actionTypes.MAP_RECIPE_TO_EDIT, recipe: recipe});
-export const isEdit = (bool) => ({type: actionTypes.IS_EDIT, payload: bool});
+export const listEdit = (bool) => ({type: actionTypes.LIST_EDIT, payload: bool});
 export const clearAddRecipeForm = () => ({type: actionTypes.CLEAR_ADD_RECIPE_FORM});
