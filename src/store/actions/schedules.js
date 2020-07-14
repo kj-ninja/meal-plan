@@ -75,7 +75,7 @@ export const deleteSchedule = (token, scheduleId, userId) => {
     };
 };
 
-export const editRecipe = (token, scheduleId, userId, schedule) => {
+export const editSchedule = (token, scheduleId, userId, schedule) => {
     return dispatch => {
         dispatch(fetchScheduleStart());
         axios.patch('/schedules/' + scheduleId + '.json?auth=' + token, schedule)

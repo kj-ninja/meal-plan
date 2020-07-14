@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {deleteRecipe} from '../../store/actions/recipes';
-import {mapRecipeToEdit, clearAddRecipeForm} from '../../store/actions/addRecipe';
+import {mapRecipeToEdit, clearAddRecipeForm} from '../../store/actions/addRecipeForm';
 import './Recipes.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
 

@@ -13,7 +13,7 @@ const days = [
 ];
 // , 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 
-const DesktopView = ({control}) => {
+const DesktopView = ({control, monday}) => {
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -38,6 +38,7 @@ const DesktopView = ({control}) => {
                             name={`${day}[0]`}
                             isClearable
                             control={control}
+                            defaultValue={monday.length > 1 ? monday[i] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -52,6 +53,7 @@ const DesktopView = ({control}) => {
                             name={`${day}[1]`}
                             isClearable
                             control={control}
+                            defaultValue={monday.length > 1 ? monday[i] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -66,6 +68,7 @@ const DesktopView = ({control}) => {
                             name={`${day}[2]`}
                             isClearable
                             control={control}
+                            defaultValue={monday.length > 1 ? monday[i] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -80,6 +83,7 @@ const DesktopView = ({control}) => {
                             name={`${day}[3]`}
                             isClearable
                             control={control}
+                            defaultValue={monday.length > 1 ? monday[i] : ''}
                         />
                     </div>
                 </div>

@@ -13,7 +13,7 @@ const NavigationItems = (props) => {
             <>
                 <li className="navigation-item"><NavLink to="/dashboard">Dashboard</NavLink></li>
                 <li className="navigation-item"><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
-                <li className="navigation-item"><NavLink to="/dashboard/plans">Plans</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/schedules">Plans</NavLink></li>
                 <li className="navigation-item"><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>
             </>
         );

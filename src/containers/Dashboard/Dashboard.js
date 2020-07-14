@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Route, NavLink} from 'react-router-dom';
 import {fetchRecipes} from "../../store/actions/recipes";
-import {clearAddRecipeForm} from "../../store/actions/addRecipe";
+import {clearAddRecipeForm} from "../../store/actions/addRecipeForm";
 import {fetchSchedules} from "../../store/actions/schedules";
+import {clearAddScheduleForm} from '../../store/actions/addScheduleForm';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Schedule from "../../components/Schedule/Schedule";
@@ -22,11 +23,12 @@ const Dashboard = (props) => {
 
     const handleAddRecipe = () => {
         props.clearAddRecipeForm();
-        props.history.push('dashboard/add-recipe');
+        props.history.push('/dashboard/add-recipe');
     };
 
     const handleAddSchedule = () => {
-        props.history.push('dashboard/add-schedule');
+        props.clearAddScheduleForm();
+        props.history.push('/dashboard/add-schedule');
     };
 
     return (
@@ -41,12 +43,13 @@ const Dashboard = (props) => {
             </aside>
             <div className="dashboard__container">
                 <Route exact path="/dashboard"
-                       render={() => <Widgets addRecipe={handleAddRecipe} addSchedule={handleAddSchedule}/>}/>
+                       render={() => <Widgets handleAddRecipe={handleAddRecipe} handleAddSchedule={handleAddSchedule}/>}/>
                 <Route exact path="/dashboard" component={Schedule}/>
+
                 <Route path="/dashboard/recipes"
-                       render={()=><Recipes recipes={props.recipes}/>}/>
+                       render={()=><Recipes {...props} recipes={props.recipes}/>}/>
                 <Route path="/dashboard/schedules"
-                       render={()=><Schedules schedules={props.schedules}/>}/>
+                       render={()=><Schedules {...props} schedules={props.schedules}/>}/>
                 <Route path="/dashboard/add-recipe" component={AddRecipe}/>
                 <Route path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>
@@ -63,4 +66,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {fetchRecipes, fetchSchedules, clearAddRecipeForm})(Dashboard);
+export default connect(mapStateToProps, {fetchRecipes, fetchSchedules, clearAddRecipeForm, clearAddScheduleForm})(Dashboard);

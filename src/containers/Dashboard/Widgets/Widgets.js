@@ -5,11 +5,11 @@ const Widgets = (props) => {
     return (
         <>
             <div className="dashboard__buttons">
-                <div className="dashboard__buttons-item" onClick={props.addRecipe}>
+                <div className="dashboard__buttons-item" onClick={props.handleAddRecipe}>
                     <i className="far fa-calendar-plus"/>
                     <span>przepis</span>
                 </div>
-                <div className="dashboard__buttons-item" onClick={props.addSchedule}>
+                <div className="dashboard__buttons-item" onClick={props.handleAddSchedule}>
                     <i className="far fa-calendar-plus"/>
                     <span>plan</span>
                 </div>

@@ -5,7 +5,7 @@
   margin: 0 auto;
   display: flex;
   @include desktop() {
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
   }
   .dashboard__panel {
     display: none;
@@ -44,11 +44,12 @@
   }
   .dashboard__container {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 70px);
     background-image: url("../../assets/app-background.png");
     padding: 5px;
     @include desktop() {
       border-right: 1px solid #ccc;
+      min-height: 0;
     }
   }
 }

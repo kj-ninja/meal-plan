@@ -8,7 +8,7 @@ import {
     listEdit,
     editInstruction,
     editIngredient
-} from "../../store/actions/addRecipe";
+} from "../../store/actions/addRecipeForm";
 import {addRecipe, editRecipe} from '../../store/actions/recipes';
 import {useForm} from "react-hook-form";
 import './AddRecipe.scss';
@@ -55,7 +55,7 @@ const AddRecipe = (props) => {
                 userId: props.userId
             }
             props.editRecipe(props.token, props.recipeId, props.userId, recipe);
-            props.history.push('/dashboard');
+            props.history.push('/dashboard/recipes');
         } else {
             const recipe = {
                 name: getValues('recipeName'),
@@ -64,8 +64,8 @@ const AddRecipe = (props) => {
                 ingredients: props.ingredients,
                 userId: props.userId
             }
-            props.addRecipe(props.token, recipe);
-            props.history.push('/dashboard');
+            props.addRecipeForm(props.token, recipe);
+            props.history.push('/dashboard/recipes');
         }
     };
 
@@ -158,13 +158,13 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         userId: state.auth.userId,
-        name: state.addRecipe.recipe.name,
-        description: state.addRecipe.recipe.description,
-        instructions: state.addRecipe.recipe.instructions,
-        ingredients: state.addRecipe.recipe.ingredients,
-        isRecipeEdit: state.addRecipe.isRecipeEdit,
-        isListEdit: state.addRecipe.isListEdit,
-        recipeId: state.addRecipe.recipe.id
+        name: state.addRecipeForm.recipe.name,
+        description: state.addRecipeForm.recipe.description,
+        instructions: state.addRecipeForm.recipe.instructions,
+        ingredients: state.addRecipeForm.recipe.ingredients,
+        isRecipeEdit: state.addRecipeForm.isRecipeEdit,
+        isListEdit: state.addRecipeForm.isListEdit,
+        recipeId: state.addRecipeForm.recipe.id
     }
 };
 
