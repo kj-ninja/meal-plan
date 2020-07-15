@@ -1,9 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
+import {getActualWeekNumber, getScheduleByWeekNumber} from "../../functions/showScheduleByWeekNumber";
 
 const initialState = {
     schedules: [],
     loading: false,
-    error: null
+    error: null,
+    scheduleToShow: null
 }
 
 const schedulesReducer = (state=initialState, action) => {
@@ -15,8 +17,26 @@ const schedulesReducer = (state=initialState, action) => {
                 error: null
             }
         case actionTypes.FETCH_SCHEDULES_SUCCESS:
+            let newScheduleToShow = null;
+            const weekNumber = getActualWeekNumber(new Date());
+            const schedule = getScheduleByWeekNumber(weekNumber, action.schedules);
+
+            if (schedule) {
+                newScheduleToShow = schedule;
+            } else {
+                const schedulesByWeekNumber = action.schedules
+                    .filter(schedule => schedule.weekNumber > weekNumber)
+                    .sort((a, b) => a - b);
+                if (schedulesByWeekNumber[0]) {
+                    newScheduleToShow = schedulesByWeekNumber[0];
+                } else {
+                    newScheduleToShow = false;
+                }
+            }
+
             return {
                 ...state,
+                scheduleToShow: newScheduleToShow,
                 schedules: action.schedules,
                 loading: false,
                 error: null

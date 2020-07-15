@@ -1,3 +1,8 @@
+import Spinner from "../components/UI/Spinner/Spinner";
+import React from "react";
+import {Route} from "react-router-dom";
+import Schedule from "../components/Schedule/Schedule";
+
 export const getActualWeekNumber = (d) => {
     // Copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -12,9 +17,10 @@ export const getActualWeekNumber = (d) => {
 
 export const getScheduleByWeekNumber = (weekNumber, schedules) => {
     return schedules.find(schedule => {
-        return schedule.weekNumber === weekNumber;
+        return +schedule.weekNumber === weekNumber;
     });
 }
+
 
 
 

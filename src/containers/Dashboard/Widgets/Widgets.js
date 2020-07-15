@@ -20,7 +20,7 @@ const Widgets = (props) => {
             </div>
             <div className="dashboard__info">
                 <i className="fas fa-info-circle"/>
-                <span>Ilość przepisów: 1</span>
+                <span>Ilość przepisów: {props.recipesCount}</span>
             </div>
         </>
     );

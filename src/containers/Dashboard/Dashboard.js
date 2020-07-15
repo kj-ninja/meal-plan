@@ -5,7 +5,7 @@ import {fetchRecipes} from "../../store/actions/recipes";
 import {clearAddRecipeForm} from "../../store/actions/addRecipeForm";
 import {fetchSchedules} from "../../store/actions/schedules";
 import {clearAddScheduleForm} from '../../store/actions/addScheduleForm';
-import {getActualWeekNumber, getScheduleByWeekNumber} from "../../functions/showScheduleByWeekNumber";
+import {getActualWeekNumber, getScheduleByWeekNumber, showSchedule} from "../../functions/showScheduleByWeekNumber";
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Schedule from "../../components/Schedule/Schedule";
@@ -13,32 +13,10 @@ import AddRecipe from "../AddRecipe/AddRecipe";
 import AddSchedule from "../AddSchedule/AddSchedule";
 import Recipes from "../../components/Recipes/Recipes";
 import Schedules from "../../components/Schedules/Schedules";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Dashboard = (props) => {
-    const {fetchRecipes, fetchSchedules, token, userId} = props;
-    const [actualWeekNumber, setActualWeekNumber] = useState(getActualWeekNumber(new Date()));
-    const [scheduleToShow, setScheduleToShow] = useState();
-
-    // const showSchedule = (actualWeekNumber, schedules) => {
-    //     const schedule = getScheduleByWeekNumber(actualWeekNumber, schedules);
-    //     if (schedule) {
-    //         setScheduleToShow(schedule)
-    //     } else {
-    //         return null;
-    //     }
-    // }
-    // showSchedule(actualWeekNumber, props.schedules);
-    //
-    // if (scheduleToShow === false) {
-    //     const schedulesByWeekNumber = props.schedules
-    //         .filter(schedule => schedule.weekNumber > actualWeekNumber)
-    //         .sort((a, b) => a - b);
-    //     if (schedulesByWeekNumber[0]) {
-    //         setScheduleToShow(schedulesByWeekNumber[0]);
-    //     } else {
-    //         console.error('brak planów na najbliższy czas');
-    //     }
-    // }
+    const {fetchRecipes, fetchSchedules, token, userId, scheduleToShow} = props;
 
     useEffect(() => {
         fetchRecipes(token, userId);
@@ -55,6 +33,20 @@ const Dashboard = (props) => {
         props.history.push('/dashboard/add-schedule');
     };
 
+    let schedule = (
+        <Spinner/>
+    );
+
+    if (scheduleToShow === false) {
+        schedule = (
+            <p>Brak planów żywieniowych na najbliższy czas, zacznij od przepisów następnie dodaj plan!</p>
+        );
+    } else if (scheduleToShow !== null) {
+        schedule = (
+            <Route exact path="/dashboard" render={() => <Schedule schedule={scheduleToShow}/>}/>
+        );
+    }
+
     return (
         <section className="dashboard">
             <aside className="dashboard__panel">
@@ -66,15 +58,16 @@ const Dashboard = (props) => {
                 </ul>
             </aside>
             <div className="dashboard__container">
-                <Route exact path="/dashboard"
-                       render={() => <Widgets handleAddRecipe={handleAddRecipe} handleAddSchedule={handleAddSchedule}/>}/>
-                <Route exact path="/dashboard"
-                       render={()=><Schedule weekNumber={showScheduleByWeekNumber}/>} />
-
+                <Route exact path="/dashboard" render={() =>
+                    <Widgets handleAddRecipe={handleAddRecipe}
+                             handleAddSchedule={handleAddSchedule}
+                             recipesCount={props.recipes.length}/>}
+                />
+                {schedule}
                 <Route path="/dashboard/recipes"
-                       render={()=><Recipes {...props} recipes={props.recipes}/>}/>
+                       render={() => <Recipes {...props} recipes={props.recipes}/>}/>
                 <Route path="/dashboard/schedules"
-                       render={()=><Schedules {...props} schedules={props.schedules}/>}/>
+                       render={() => <Schedules {...props} schedules={props.schedules}/>}/>
                 <Route path="/dashboard/add-recipe" component={AddRecipe}/>
                 <Route path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>
@@ -87,8 +80,14 @@ const mapStateToProps = state => {
         token: state.auth.token,
         userId: state.auth.userId,
         recipes: state.recipes.recipes,
-        schedules: state.schedules.schedules
+        schedules: state.schedules.schedules,
+        scheduleToShow: state.schedules.scheduleToShow
     }
 };
 
-export default connect(mapStateToProps, {fetchRecipes, fetchSchedules, clearAddRecipeForm, clearAddScheduleForm})(Dashboard);
+export default connect(mapStateToProps, {
+    fetchRecipes,
+    fetchSchedules,
+    clearAddRecipeForm,
+    clearAddScheduleForm
+})(Dashboard);

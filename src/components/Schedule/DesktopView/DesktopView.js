@@ -5,26 +5,26 @@ const DesktopView = (props) => {
     return (
         <section className="plan">
             <div className="plan__header">
-                Twój plan na <span id="week-number">{props.weekNumber}</span> tydzień
+                Twój plan na <span id="week-number">{props.schedule.weekNumber}</span> tydzień
             </div>
             <div className="row plan__days">
                 <div className="col-1 day">Poniedziałek</div>
 
             </div>
             <div className="row">
-                <div className="col-1">jajecznica na boczku</div>
+                <div className="col-1">{props.schedule.monday[0].label}</div>
 
             </div>
             <div className="row">
-                <div className="col-1">szejk z owocami i mlekiem</div>
+                <div className="col-1">{props.schedule.monday[1].label}</div>
 
             </div>
             <div className="row">
-                <div className="col-1">schabowy z ziemniakami i mizerią</div>
+                <div className="col-1">{props.schedule.monday[2].label}</div>
 
             </div>
             <div className="row">
-                <div className="col-1">tosty</div>
+                <div className="col-1">{props.schedule.monday[3].label}</div>
             </div>
         </section>
     );

@@ -9,7 +9,7 @@ const Schedule = (props) => {
 
     return (
         <>
-            {width < 900 ? <MobileView/> : <DesktopView/>}
+            {width < 900 ? <MobileView schedule={props.schedule}/> : <DesktopView schedule={props.schedule}/>}
             {/*<a className="previousPlan"><i className="fas fa-angle-double-left"/><span*/}
             {/*    id="previousPlanSpan">poprzedni</span></a>*/}
             {/*<a href="#" id="actualPlan">aktualny</a>*/}
