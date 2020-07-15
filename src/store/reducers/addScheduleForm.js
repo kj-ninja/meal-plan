@@ -5,13 +5,36 @@ const initialState = {
         name: '',
         description: '',
         weekNumber: '',
-        monday: []
-        // tuesday: [],
-        // wednesday: [],
-        // thursday: [],
-        // friday: [],
-        // saturday: [],
-        // sunday: [],
+        days: [
+            {
+                name: 'monday',
+                meals: []
+            },
+            {
+                name: 'tuesday',
+                meals: []
+            },
+            {
+                name: 'wednesday',
+                meals: []
+            },
+            {
+                name: 'thursday',
+                meals: []
+            },
+            {
+                name: 'friday',
+                meals: []
+            },
+            {
+                name: 'saturday',
+                meals: []
+            },
+            {
+                name: 'sunday',
+                meals: []
+            }
+        ]
     },
     isScheduleEdit: false
 }

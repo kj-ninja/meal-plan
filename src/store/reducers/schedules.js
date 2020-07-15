@@ -18,16 +18,16 @@ const schedulesReducer = (state=initialState, action) => {
             }
         case actionTypes.FETCH_SCHEDULES_SUCCESS:
             let newScheduleToShow = null;
-            const weekNumber = getActualWeekNumber(new Date());
-            const schedule = getScheduleByWeekNumber(weekNumber, action.schedules);
+            const actualWeekNumber = getActualWeekNumber(new Date());
+            const schedule = getScheduleByWeekNumber(actualWeekNumber, action.schedules);
 
             if (schedule) {
                 newScheduleToShow = schedule;
             } else {
                 const schedulesByWeekNumber = action.schedules
-                    .filter(schedule => schedule.weekNumber > weekNumber)
+                    .filter(schedule => +schedule.weekNumber > actualWeekNumber)
                     .sort((a, b) => a - b);
-                if (schedulesByWeekNumber[0]) {
+                if (schedulesByWeekNumber.length > 0) {
                     newScheduleToShow = schedulesByWeekNumber[0];
                 } else {
                     newScheduleToShow = false;

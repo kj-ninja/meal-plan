@@ -3,17 +3,8 @@ import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
 import './DesktopView.scss';
 
-const recipes = [
-    {name: 'Jajoweczka na boczku'},
-    {name: 'Nalesniki'},
-    {name: 'Owsianka'}
-];
-const days = [
-    'monday'
-];
-// , 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+const DesktopView = ({control, recipes, days}) => {
 
-const DesktopView = ({control, monday}) => {
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -25,7 +16,7 @@ const DesktopView = ({control, monday}) => {
             </div>
             {days.map((day, i) => (
                 <div className="add-schedule__row" key={i}>
-                    <div className="add-schedule__col-1 scheduleDay">{day.toUpperCase()}</div>
+                    <div className="add-schedule__col-1 scheduleDay">{day.name.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller
                             as={ReactSelect}
@@ -35,10 +26,10 @@ const DesktopView = ({control, monday}) => {
                                     label: recipe.name
                                 }
                             })}
-                            name={`${day}[0]`}
+                            name={`${day.name}${day.meals}[0]`}
                             isClearable
                             control={control}
-                            defaultValue={monday.length > 1 ? monday[i] : ''}
+                            defaultValue={day.meals.length > 1 ? day.meals[0] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -50,10 +41,10 @@ const DesktopView = ({control, monday}) => {
                                     label: recipe.name
                                 }
                             })}
-                            name={`${day}[1]`}
+                            name={`${day.name}${day.meals}[1]`}
                             isClearable
                             control={control}
-                            defaultValue={monday.length > 1 ? monday[i] : ''}
+                            defaultValue={day.meals.length > 1 ? day.meals[1] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -65,10 +56,10 @@ const DesktopView = ({control, monday}) => {
                                     label: recipe.name
                                 }
                             })}
-                            name={`${day}[2]`}
+                            name={`${day.name}${day.meals}[2]`}
                             isClearable
                             control={control}
-                            defaultValue={monday.length > 1 ? monday[i] : ''}
+                            defaultValue={day.meals.length > 1 ? day.meals[2] : ''}
                         />
                     </div>
                     <div className="add-schedule__col-1">
@@ -80,10 +71,10 @@ const DesktopView = ({control, monday}) => {
                                     label: recipe.name
                                 }
                             })}
-                            name={`${day}[3]`}
+                            name={`${day.name}${day.meals}[3]`}
                             isClearable
                             control={control}
-                            defaultValue={monday.length > 1 ? monday[i] : ''}
+                            defaultValue={day.meals.length > 1 ? day.meals[3] : ''}
                         />
                     </div>
                 </div>

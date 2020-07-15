@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Route, NavLink} from 'react-router-dom';
 import {fetchRecipes} from "../../store/actions/recipes";
 import {clearAddRecipeForm} from "../../store/actions/addRecipeForm";
 import {fetchSchedules} from "../../store/actions/schedules";
 import {clearAddScheduleForm} from '../../store/actions/addScheduleForm';
-import {getActualWeekNumber, getScheduleByWeekNumber, showSchedule} from "../../functions/showScheduleByWeekNumber";
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
 import Schedule from "../../components/Schedule/Schedule";
@@ -13,7 +12,6 @@ import AddRecipe from "../AddRecipe/AddRecipe";
 import AddSchedule from "../AddSchedule/AddSchedule";
 import Recipes from "../../components/Recipes/Recipes";
 import Schedules from "../../components/Schedules/Schedules";
-import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Dashboard = (props) => {
     const {fetchRecipes, fetchSchedules, token, userId, scheduleToShow} = props;

@@ -24,10 +24,20 @@ const AddSchedule = (props) => {
             editSchedule(props.token, props.scheduleId, props.userId, schedule);
             props.history.push('/dashboard/schedules');
         } else {
+            const monday = [getValues('monday[0]').label, getValues('monday[1]').label, getValues('monday[2]').label, getValues('monday[3]').label];
+            const tuesday = [getValues('tuesday[0]').label, getValues('tuesday[1]').label, getValues('tuesday[2]').label, getValues('tuesday[3]').label];
+            const wednesday = [getValues('wednesday[0]').label, getValues('wednesday[1]').label, getValues('wednesday[2]').label, getValues('wednesday[3]').label];
+            const thursday = [getValues('thursday[0]').label, getValues('thursday[1]').label, getValues('thursday[2]').label, getValues('thursday[3]').label];
+            const friday = [getValues('friday[0]').label, getValues('friday[1]').label, getValues('friday[2]').label, getValues('friday[3]').label];
+            const saturday = [getValues('saturday[0]').label, getValues('saturday[1]').label, getValues('saturday[2]').label, getValues('saturday[3]').label];
+            const sunday = [getValues('sunday[0]').label, getValues('sunday[1]').label, getValues('sunday[2]').label, getValues('sunday[3]').label];
             const schedule = {
                 name: getValues('scheduleName'),
                 description: getValues('scheduleDescription'),
                 weekNumber: getValues('scheduleWeekNumber'),
+                days: [{name: 'monday', meals: monday}, {name: 'tuesday', meals: tuesday}, {name: 'wednesday', meals: wednesday}
+                , {name: 'thursday', meals: thursday}, {name: 'friday', meals: friday}, {name: 'saturday', meals: saturday}
+                , {name: 'sunday', meals: sunday}],
                 monday: [getValues('monday[0]'), getValues('monday[1]'), getValues('monday[2]'), getValues('monday[3]')],
                 userId: props.userId
             }
@@ -77,9 +87,7 @@ const AddSchedule = (props) => {
                     {errors.scheduleWeekNumber?.type === "pattern" &&
                     <p className="error-message">Podany numer musi być liczbą pozytywną</p>}
                 </div>
-
-                {width < 900 ? <MobileView control={control}/> : <DesktopView monday={props.monday} control={control}/>}
-
+                {props.recipes.length > 0 ? width < 900 ? <MobileView control={control}/> : <DesktopView recipes={props.recipes} days={props.days} control={control}/> : null}
             </form>
         </div>
     );
@@ -92,7 +100,7 @@ const mapStateToProps = state => {
         name: state.addScheduleForm.schedule.name,
         description: state.addScheduleForm.schedule.description,
         weekNumber: state.addScheduleForm.schedule.weekNumber,
-        monday: state.addScheduleForm.schedule.monday,
+        days: state.addScheduleForm.schedule.days,
         userId: state.auth.userId,
         scheduleId: state.addScheduleForm.schedule.id,
         isScheduleEdit: state.addScheduleForm.isScheduleEdit
