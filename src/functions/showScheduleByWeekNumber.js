@@ -1,8 +1,3 @@
-import Spinner from "../components/UI/Spinner/Spinner";
-import React from "react";
-import {Route} from "react-router-dom";
-import Schedule from "../components/Schedule/Schedule";
-
 export const getActualWeekNumber = (d) => {
     // Copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -19,10 +14,7 @@ export const getScheduleByWeekNumber = (weekNumber, schedules) => {
     return schedules.find(schedule => {
         return +schedule.weekNumber === weekNumber;
     });
-}
-
-
-
+};
 
 export const getNextWeekNumber = (schedules, currentWeekNumber) => {
     return schedules
@@ -31,7 +23,7 @@ export const getNextWeekNumber = (schedules, currentWeekNumber) => {
         .find(weekNumber => {
             return weekNumber > currentWeekNumber;
         });
-}
+};
 
 export const getPreviousWeekNumber = (schedules, currentWeekNumber) => {
     return schedules
@@ -40,4 +32,4 @@ export const getPreviousWeekNumber = (schedules, currentWeekNumber) => {
         .find(weekNumber => {
             return weekNumber < currentWeekNumber;
         });
-}
+};

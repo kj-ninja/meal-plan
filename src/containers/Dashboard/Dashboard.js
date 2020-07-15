@@ -33,20 +33,6 @@ const Dashboard = (props) => {
         props.history.push('/dashboard/add-schedule');
     };
 
-    let schedule = (
-        <Spinner/>
-    );
-
-    if (scheduleToShow === false) {
-        schedule = (
-            <p>Brak planów żywieniowych na najbliższy czas, zacznij od przepisów następnie dodaj plan!</p>
-        );
-    } else if (scheduleToShow !== null) {
-        schedule = (
-            <Route exact path="/dashboard" render={() => <Schedule schedule={scheduleToShow}/>}/>
-        );
-    }
-
     return (
         <section className="dashboard">
             <aside className="dashboard__panel">
@@ -63,7 +49,8 @@ const Dashboard = (props) => {
                              handleAddSchedule={handleAddSchedule}
                              recipesCount={props.recipes.length}/>}
                 />
-                {schedule}
+                <Route exact path="/dashboard" render={() => <Schedule scheduleToShow={scheduleToShow}/>}/>
+
                 <Route path="/dashboard/recipes"
                        render={() => <Recipes {...props} recipes={props.recipes}/>}/>
                 <Route path="/dashboard/schedules"

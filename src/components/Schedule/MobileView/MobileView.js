@@ -1,7 +1,7 @@
 import React from 'react';
 import './MobileView.scss';
 
-const MobileView = () => {
+const MobileView = (props) => {
     return (
         <section className="plan--mobile">
             <div className="plan__header--mobile">
@@ -12,19 +12,19 @@ const MobileView = () => {
                 <div className="plan__col-8--mobile">Wtorek</div>
             </div>
             <div className="plan__row--mobile">
-                <div className="plan__col-8--mobile">jajecznica na boczku</div>
+                <div className="plan__col-8--mobile">{props.schedule.monday[0].label}</div>
                 <div className="plan__col-8--mobile">jaja gotowane z kanapkami</div>
             </div>
             <div className="plan__row--mobile">
-                <div className="plan__col-8--mobile">szejk z owocami i mlekiem</div>
+                <div className="plan__col-8--mobile">{props.schedule.monday[1].label}</div>
                 <div className="plan__col-8--mobile">owoce</div>
             </div>
             <div className="plan__row--mobile">
-                <div className="plan__col-8--mobile">schabowy z ziemniakami i mizerią</div>
+                <div className="plan__col-8--mobile">{props.schedule.monday[2].label}</div>
                 <div className="plan__col-8--mobile">kebab na ostro</div>
             </div>
             <div className="plan__row--mobile">
-                <div className="plan__col-8--mobile">tosty</div>
+                <div className="plan__col-8--mobile">{props.schedule.monday[3].label}</div>
                 <div className="plan__col-8--mobile">ser biały z rodzkiewka i szczypiorkiem</div>
             </div>
 
