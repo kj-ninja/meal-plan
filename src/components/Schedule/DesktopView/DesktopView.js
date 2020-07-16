@@ -5,7 +5,8 @@ const DesktopView = (props) => {
     return (
         <section className="plan">
             <div className="plan__header">
-                Twój plan na <span id="week-number">{props.schedule.weekNumber ? props.schedule.weekNumber : null}</span> tydzień
+                Twój plan na <span
+                id="week-number">{props.scheduleToShow.weekNumber ? props.scheduleToShow.weekNumber : null}</span> tydzień
             </div>
 
             <div className="row plan__days">
@@ -17,11 +18,42 @@ const DesktopView = (props) => {
                 <div className="col-1 day">Sobota</div>
                 <div className="col-1 day">Niedziela</div>
             </div>
-            {props.schedule.monday.map((scheduleDay, i)=> (
-                <div className="row" key={i}>
-                    <div className="col-1">{scheduleDay.label}</div>
-                </div>
-            ))}
+            <div className="row">
+                <div className="col-1 day">{props.scheduleToShow.days[0].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[1].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[2].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[3].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[4].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[5].meals[0]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[6].meals[0]}</div>
+            </div>
+            <div className="row">
+                <div className="col-1 day">{props.scheduleToShow.days[0].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[1].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[2].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[3].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[4].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[5].meals[1]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[6].meals[1]}</div>
+            </div>
+            <div className="row">
+                <div className="col-1 day">{props.scheduleToShow.days[0].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[1].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[2].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[3].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[4].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[5].meals[2]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[6].meals[2]}</div>
+            </div>
+            <div className="row">
+                <div className="col-1 day">{props.scheduleToShow.days[0].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[1].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[2].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[3].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[4].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[5].meals[3]}</div>
+                <div className="col-1 day">{props.scheduleToShow.days[6].meals[3]}</div>
+            </div>
         </section>
     );
 };

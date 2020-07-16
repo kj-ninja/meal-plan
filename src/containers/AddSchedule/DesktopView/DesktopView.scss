@@ -28,3 +28,9 @@ $single-column: percentage(1 / $grid-columns);
   align-items: center;
   border-bottom: 1px solid #ccc;
 }
+
+#error {
+  text-align: left;
+  color: red;
+  font-size: 14px;
+}

@@ -2,9 +2,9 @@ import React from 'react';
 import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
 import './DesktopView.scss';
+import { ErrorMessage } from "@hookform/error-message";
 
-const DesktopView = ({control, recipes, days}) => {
-
+const DesktopView = ({control, recipes, days, errors}) => {
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -19,63 +19,95 @@ const DesktopView = ({control, recipes, days}) => {
                     <div className="add-schedule__col-1 scheduleDay">{day.name.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller
+                            rules={{ required: "This is required" }}
                             as={ReactSelect}
-                            options={recipes.map(recipe => {
-                                return {
-                                    value: recipe,
-                                    label: recipe.name
-                                }
-                            })}
+                            options={
+                                [
+                                    { value: "brak przepisu", label: "Brak przepisu" },
+                                    { value: "zjem na mieście", label: "Zjem na mieście" },
+                                    ...recipes.map(recipe => {
+                                        return {
+                                            value: recipe,
+                                            label: recipe.name
+                                        }
+                                    })
+                                ]
+                            }
                             name={`${day.name}${day.meals}[0]`}
                             isClearable
                             control={control}
-                            defaultValue={day.meals.length > 1 ? day.meals[0] : ''}
+                            defaultValue={day.meals.length > 1 ? { value: day.meals[0], label: day.meals[0] } : ''}
                         />
+                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[0]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
+                            rules={{ required: "This is required" }}
                             as={ReactSelect}
-                            options={recipes.map(recipe => {
-                                return {
-                                    value: recipe,
-                                    label: recipe.name
-                                }
-                            })}
+                            options={
+                                [
+                                    { value: "brak przepisu", label: "Brak przepisu" },
+                                    { value: "zjem na mieście", label: "Zjem na mieście" },
+                                    ...recipes.map(recipe => {
+                                        return {
+                                            value: recipe,
+                                            label: recipe.name
+                                        }
+                                    })
+                                ]
+                            }
                             name={`${day.name}${day.meals}[1]`}
                             isClearable
                             control={control}
-                            defaultValue={day.meals.length > 1 ? day.meals[1] : ''}
+                            defaultValue={day.meals.length > 1 ? { value: day.meals[1], label: day.meals[1] } : ''}
                         />
+                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[1]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
+                            rules={{ required: "This is required" }}
                             as={ReactSelect}
-                            options={recipes.map(recipe => {
-                                return {
-                                    value: recipe,
-                                    label: recipe.name
-                                }
-                            })}
+                            options={
+                                [
+                                    { value: "brak przepisu", label: "Brak przepisu" },
+                                    { value: "zjem na mieście", label: "Zjem na mieście" },
+                                    ...recipes.map(recipe => {
+                                        return {
+                                            value: recipe,
+                                            label: recipe.name
+                                        }
+                                    })
+                                ]
+                            }
                             name={`${day.name}${day.meals}[2]`}
                             isClearable
                             control={control}
-                            defaultValue={day.meals.length > 1 ? day.meals[2] : ''}
+                            defaultValue={day.meals.length > 1 ? { value: day.meals[2], label: day.meals[2] } : ''}
                         />
+                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[2]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
+                            rules={{ required: "This is required" }}
                             as={ReactSelect}
-                            options={recipes.map(recipe => {
-                                return {
-                                    value: recipe,
-                                    label: recipe.name
-                                }
-                            })}
+                            options={
+                                [
+                                    { value: "brak przepisu", label: "Brak przepisu" },
+                                    { value: "zjem na mieście", label: "Zjem na mieście" },
+                                    ...recipes.map(recipe => {
+                                        return {
+                                            value: recipe,
+                                            label: recipe.name
+                                        }
+                                    })
+                                ]
+                            }
                             name={`${day.name}${day.meals}[3]`}
                             isClearable
                             control={control}
-                            defaultValue={day.meals.length > 1 ? day.meals[3] : ''}
+                            defaultValue={day.meals.length > 1 ? { value: day.meals[3], label: day.meals[3] } : ''}
                         />
+                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[3]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}

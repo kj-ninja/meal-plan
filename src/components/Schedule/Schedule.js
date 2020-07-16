@@ -19,7 +19,7 @@ const Schedule = (props) => {
         );
     } else if (props.scheduleToShow !== null) {
         schedule = (
-            width < 900 ? <MobileView schedule={props.scheduleToShow}/> : <DesktopView schedule={props.scheduleToShow}/>
+            width < 900 ? <MobileView scheduleToShow={props.scheduleToShow}/> : <DesktopView scheduleToShow={props.scheduleToShow}/>
         );
     }
 
