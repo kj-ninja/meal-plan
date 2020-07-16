@@ -25,7 +25,7 @@ const NavigationItems = (props) => {
             {panelItems}
             <li className="navigation-item">
                 {props.isAuth ? <NavLink to="/logout">Logout</NavLink> :
-                    <NavLink to="/login" onClick={props.authClearError}>Zaplanuj posiłki!</NavLink>}
+                    <NavLink to="/login" onClick={props.authClearError}>Plan your meals!</NavLink>}
             </li>
         </ul>
     );

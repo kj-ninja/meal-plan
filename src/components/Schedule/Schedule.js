@@ -7,7 +7,6 @@ import Spinner from "../UI/Spinner/Spinner";
 
 const Schedule = (props) => {
     const width = useWindowWidth();
-    console.log(props.schedules);
 
     const handleNextScheduleByWeekNumber = () => {
         const newScheduleToShow = props.schedules.find(schedule => {

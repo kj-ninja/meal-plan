@@ -38,7 +38,7 @@ const Dashboard = (props) => {
                     <li><NavLink exact to="/dashboard">Dashboard</NavLink></li>
                     <li><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
                     <li><NavLink to="/dashboard/schedules">Plans</NavLink></li>
-                    <li><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>
+                    {/*<li><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>*/}
                 </ul>
             </aside>
             <div className="dashboard__container">

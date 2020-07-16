@@ -9,8 +9,8 @@ const CallToAction = (props) => {
             <div className="call-to-action__background"/>
             <section className="call-to-action">
                 <div className="call-to-action__container">
-                    <p>“To keep the body in good health is a duty…otherwise we shall not be able to keep the mind strong
-                        and clear.” – <span>Buddha</span></p>
+                    <p>"To keep the body in good health is a duty…otherwise we shall not be able to keep the mind strong
+                        and clear." – <span>Buddha</span></p>
                     <button type="button" onClick={()=>props.history.push('/login')}>Plan you meals!</button>
                 </div>
 

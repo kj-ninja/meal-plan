@@ -19,6 +19,28 @@
       font-size: 18px;
     }
   }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    .tooltip-text {
+      font-size: 16px;
+      visibility: hidden;
+      width: 120px;
+      background-color: #5B605F;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      left: 120%;
+      z-index: 1;
+    }
+  }
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+  }
 }
 .dashboard__info {
   max-width: 350px;
