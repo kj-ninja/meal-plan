@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {NavLink} from "react-router-dom";
 import './NavigationItems.scss';
 import useWindowWidth from "../../../functions/customHooks/useWindowWidth";
+import {authClearError} from "../../../store/actions/auth";
 
 const NavigationItems = (props) => {
     const width = useWindowWidth();
@@ -24,7 +25,7 @@ const NavigationItems = (props) => {
             {panelItems}
             <li className="navigation-item">
                 {props.isAuth ? <NavLink to="/logout">Logout</NavLink> :
-                    <NavLink to="/login">Zaplanuj posiłki!</NavLink>}
+                    <NavLink to="/login" onClick={props.authClearError}>Zaplanuj posiłki!</NavLink>}
             </li>
         </ul>
     );
@@ -36,4 +37,4 @@ const mapPropsToState = state => {
     }
 };
 
-export default connect(mapPropsToState)(NavigationItems);
+export default connect(mapPropsToState, {authClearError})(NavigationItems);

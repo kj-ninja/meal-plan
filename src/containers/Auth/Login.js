@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {useForm} from "react-hook-form";
 import {Link, Redirect} from "react-router-dom";
-import {auth} from "../../store/actions/auth";
+import {auth, authClearError} from "../../store/actions/auth";
 import './Auth.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
 
@@ -49,12 +49,13 @@ const Login = (props) => {
                         {errors.password && <p className="error-message">{errors.password.message}</p>}
                         {errors.password?.type === "minLength" &&
                         <p className="error-message">Must be at least 6 characters</p>}
+                        <p className="error-message">{props.error}</p>
                     </div>
 
                     <button type="submit">Submit</button>
                 </form>
                 <p>Didn't register yet?</p>
-                <Link to="/register">Click here to Sign Up</Link>
+                <Link to="/register" onClick={props.authClearError}>Click here to Sign Up</Link>
             </>}
         </div>
     );
@@ -68,4 +69,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {auth})(Login);
+export default connect(mapStateToProps, {auth, authClearError})(Login);
