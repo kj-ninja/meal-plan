@@ -58,6 +58,11 @@ const schedulesReducer = (state=initialState, action) => {
                 schedules: state.schedules.concat(newSchedule),
                 error: null
             };
+        case actionTypes.SET_SCHEDULE_TO_SHOW:
+            return {
+                ...state,
+                scheduleToShow: action.payload
+            }
         default:
             return state;
     }

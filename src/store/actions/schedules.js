@@ -88,3 +88,10 @@ export const editSchedule = (token, scheduleId, userId, schedule) => {
             });
     };
 };
+
+export const setScheduleToShow = (schedule) => {
+    return {
+        type: actionTypes.SET_SCHEDULE_TO_SHOW,
+        payload: schedule
+    }
+};

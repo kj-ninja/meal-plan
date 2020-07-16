@@ -86,11 +86,11 @@ const MobileView = (props) => {
                 <div className="plan__col-4--mobile">{props.scheduleToShow.days[6].meals[3]}</div>
             </div>
             <div className="plan__actions--mobile">
-                <div className="plan__action-previous--mobile">
+                <div className="plan__action-previous--mobile" onClick={props.previousSchedule}>
                     <i className="fas fa-arrow-left"/>
                     <span>poprzedni</span>
                 </div>
-                <div className="plan__action-next--mobile">
+                <div className="plan__action-next--mobile" onClick={props.nextSchedule}>
                     <span>następny</span>
                     <i className="fas fa-arrow-right"/>
                 </div>

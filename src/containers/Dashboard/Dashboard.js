@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Route, NavLink} from 'react-router-dom';
 import {fetchRecipes} from "../../store/actions/recipes";
 import {clearAddRecipeForm} from "../../store/actions/addRecipeForm";
-import {fetchSchedules} from "../../store/actions/schedules";
+import {fetchSchedules, setScheduleToShow} from "../../store/actions/schedules";
 import {clearAddScheduleForm} from '../../store/actions/addScheduleForm';
 import './Dashboard.scss';
 import Widgets from "./Widgets/Widgets";
@@ -47,7 +47,9 @@ const Dashboard = (props) => {
                              handleAddSchedule={handleAddSchedule}
                              recipesCount={props.recipes.length}/>}
                 />
-                <Route exact path="/dashboard" render={() => <Schedule scheduleToShow={scheduleToShow}/>}/>
+                <Route exact path="/dashboard" render={() => (
+                    <Schedule scheduleToShow={scheduleToShow} schedules={props.schedules} setSchedule={props.setScheduleToShow}/>
+                )}/>
 
                 <Route path="/dashboard/recipes"
                        render={() => <Recipes {...props} recipes={props.recipes}/>}/>
@@ -74,5 +76,6 @@ export default connect(mapStateToProps, {
     fetchRecipes,
     fetchSchedules,
     clearAddRecipeForm,
-    clearAddScheduleForm
+    clearAddScheduleForm,
+    setScheduleToShow
 })(Dashboard);

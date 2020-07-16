@@ -54,11 +54,11 @@ const DesktopView = (props) => {
                 <div className="col-1 day">{props.scheduleToShow.days[6].meals[3]}</div>
             </div>
             <div className="plan__actions">
-                <div className="plan__action-previous">
+                <div className="plan__action-previous" onClick={props.previousSchedule}>
                     <i className="fas fa-arrow-left"/>
                     <span>poprzedni</span>
                 </div>
-                <div className="plan__action-next">
+                <div className="plan__action-next" onClick={props.nextSchedule}>
                     <span>następny</span>
                     <i className="fas fa-arrow-right"/>
                 </div>

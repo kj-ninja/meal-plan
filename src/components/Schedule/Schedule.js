@@ -7,6 +7,25 @@ import Spinner from "../UI/Spinner/Spinner";
 
 const Schedule = (props) => {
     const width = useWindowWidth();
+    console.log(props.schedules);
+
+    const handleNextScheduleByWeekNumber = () => {
+        const newScheduleToShow = props.schedules.find(schedule => {
+            return schedule.weekNumber > props.scheduleToShow.weekNumber;
+        })
+        if (newScheduleToShow) {
+            props.setSchedule(newScheduleToShow);
+        }
+    };
+
+    const handlePreviousScheduleByWeekNumber = () => {
+        const newScheduleToShow = props.schedules.find(schedule => {
+            return schedule.weekNumber < props.scheduleToShow.weekNumber;
+        })
+        if (newScheduleToShow) {
+            props.setSchedule(newScheduleToShow);
+        }
+    };
 
     let schedule = (
         <Spinner/>
@@ -19,7 +38,11 @@ const Schedule = (props) => {
         );
     } else if (props.scheduleToShow !== null) {
         schedule = (
-            width < 900 ? <MobileView scheduleToShow={props.scheduleToShow}/> : <DesktopView scheduleToShow={props.scheduleToShow}/>
+            width < 900 ?
+                <MobileView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
+                            previousSchedule={handlePreviousScheduleByWeekNumber}/> :
+                <DesktopView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
+                             previousSchedule={handlePreviousScheduleByWeekNumber}/>
         );
     }
 
