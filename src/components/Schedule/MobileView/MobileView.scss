@@ -29,6 +29,30 @@ $single-column: percentage(1 / $grid-columns);
       }
     }
   }
+  .plan__actions--mobile {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 0;
+    font-size: 14px;
+    color: $effects-color;
+    i {
+      font-size: 20px;
+    }
+    .plan__action-previous--mobile {
+      display: flex;
+      align-items: center;
+      i {
+        margin-right: 5px;
+      }
+    }
+    .plan__action-next--mobile {
+      display: flex;
+      align-items: center;
+      i {
+        margin-left: 5px;
+      }
+    }
+  }
 }
 
 

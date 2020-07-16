@@ -69,8 +69,8 @@ const DesktopView = ({control, recipes, days, errors}) => {
                             as={ReactSelect}
                             options={
                                 [
-                                    { value: "brak przepisu", label: "Brak przepisu" },
-                                    { value: "zjem na mieście", label: "Zjem na mieście" },
+                                    { value: "Brak przepisu", label: "Brak przepisu" },
+                                    { value: "Zjem na mieście", label: "Zjem na mieście" },
                                     ...recipes.map(recipe => {
                                         return {
                                             value: recipe,

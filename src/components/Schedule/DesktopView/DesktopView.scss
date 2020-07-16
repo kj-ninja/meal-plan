@@ -27,4 +27,29 @@ $single-column: percentage(1 / $grid-columns);
       }
     }
   }
+  .plan__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 0;
+    color: $effects-color;
+    i {
+      font-size: 24px;
+    }
+    .plan__action-previous {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      i {
+        margin-right: 5px;
+      }
+    }
+    .plan__action-next {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      i {
+        margin-left: 5px;
+      }
+    }
+  }
 }

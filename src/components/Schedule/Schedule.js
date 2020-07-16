@@ -26,10 +26,6 @@ const Schedule = (props) => {
     return (
         <>
             {schedule}
-            {/*<a className="previousPlan"><i className="fas fa-angle-double-left"/><span*/}
-            {/*    id="previousPlanSpan">poprzedni</span></a>*/}
-            {/*<a href="#" id="actualPlan">aktualny</a>*/}
-            {/*<a className="nextPlan"><span id="nextPlanSpan">następny</span><i className="fas fa-angle-double-right"/></a>*/}
         </>
     );
 };

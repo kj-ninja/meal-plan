@@ -104,7 +104,8 @@ const AddSchedule = (props) => {
                     {errors.scheduleWeekNumber?.type === "pattern" &&
                     <p className="error-message">Podany numer musi być liczbą pozytywną</p>}
                 </div>
-                {props.recipes.length > 0 ? width < 900 ? <MobileView control={control}/> :
+                {props.recipes.length > 0 ? width < 900 ?
+                <MobileView errors={errors} register={register} recipes={props.recipes} days={schedule.days} control={control}/> :
                 <DesktopView errors={errors} register={register} recipes={props.recipes} days={schedule.days} control={control}/> : null}
             </form>
         </div>

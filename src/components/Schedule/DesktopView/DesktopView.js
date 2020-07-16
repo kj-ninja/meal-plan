@@ -5,8 +5,7 @@ const DesktopView = (props) => {
     return (
         <section className="plan">
             <div className="plan__header">
-                Twój plan na <span
-                id="week-number">{props.scheduleToShow.weekNumber ? props.scheduleToShow.weekNumber : null}</span> tydzień
+                Twój plan na <span>{props.scheduleToShow.weekNumber ? props.scheduleToShow.weekNumber : null}</span> tydzień
             </div>
 
             <div className="row plan__days">
@@ -53,6 +52,16 @@ const DesktopView = (props) => {
                 <div className="col-1 day">{props.scheduleToShow.days[4].meals[3]}</div>
                 <div className="col-1 day">{props.scheduleToShow.days[5].meals[3]}</div>
                 <div className="col-1 day">{props.scheduleToShow.days[6].meals[3]}</div>
+            </div>
+            <div className="plan__actions">
+                <div className="plan__action-previous">
+                    <i className="fas fa-arrow-left"/>
+                    <span>poprzedni</span>
+                </div>
+                <div className="plan__action-next">
+                    <span>następny</span>
+                    <i className="fas fa-arrow-right"/>
+                </div>
             </div>
         </section>
     );
