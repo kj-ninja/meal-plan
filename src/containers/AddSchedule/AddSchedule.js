@@ -17,7 +17,6 @@ const AddSchedule = (props) => {
 
     const handleAddSchedule = () => {
         if (props.isScheduleEdit) {
-            console.log(getValues());
             const monday = [getValues('monday[0]').label, getValues('monday[1]').label, getValues('monday[2]').label, getValues('monday[3]').label];
             const tuesday = [getValues('tuesday[0]').label, getValues('tuesday[1]').label, getValues('tuesday[2]').label, getValues('tuesday[3]').label];
             const wednesday = [getValues('wednesday[0]').label, getValues('wednesday[1]').label, getValues('wednesday[2]').label, getValues('wednesday[3]').label];
@@ -37,7 +36,7 @@ const AddSchedule = (props) => {
                 ],
                 userId: props.userId
             }
-            editSchedule(props.token, schedule.scheduleId, props.userId, scheduleToApi);
+            editSchedule(props.token, schedule.id, props.userId, scheduleToApi);
             props.history.push('/dashboard/schedules');
         } else {
             const monday = [getValues('monday[0]').label, getValues('monday[1]').label, getValues('monday[2]').label, getValues('monday[3]').label];

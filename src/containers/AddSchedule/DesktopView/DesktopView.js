@@ -33,7 +33,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
-                            name={`${day.name}${day.meals}[0]`}
+                            name={`${day.name}[0]`}
                             isClearable
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[0], label: day.meals[0] } : ''}
@@ -56,7 +56,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
-                            name={`${day.name}${day.meals}[1]`}
+                            name={`${day.name}[1]`}
                             isClearable
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[1], label: day.meals[1] } : ''}
@@ -79,7 +79,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
-                            name={`${day.name}${day.meals}[2]`}
+                            name={`${day.name}[2]`}
                             isClearable
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[2], label: day.meals[2] } : ''}
@@ -102,7 +102,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
-                            name={`${day.name}${day.meals}[3]`}
+                            name={`${day.name}[3]`}
                             isClearable
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[3], label: day.meals[3] } : ''}
