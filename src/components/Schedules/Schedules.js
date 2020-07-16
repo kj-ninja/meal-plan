@@ -4,9 +4,11 @@ import {deleteSchedule} from '../../store/actions/schedules';
 import {mapScheduleToEdit, clearAddScheduleForm} from '../../store/actions/addScheduleForm';
 import './Schedules.scss';
 import Spinner from "../UI/Spinner/Spinner";
+import useWindowWidth from "../../functions/customHooks/useWindowWidth";
 
 const Schedules = (props) => {
     const {token, userId, loading} = props;
+    const width = useWindowWidth();
 
     if (loading) {
         return <Spinner/>;
@@ -25,43 +27,68 @@ const Schedules = (props) => {
     return (
         <>
             <div className="plans">
-                <div className="plans__header">
-                    <h3>LISTA PLANOW</h3>
-                    <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
-                </div>
-                <div className="plans__row plans__row-header">
-                    <div className="plans__col-1">
-                        LP
-                    </div>
-                    <div className="plans__col-3">
-                        NAZWA
-                    </div>
-                    <div className="plans__col-5">
-                        OPIS
-                    </div>
-                    <div className="plans__col-1">
-                        TYDZIEN
-                    </div>
-                    <div className="plans__col-2">
-                        AKCJE
-                    </div>
-                </div>
+                {width < 600 ?
+                    <>
+                        <div className="plans__header">
+                            <h3>SCHEDULES LIST</h3>
+                            <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
+                        </div>
+                        <div className="plans__row plans__row-header">
+                            <div className="plans__col-3">
+                                NAME
+                            </div>
+                            <div className="plans__col-5">
+                                DESCRIPTION
+                            </div>
+                            <div className="plans__col-2">
+                                WEEK
+                            </div>
+                            <div className="plans__col-2">
+                                BTNS
+                            </div>
+                        </div>
+                    </> :
+                    <>
+                        <div className="plans__header">
+                            <h3>SCHEDULES LIST</h3>
+                            <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
+                        </div>
+                        <div className="plans__row plans__row-header">
+                            <div className="plans__col-1">
+                                LP
+                            </div>
+                            <div className="plans__col-3">
+                                NAME
+                            </div>
+                            <div className="plans__col-4">
+                                DESCRIPTION
+                            </div>
+                            <div className="plans__col-2">
+                                WEEK
+                            </div>
+                            <div className="plans__col-2">
+                                ACTIONS
+                            </div>
+                        </div>
+                    </>}
+
                 {props.schedules.map((schedule, i) => (
                     <div className="plans__row" key={i}>
-                        <div className="plans__col-1">
-                            {i+1}
-                        </div>
+                        {width < 600 ? null :
+                            <div className="plans__col-1">
+                                {i + 1}
+                            </div>}
                         <div className="plans__col-3">
                             {schedule.name}
                         </div>
-                        <div className="plans__col-5">
+                        <div className="plans__col-4">
                             {schedule.description}
                         </div>
-                        <div className="plans__col-1">
+                        <div className="plans__col-2">
                             {schedule.weekNumber}
                         </div>
                         <div className="plans__col-2">
-                            <i className="fas fa-edit edit" onClick={()=>handleEditSchedule(schedule)}/>
+                            <i className="fas fa-edit edit" onClick={() => handleEditSchedule(schedule)}/>
                             <i className="fas fa-trash-alt trash"
                                onClick={() => props.deleteSchedule(token, schedule.id, userId)}/>
                         </div>
