@@ -1,9 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 import './About.scss';
 
+
+const images = [
+    require("../../assets/app-background.png"),
+    require("../../assets/cta.jpg"),
+    require("../../assets/meal.png")
+];
+
 const About = () => {
+    const [photoIndex, setPhotoIndex] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <section className="about">
+
+            <button type="button" onClick={() => setIsOpen(true)}>
+                Open Lightbox
+            </button>
+
+            {isOpen && (
+                <Lightbox
+                    mainSrc={images[photoIndex]}
+                    nextSrc={images[(photoIndex + 1) % images.length]}
+                    prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                    onCloseRequest={() => setIsOpen(false)}
+                    onMovePrevRequest={() =>
+                        setPhotoIndex((photoIndex + images.length - 1) % images.length)
+                    }
+                    onMoveNextRequest={() =>
+                        setPhotoIndex((photoIndex + 1) % images.length)
+                    }
+                />
+            )}
+
             <div className="about__container">
                 <div className="about__item">
                     <i className="fas fa-cloud-upload-alt"/>

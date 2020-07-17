@@ -30,6 +30,7 @@ export const fetchRecipes = (token, userId) => {
                         id: key
                     });
                 }
+                console.log(fetchedRecipes);
                 dispatch(fetchRecipesSuccess(fetchedRecipes));
             })
             .catch(error => {

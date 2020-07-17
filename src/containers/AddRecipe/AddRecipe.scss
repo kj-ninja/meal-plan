@@ -27,9 +27,11 @@
       }
       input {
         @include addInput();
+        padding: 5px;
       }
       textarea {
         @include addTextarea();
+        padding: 5px;
       }
       .input-error {
         border: 1px solid red;

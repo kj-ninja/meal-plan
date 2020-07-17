@@ -16,11 +16,12 @@ import './AddRecipe.scss';
 const AddRecipe = (props) => {
     const {register, handleSubmit, errors, getValues, setValue} = useForm();
     const [indexToEdit, setIndexToEdit] = useState(null);
+    const {recipe} = props;
 
     const handleAddInstruction = () => {
         if (props.isListEdit) {
             const instruction = getValues('recipeInstructions');
-            props.editInstruction(props.instructions, instruction, indexToEdit);
+            props.editInstruction(recipe.instructions, instruction, indexToEdit);
             setValue('recipeInstructions', '');
             props.listEdit(false);
             setIndexToEdit(null);
@@ -34,7 +35,7 @@ const AddRecipe = (props) => {
     const handleAddIngredients = () => {
         if (props.isListEdit) {
             const ingredient = getValues('recipeIngredients');
-            props.editIngredient(props.ingredients, ingredient, indexToEdit);
+            props.editIngredient(recipe.ingredients, ingredient, indexToEdit);
             setValue('recipeIngredients', '');
             props.listEdit(false);
             setIndexToEdit(null);
@@ -47,24 +48,28 @@ const AddRecipe = (props) => {
 
     const handleAddRecipe = () => {
         if (props.isRecipeEdit) {
-            const recipe = {
+            const newInstructions = recipe.instructions ? recipe.instructions : []
+            const newIngredients = recipe.ingredients ? recipe.ingredients : []
+            const newRecipe = {
                 name: getValues('recipeName'),
                 description: getValues('recipeDescription'),
-                instructions: props.instructions,
-                ingredients: props.ingredients,
+                instructions: newInstructions,
+                ingredients: newIngredients,
                 userId: props.userId
             }
-            props.editRecipe(props.token, props.recipeId, props.userId, recipe);
+            props.editRecipe(props.token, recipe.id, props.userId, newRecipe);
             props.history.push('/dashboard/recipes');
         } else {
-            const recipe = {
+            const newInstructions = recipe.instructions ? recipe.instructions : []
+            const newIngredients = recipe.ingredients ? recipe.ingredients : []
+            const newRecipe = {
                 name: getValues('recipeName'),
                 description: getValues('recipeDescription'),
-                instructions: props.instructions,
-                ingredients: props.ingredients,
+                instructions: newInstructions,
+                ingredients: newIngredients,
                 userId: props.userId
             }
-            props.addRecipe(props.token, recipe);
+            props.addRecipe(props.token, newRecipe);
             props.history.push('/dashboard/recipes');
         }
     };
@@ -73,9 +78,9 @@ const AddRecipe = (props) => {
         props.listEdit(true);
         setIndexToEdit(index);
         if (place === 'instructions') {
-            setValue('recipeInstructions', props.instructions[index]);
+            setValue('recipeInstructions', recipe.instructions[index]);
         } else {
-            setValue('recipeIngredients', props.ingredients[index]);
+            setValue('recipeIngredients', recipe.ingredients[index]);
         }
     };
 
@@ -93,7 +98,7 @@ const AddRecipe = (props) => {
                            ref={register({required: true})}
                            id="recipeName"
                            className={errors.recipeName ? 'input-error' : ''}
-                           defaultValue={props.name}
+                           defaultValue={recipe.name}
                     />
                 </div>
 
@@ -103,7 +108,7 @@ const AddRecipe = (props) => {
                               ref={register({required: true})}
                               id="recipeDescription"
                               rows={3}
-                              defaultValue={props.description}
+                              defaultValue={recipe.description}
                     />
                 </div>
 
@@ -119,7 +124,7 @@ const AddRecipe = (props) => {
                                   className={errors.recipeInstructions ? 'input-error' : ''}
                         />
                         <ol>
-                            {props.instructions.map((instruction, i) => (
+                            {recipe.instructions.map((instruction, i) => (
                                 <li key={instruction}>
                                     {instruction}
                                     <i className="fas fa-edit edit" onClick={() => handleEditList(i, 'instructions')}/>
@@ -139,7 +144,7 @@ const AddRecipe = (props) => {
                                className={errors.recipeIngredients ? 'input-error' : ''}
                         />
                         <ul>
-                            {props.ingredients.map((ingredient, i) => (
+                            {recipe.ingredients.map((ingredient, i) => (
                                 <li key={ingredient}>
                                     {ingredient}
                                     <i className="fas fa-edit edit" onClick={() => handleEditList(i, 'ingredients')}/>
@@ -158,13 +163,9 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         userId: state.auth.userId,
-        name: state.addRecipeForm.recipe.name,
-        description: state.addRecipeForm.recipe.description,
-        instructions: state.addRecipeForm.recipe.instructions,
-        ingredients: state.addRecipeForm.recipe.ingredients,
+        recipe: state.addRecipeForm.recipe,
         isRecipeEdit: state.addRecipeForm.isRecipeEdit,
         isListEdit: state.addRecipeForm.isListEdit,
-        recipeId: state.addRecipeForm.recipe.id
     }
 };
 

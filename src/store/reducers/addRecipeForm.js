@@ -82,6 +82,8 @@ const addRecipeReducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.MAP_RECIPE_TO_EDIT:
+            // const newInstr = action.recipe.instructions ? action.recipe.instructions : []
+            // const newIngr = action.recipe.ingredients ? action.recipe.ingredients : []
             return {
                 ...state,
                 recipe: action.recipe,

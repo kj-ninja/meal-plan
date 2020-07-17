@@ -15,9 +15,30 @@ const recipesReducer = (state=initialState, action) => {
                 error: null
             }
         case actionTypes.FETCH_RECIPES_SUCCESS:
+            const newRecipes = action.recipes.map(recipe=> {
+                if (!recipe.hasOwnProperty('instructions') && !recipe.hasOwnProperty('ingredients')) {
+                    return {
+                        ...recipe,
+                        instructions: [],
+                        ingredients: []
+                    }
+                } else if (!recipe.hasOwnProperty('instructions')) {
+                    return {
+                        ...recipe,
+                        instructions: []
+                    }
+                } else if (!recipe.hasOwnProperty('ingredients')) {
+                    return {
+                        ...recipe,
+                        ingredients: []
+                    }
+                } else {
+                    return recipe;
+                }
+            })
             return {
                 ...state,
-                recipes: action.recipes,
+                recipes: newRecipes,
                 loading: false,
                 error: null
             }
