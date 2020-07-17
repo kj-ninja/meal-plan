@@ -61,15 +61,21 @@
         list-style-position: inside;
         margin-top: 10px;
         margin-bottom: 40px;
+        li {
+          margin-bottom: 25px;
+        }
       }
       ul {
         margin-top: 10px;
         list-style-type: disc;
         list-style-position: inside;
+        li {
+          margin-bottom: 10px;
+        }
       }
       li {
-        margin-bottom: 5px;
       @include actionIcons();
+        line-height: 20px;
       }
     }
   }
@@ -116,9 +122,6 @@
         }
         ul {
           margin-top: 30px;
-        }
-        li {
-          margin-bottom: 5px;
         }
       }
     }

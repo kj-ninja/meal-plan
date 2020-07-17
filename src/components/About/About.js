@@ -4,35 +4,59 @@ import 'react-image-lightbox/style.css';
 import './About.scss';
 
 
-const images = [
-    require("../../assets/app-background.png"),
-    require("../../assets/cta.jpg"),
-    require("../../assets/meal.png")
+const recipesImages = [
+    require("../../assets/add-przepis.png"),
+    require("../../assets/przepisy.png")
+];
+const plansImages = [
+    require("../../assets/add-plan.png"),
+    require("../../assets/plany.png")
+];
+const pulpitImage = [
+    require("../../assets/pulpit.png")
 ];
 
 const About = () => {
-    const [photoIndex, setPhotoIndex] = useState(0);
-    const [isOpen, setIsOpen] = useState(false);
+    const [photoIndexRecipes, setPhotoIndexRecipes] = useState(0);
+    const [photoIndexPlans, setPhotoIndexPlans] = useState(0);
+    const [isRecipesOpen, setIsRecipesOpen] = useState(false);
+    const [isPlansOpen, setIsPlansOpen] = useState(false);
+    const [isPulpitOpen, setIsPulpitOpen] = useState(false);
 
     return (
         <section className="about">
-
-            <button type="button" onClick={() => setIsOpen(true)}>
-                Open Lightbox
-            </button>
-
-            {isOpen && (
+            {isRecipesOpen && (
                 <Lightbox
-                    mainSrc={images[photoIndex]}
-                    nextSrc={images[(photoIndex + 1) % images.length]}
-                    prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                    onCloseRequest={() => setIsOpen(false)}
+                    mainSrc={recipesImages[photoIndexRecipes]}
+                    nextSrc={recipesImages[(photoIndexRecipes + 1) % recipesImages.length]}
+                    prevSrc={recipesImages[(photoIndexRecipes + recipesImages.length - 1) % recipesImages.length]}
+                    onCloseRequest={() => setIsRecipesOpen(false)}
                     onMovePrevRequest={() =>
-                        setPhotoIndex((photoIndex + images.length - 1) % images.length)
+                        setPhotoIndexRecipes((photoIndexRecipes + recipesImages.length - 1) % recipesImages.length)
                     }
                     onMoveNextRequest={() =>
-                        setPhotoIndex((photoIndex + 1) % images.length)
+                        setPhotoIndexRecipes((photoIndexRecipes + 1) % recipesImages.length)
                     }
+                />
+            )}
+            {isPlansOpen && (
+                <Lightbox
+                    mainSrc={plansImages[photoIndexPlans]}
+                    nextSrc={plansImages[(photoIndexPlans + 1) % plansImages.length]}
+                    prevSrc={plansImages[(photoIndexPlans + plansImages.length - 1) % plansImages.length]}
+                    onCloseRequest={() => setIsPlansOpen(false)}
+                    onMovePrevRequest={() =>
+                        setPhotoIndexPlans((photoIndexPlans + plansImages.length - 1) % plansImages.length)
+                    }
+                    onMoveNextRequest={() =>
+                        setPhotoIndexPlans((photoIndexPlans + 1) % plansImages.length)
+                    }
+                />
+            )}
+            {isPulpitOpen && (
+                <Lightbox
+                    mainSrc={pulpitImage[0]}
+                    onCloseRequest={() => setIsPulpitOpen(false)}
                 />
             )}
 
@@ -44,7 +68,7 @@ const About = () => {
                         Dodawaniem usuwanie oraz edytowanie przepisów, szybko i łatwo.
                         Dostęp do listy wszystkich zapisanych przepisów, kiedy tylko chcesz!
                     </div>
-                    <button>Szczegóły >></button>
+                    <button type="button" onClick={()=>setIsRecipesOpen(true)}>Szczegóły >></button>
                 </div>
                 <div className="about__item">
                     <i className="fas fa-utensils"/>
@@ -53,7 +77,7 @@ const About = () => {
                         W przypadku planów również możesz edytować, usuwać, edytować i przeglądać.
                         Ponadto podczas tworzenia nowego planu korzystasz z wcześniej zapisanych przepisów.
                     </div>
-                    <button>Szczegóły >></button>
+                    <button type="button" onClick={()=>setIsPlansOpen(true)}>Szczegóły >></button>
                 </div>
                 <div className="about__item">
                     <i className="fas fa-heartbeat"/>
@@ -61,7 +85,7 @@ const About = () => {
                     <div className="about__description">
                         Mając dostęp do całej historii planów i przepisów, masz kontrolę nad tym, co jesz, dzięki czemu możesz być dużo zdrowszy!
                     </div>
-                    <button>Szczegóły >></button>
+                    <button type="button" onClick={()=>setIsPulpitOpen(true)}>Szczegóły >></button>
                 </div>
             </div>
         </section>
