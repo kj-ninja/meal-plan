@@ -12,10 +12,10 @@ const NavigationItems = (props) => {
     if (props.isAuth && width < 1200) {
         panelItems = (
             <>
-                <li className="navigation-item"><NavLink to="/dashboard">Dashboard</NavLink></li>
-                <li className="navigation-item"><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
-                <li className="navigation-item"><NavLink to="/dashboard/schedules">Schedules</NavLink></li>
-                <li className="navigation-item"><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard">Pulpit</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/recipes">Przepisy</NavLink></li>
+                <li className="navigation-item"><NavLink to="/dashboard/schedules">Plany</NavLink></li>
+                {/*<li className="navigation-item"><NavLink to="/dashboard/shopping-list">Lista zakupów</NavLink></li>*/}
             </>
         );
     }
@@ -24,8 +24,8 @@ const NavigationItems = (props) => {
         <ul className="navigation-items">
             {panelItems}
             <li className="navigation-item">
-                {props.isAuth ? <NavLink to="/logout">Logout</NavLink> :
-                    <NavLink to="/login" onClick={props.authClearError}>Plan your meals!</NavLink>}
+                {props.isAuth ? <NavLink to="/logout">Wyloguj</NavLink> :
+                    <NavLink to="/login" onClick={props.authClearError}>Zaplanuj posiłki!</NavLink>}
             </li>
         </ul>
     );

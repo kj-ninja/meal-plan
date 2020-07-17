@@ -5,6 +5,7 @@ import './DesktopView.scss';
 import { ErrorMessage } from "@hookform/error-message";
 
 const DesktopView = ({control, recipes, days, errors}) => {
+    console.log(days);
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -33,6 +34,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
+                            placeholder="Wybierz..."
                             name={`${day.name}[0]`}
                             isClearable
                             control={control}
@@ -56,6 +58,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
+                            placeholder="Wybierz..."
                             name={`${day.name}[1]`}
                             isClearable
                             control={control}
@@ -79,6 +82,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
+                            placeholder="Wybierz..."
                             name={`${day.name}[2]`}
                             isClearable
                             control={control}
@@ -102,6 +106,7 @@ const DesktopView = ({control, recipes, days, errors}) => {
                                     })
                                 ]
                             }
+                            placeholder="Wybierz..."
                             name={`${day.name}[3]`}
                             isClearable
                             control={control}

@@ -27,10 +27,10 @@ const Login = (props) => {
                             name="email"
                             placeholder="E-mail"
                             ref={register({
-                                required: "Required",
+                                required: "Wymagane",
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    message: "Invalid email address"
+                                    message: "Podano niepoprawny e-mail"
                                 }
                             })}
                         />
@@ -40,22 +40,24 @@ const Login = (props) => {
                         <input
                             type="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder="Hasło"
                             ref={register({
-                                required: "Required",
+                                required: "Wymagane",
                                 minLength: 6
                             })}
                         />
                         {errors.password && <p className="error-message">{errors.password.message}</p>}
                         {errors.password?.type === "minLength" &&
-                        <p className="error-message">Must be at least 6 characters</p>}
+                        <p className="error-message">Hasło musi mieć co najmniej 6 znaków</p>}
                         <p className="error-message">{props.error}</p>
                     </div>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit">Zatwierdź</button>
                 </form>
-                <p>Didn't register yet?</p>
-                <Link to="/register" onClick={props.authClearError}>Click here to Sign Up</Link>
+                <p>Jeszcze nie zarejestrowany?</p>
+                <Link to="/register" onClick={props.authClearError}>
+                    Kliknij tutaj, aby się zarejestrować!
+                </Link>
             </>}
         </div>
     );

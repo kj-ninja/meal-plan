@@ -7,31 +7,31 @@ const initialState = {
         weekNumber: '',
         days: [
             {
-                name: 'monday',
+                name: 'poniedziałek',
                 meals: []
             },
             {
-                name: 'tuesday',
+                name: 'wtorek',
                 meals: []
             },
             {
-                name: 'wednesday',
+                name: 'środa',
                 meals: []
             },
             {
-                name: 'thursday',
+                name: 'czwartek',
                 meals: []
             },
             {
-                name: 'friday',
+                name: 'piątek',
                 meals: []
             },
             {
-                name: 'saturday',
+                name: 'sobota',
                 meals: []
             },
             {
-                name: 'sunday',
+                name: 'niedziela',
                 meals: []
             }
         ]

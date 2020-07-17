@@ -10,17 +10,17 @@ const Widgets = (props) => {
             <div className="dashboard__buttons">
                 <div className="dashboard__buttons-item" onClick={props.handleAddRecipe}>
                     <i className="far fa-calendar-plus"/>
-                    <span>recipe</span>
+                    <span>przepis</span>
                 </div>
                 <div className="dashboard__buttons-item" onClick={props.handleAddSchedule}>
                     <i className="far fa-calendar-plus"/>
-                    <span>schedule</span>
+                    <span>plan</span>
                 </div>
                 <div className="dashboard__buttons-item"  style={{cursor: 'not-allowed'}}>
                     <i className={width > 600 ? "far fa-calendar-plus tooltip" : "far fa-calendar-plus"}>
                         {width < 601 ? null : <span className="tooltip-text">Feature in progress...</span>}
                     </i>
-                    <span>shopping</span>
+                    <span>zakupy</span>
                 </div>
             </div>
             <div className="dashboard__info">

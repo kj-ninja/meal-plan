@@ -26,10 +26,10 @@ const Register = (props) => {
                         name="email"
                         placeholder="E-mail"
                         ref={register({
-                            required: "Required",
+                            required: "Wymagane",
                             pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "Invalid email address"
+                                message: "Podano niepoprawny e-mail"
                             }
                         })}
                     />
@@ -39,28 +39,28 @@ const Register = (props) => {
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="Hasło"
                         ref={register({
-                            required: "Required",
+                            required: "Wymagane",
                             minLength: 6
                         })}
                     />
                     {errors.password && <p className="error-message">{errors.password.message}</p>}
                     {errors.password?.type === "minLength" &&
-                    <p className="error-message">Must be at least 6 characters</p>}
+                    <p className="error-message">Hasło musi mieć co najmniej 6 znaków</p>}
                 </div>
                 <div className="input__container">
-                    <input type="password" name="password2" placeholder="Confirm password" ref={register({
+                    <input type="password" name="password2" placeholder="Powtórz hasło" ref={register({
                         validate: (value) => {
                             return value === watch('password');
                         }
                     })}/>
-                    {errors.password2 ? <p className="error-message">Both passwords should be the same</p> : null}
+                    {errors.password2 ? <p className="error-message">Obydwa hasła muszą być takie same</p> : null}
 
                     <p className="error-message">{props.error}</p>
 
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Zatwierdź</button>
             </form>}
         </div>
     );

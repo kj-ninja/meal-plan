@@ -13,48 +13,46 @@ const AddSchedule = (props) => {
     const {register, handleSubmit, errors, control, getValues} = useForm();
     const width = useWindowWidth();
 
-    console.log(errors);
-
     const handleAddSchedule = () => {
         if (props.isScheduleEdit) {
-            const monday = [getValues('monday[0]').label, getValues('monday[1]').label, getValues('monday[2]').label, getValues('monday[3]').label];
-            const tuesday = [getValues('tuesday[0]').label, getValues('tuesday[1]').label, getValues('tuesday[2]').label, getValues('tuesday[3]').label];
-            const wednesday = [getValues('wednesday[0]').label, getValues('wednesday[1]').label, getValues('wednesday[2]').label, getValues('wednesday[3]').label];
-            const thursday = [getValues('thursday[0]').label, getValues('thursday[1]').label, getValues('thursday[2]').label, getValues('thursday[3]').label];
-            const friday = [getValues('friday[0]').label, getValues('friday[1]').label, getValues('friday[2]').label, getValues('friday[3]').label];
-            const saturday = [getValues('saturday[0]').label, getValues('saturday[1]').label, getValues('saturday[2]').label, getValues('saturday[3]').label];
-            const sunday = [getValues('sunday[0]').label, getValues('sunday[1]').label, getValues('sunday[2]').label, getValues('sunday[3]').label];
+            const monday = [getValues('poniedziałek[0]').label, getValues('poniedziałek[1]').label, getValues('poniedziałek[2]').label, getValues('poniedziałek[3]').label];
+            const tuesday = [getValues('wtorek[0]').label, getValues('wtorek[1]').label, getValues('wtorek[2]').label, getValues('wtorek[3]').label];
+            const wednesday = [getValues('środa[0]').label, getValues('środa[1]').label, getValues('środa[2]').label, getValues('środa[3]').label];
+            const thursday = [getValues('czwartek[0]').label, getValues('czwartek[1]').label, getValues('czwartek[2]').label, getValues('czwartek[3]').label];
+            const friday = [getValues('piątek[0]').label, getValues('piątek[1]').label, getValues('piątek[2]').label, getValues('piątek[3]').label];
+            const saturday = [getValues('sobota[0]').label, getValues('sobota[1]').label, getValues('sobota[2]').label, getValues('sobota[3]').label];
+            const sunday = [getValues('niedziela[0]').label, getValues('niedziela[1]').label, getValues('niedziela[2]').label, getValues('niedziela[3]').label];
             const scheduleToApi = {
                 name: getValues('scheduleName'),
                 description: getValues('scheduleDescription'),
                 weekNumber: getValues('scheduleWeekNumber'),
                 days: [
-                    {name: 'monday', meals: monday}, {name: 'tuesday', meals: tuesday},
-                    {name: 'wednesday', meals: wednesday}, {name: 'thursday', meals: thursday},
-                    {name: 'friday', meals: friday}, {name: 'saturday', meals: saturday},
-                    {name: 'sunday', meals: sunday}
+                    {name: 'poniedziałek', meals: monday}, {name: 'wtorek', meals: tuesday},
+                    {name: 'środa', meals: wednesday}, {name: 'czwartek', meals: thursday},
+                    {name: 'piątek', meals: friday}, {name: 'sobota', meals: saturday},
+                    {name: 'niedziela', meals: sunday}
                 ],
                 userId: props.userId
             }
             editSchedule(props.token, schedule.id, props.userId, scheduleToApi);
             props.history.push('/dashboard/schedules');
         } else {
-            const monday = [getValues('monday[0]').label, getValues('monday[1]').label, getValues('monday[2]').label, getValues('monday[3]').label];
-            const tuesday = [getValues('tuesday[0]').label, getValues('tuesday[1]').label, getValues('tuesday[2]').label, getValues('tuesday[3]').label];
-            const wednesday = [getValues('wednesday[0]').label, getValues('wednesday[1]').label, getValues('wednesday[2]').label, getValues('wednesday[3]').label];
-            const thursday = [getValues('thursday[0]').label, getValues('thursday[1]').label, getValues('thursday[2]').label, getValues('thursday[3]').label];
-            const friday = [getValues('friday[0]').label, getValues('friday[1]').label, getValues('friday[2]').label, getValues('friday[3]').label];
-            const saturday = [getValues('saturday[0]').label, getValues('saturday[1]').label, getValues('saturday[2]').label, getValues('saturday[3]').label];
-            const sunday = [getValues('sunday[0]').label, getValues('sunday[1]').label, getValues('sunday[2]').label, getValues('sunday[3]').label];
+            const monday = [getValues('poniedziałek[0]').label, getValues('poniedziałek[1]').label, getValues('poniedziałek[2]').label, getValues('poniedziałek[3]').label];
+            const tuesday = [getValues('wtorek[0]').label, getValues('wtorek[1]').label, getValues('wtorek[2]').label, getValues('wtorek[3]').label];
+            const wednesday = [getValues('środa[0]').label, getValues('środa[1]').label, getValues('środa[2]').label, getValues('środa[3]').label];
+            const thursday = [getValues('czwartek[0]').label, getValues('czwartek[1]').label, getValues('czwartek[2]').label, getValues('czwartek[3]').label];
+            const friday = [getValues('piątek[0]').label, getValues('piątek[1]').label, getValues('piątek[2]').label, getValues('piątek[3]').label];
+            const saturday = [getValues('sobota[0]').label, getValues('sobota[1]').label, getValues('sobota[2]').label, getValues('sobota[3]').label];
+            const sunday = [getValues('niedziela[0]').label, getValues('niedziela[1]').label, getValues('niedziela[2]').label, getValues('niedziela[3]').label];
             const scheduleToApi = {
                 name: getValues('scheduleName'),
                 description: getValues('scheduleDescription'),
                 weekNumber: getValues('scheduleWeekNumber'),
                 days: [
-                    {name: 'monday', meals: monday}, {name: 'tuesday', meals: tuesday},
-                    {name: 'wednesday', meals: wednesday}, {name: 'thursday', meals: thursday},
-                    {name: 'friday', meals: friday}, {name: 'saturday', meals: saturday},
-                    {name: 'sunday', meals: sunday}
+                    {name: 'poniedziałek', meals: monday}, {name: 'wtorek', meals: tuesday},
+                    {name: 'środa', meals: wednesday}, {name: 'czwartek', meals: thursday},
+                    {name: 'piątek', meals: friday}, {name: 'sobota', meals: saturday},
+                    {name: 'niedziela', meals: sunday}
                 ],
                 userId: props.userId
             }

@@ -35,9 +35,9 @@ const Dashboard = (props) => {
         <section className="dashboard">
             <aside className="dashboard__panel">
                 <ul className="dashboard__list">
-                    <li><NavLink exact to="/dashboard">Dashboard</NavLink></li>
-                    <li><NavLink to="/dashboard/recipes">Recipes</NavLink></li>
-                    <li><NavLink to="/dashboard/schedules">Plans</NavLink></li>
+                    <li><NavLink exact to="/dashboard">Pulpit</NavLink></li>
+                    <li><NavLink to="/dashboard/recipes">Przepisy</NavLink></li>
+                    <li><NavLink to="/dashboard/schedules">Plany</NavLink></li>
                     {/*<li><NavLink to="/dashboard/shopping-list">Shopping list</NavLink></li>*/}
                 </ul>
             </aside>

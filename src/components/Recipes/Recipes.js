@@ -28,20 +28,20 @@ const Recipes = (props) => {
         <>
             <div className="recipes">
                 <div className="recipes__header">
-                    <h3>RECIPES LIST</h3>
+                    <h3>LISTA PRZEPISÓW</h3>
                     <i className="fas fa-plus-square" onClick={handleAddRecipe}/>
                 </div>
                 {width < 600 ?
                     <>
                         <div className="recipes__row recipes__row-header">
                             <div className="recipes__col-4 day">
-                                NAME
+                                NAZWA
                             </div>
                             <div className="recipes__col-5 day">
-                                DESCRIPTION
+                                OPIS
                             </div>
                             <div className="recipes__col-3 day">
-                                ACTIONS
+                                AKCJE
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (
@@ -66,13 +66,13 @@ const Recipes = (props) => {
                                 LP
                             </div>
                             <div className="recipes__col-3 day">
-                                NAME
+                                NAZWA
                             </div>
                             <div className="recipes__col-6 day">
-                                DESCRIPTION
+                                OPIS
                             </div>
                             <div className="recipes__col-2 day">
-                                ACTIONS
+                                AKCJE
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (

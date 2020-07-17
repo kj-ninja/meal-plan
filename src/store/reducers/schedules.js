@@ -34,10 +34,14 @@ const schedulesReducer = (state=initialState, action) => {
                 }
             }
 
+            let newSchedules = action.schedules.sort((a, b) => {
+                return b.weekNumber - a.weekNumber;
+            })
+
             return {
                 ...state,
                 scheduleToShow: newScheduleToShow,
-                schedules: action.schedules,
+                schedules: newSchedules,
                 loading: false,
                 error: null
             }

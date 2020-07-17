@@ -1,9 +1,9 @@
 const translates = {
-    'auth/wrong-password': 'The password is incorrect or the user does not have a password',
-    'EMAIL_EXISTS': 'An account with this e-mail already exists',
-    'auth/user-not-found': 'There is no user with this e-mail',
-    'INVALID_PASSWORD': 'Invalid password',
-    'EMAIL_NOT_FOUND': 'E-mail not found'
+    'auth/wrong-password': 'Hasło jest nieprawidłowe lub użytkownik nie ma hasła',
+    'EMAIL_EXISTS': 'Konto z tym adresem e-mail już istnieje',
+    'auth/user-not-found': 'Nie ma użytkownika z tym adresem e-mail',
+    'INVALID_PASSWORD': 'Niepoprawne hasło',
+    'EMAIL_NOT_FOUND': 'E-mail nie znaleziony'
 };
 
 export const translate = code => translates[code];
