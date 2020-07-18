@@ -1,7 +1,7 @@
-# Meal Schedule
+# Meal Plan
 
 ## Introduction
-Meal Schedule is an application thanks to which the user is able to save their favorite recipes, and above all can plan their meal.
+Meal Plan is an application thanks to which the user is able to save their favorite recipes, and above all can plan their meal.
 
 ## Description
 Nutrition diary, in which you can keep your favorite recipes, plan meals and check what vegetable or fruit season we have.  
@@ -11,6 +11,7 @@ Nutrition diary, in which you can keep your favorite recipes, plan meals and che
 * Otherwise, adding, editing, deleting recipes from the diary.
 * Creating, reviewing and modifying the weekly nutrition schedule.
 * Displaying list of recipes and plans.
+* Check what vegetable or fruit season we have (in progress...)
 
 ### Technologies
 * ReactJS

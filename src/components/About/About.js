@@ -4,7 +4,6 @@ import 'react-image-lightbox/style.css';
 import './About.scss';
 import useWindowWidth from "../../functions/customHooks/useWindowWidth";
 
-
 const recipesImages = [
     require("../../assets/01.png"),
     require("../../assets/04.png")
