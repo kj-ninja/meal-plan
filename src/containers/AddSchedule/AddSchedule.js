@@ -103,8 +103,11 @@ const AddSchedule = (props) => {
                     <p className="error-message">Podany numer musi być liczbą pozytywną</p>}
                 </div>
                 {props.recipes.length > 0 ? width < 900 ?
-                <MobileView errors={errors} register={register} recipes={props.recipes} days={schedule.days} control={control}/> :
-                <DesktopView errors={errors} register={register} recipes={props.recipes} days={schedule.days} control={control}/> : null}
+                    <MobileView errors={errors} register={register} recipes={props.recipes} days={schedule.days}
+                                control={control}/> :
+                    <DesktopView errors={errors} register={register} recipes={props.recipes} days={schedule.days}
+                                 control={control}/> :
+                    <p style={{color: 'red'}}>Brak przepisów w bazie danych. Dodaj przepisy, a następnie stwórz plan.</p>}
             </form>
         </div>
     );

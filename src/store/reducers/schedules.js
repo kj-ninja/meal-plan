@@ -37,6 +37,20 @@ const schedulesReducer = (state=initialState, action) => {
             let newSchedules = action.schedules.sort((a, b) => {
                 return b.weekNumber - a.weekNumber;
             })
+            //
+            // const plans = newSchedules.map(plan => {
+            //     return plan.days.map(day=> {
+            //         if (!day.hasOwnProperty('meals')) {
+            //             return {
+            //                 ...day,
+            //                 meals: ['brak przepisu', 'brak przepisu', 'brak przepisu', 'brak przepisu',]
+            //             }
+            //         }
+            //         else {
+            //             return day;
+            //         }
+            //     })
+            // })
 
             return {
                 ...state,

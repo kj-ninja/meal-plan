@@ -5,7 +5,6 @@ import './DesktopView.scss';
 import { ErrorMessage } from "@hookform/error-message";
 
 const DesktopView = ({control, recipes, days, errors}) => {
-    console.log(days);
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -20,7 +19,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                     <div className="add-schedule__col-1 scheduleDay">{day.name.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -44,7 +42,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -68,7 +65,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -92,7 +88,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [

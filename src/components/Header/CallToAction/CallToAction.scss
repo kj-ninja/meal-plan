@@ -25,6 +25,19 @@
   width: 100%;
   height: 500px;
   position: relative;
+  background-color: #ccc;
+  left: -100vw;
+  animation: ninja 1s linear forwards;
+  .ninja {
+    width: 550px;
+    height: 700px;
+    background-size: cover;
+    position: absolute;
+    right: -445px;
+    img {
+      max-width: 100%;
+    }
+  }
   .call-to-action__container {
     max-width: 480px;
     margin: 0 auto;
@@ -81,5 +94,14 @@
       }
       }
     }
+  }
+}
+
+@keyframes ninja {
+  0% {
+    left: -100vw;
+  }
+  100% {
+  left: 0;
   }
 }
