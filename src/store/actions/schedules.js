@@ -23,14 +23,14 @@ export const fetchSchedules = (token, userId) => {
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('/schedules.json' + queryParams)
             .then(res => {
-                const fetchedRecipes = [];
+                const fetchedSchedules = [];
                 for (let key in res.data) {
-                    fetchedRecipes.push({
+                    fetchedSchedules.push({
                         ...res.data[key],
                         id: key
                     });
                 }
-                dispatch(fetchScheduleSuccess(fetchedRecipes));
+                dispatch(fetchScheduleSuccess(fetchedSchedules));
             })
             .catch(error => {
                 console.log(error);
@@ -48,11 +48,23 @@ export const addScheduleSuccess = (id, schedule) => {
 };
 
 export const addSchedule = (token, schedule) => {
+    const daysToApi = schedule.days.map(day=> {
+        const meals = day.meals.map(meal=> {
+            if (!meal) {
+                return 'brak planu';
+            } else {
+                return meal;
+            }
+        })
+        return {name: day.name, meals};
+    })
+    const scheduleToApi = {...schedule, days: daysToApi};
+
     return dispatch => {
         dispatch(fetchScheduleStart());
-        axios.post('/schedules.json?auth=' + token, schedule)
+        axios.post('/schedules.json?auth=' + token, scheduleToApi)
             .then(function (res) {
-                dispatch(addScheduleSuccess(res.data.name, schedule));
+                dispatch(addScheduleSuccess(res.data.name, scheduleToApi));
             })
             .catch(error => {
                 console.log(error);
