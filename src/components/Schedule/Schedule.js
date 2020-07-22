@@ -8,8 +8,6 @@ import Spinner from "../UI/Spinner/Spinner";
 const Schedule = (props) => {
     const width = useWindowWidth();
 
-    // [40, 30, 29, 20]
-
     const handleNextScheduleByWeekNumber = () => {
         const newScheduleToShow = [...props.schedules
             .sort((a, b) => a.weekNumber - b.weekNumber)

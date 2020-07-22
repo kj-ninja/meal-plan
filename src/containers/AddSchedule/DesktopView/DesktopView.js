@@ -2,10 +2,8 @@ import React from 'react';
 import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
 import './DesktopView.scss';
-import { ErrorMessage } from "@hookform/error-message";
 
-const DesktopView = ({control, recipes, days, errors}) => {
-    console.log(days);
+const DesktopView = ({control, recipes, days}) => {
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">
@@ -20,7 +18,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                     <div className="add-schedule__col-1 scheduleDay">{day.name.toUpperCase()}</div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -40,11 +37,9 @@ const DesktopView = ({control, recipes, days, errors}) => {
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[0], label: day.meals[0] } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[0]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -64,11 +59,9 @@ const DesktopView = ({control, recipes, days, errors}) => {
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[1], label: day.meals[1] } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[1]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -88,11 +81,9 @@ const DesktopView = ({control, recipes, days, errors}) => {
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[2], label: day.meals[2] } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[2]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-1">
                         <Controller
-                            rules={{ required: "This is required" }}
                             as={ReactSelect}
                             options={
                                 [
@@ -112,7 +103,6 @@ const DesktopView = ({control, recipes, days, errors}) => {
                             control={control}
                             defaultValue={day.meals.length > 1 ? { value: day.meals[3], label: day.meals[3] } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`${day.name}${day.meals}[3]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}
