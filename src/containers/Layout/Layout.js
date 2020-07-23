@@ -13,9 +13,6 @@ const Layout = (props) => {
         setShowDrawer(false);
     };
 
-
-
-
     return (
         <>
             <Toolbar showDrawer={handleShowDrawer}/>

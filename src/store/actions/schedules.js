@@ -51,7 +51,7 @@ export const addSchedule = (token, schedule) => {
     const daysToApi = schedule.days.map(day=> {
         const meals = day.meals.map(meal=> {
             if (!meal) {
-                return 'brak planu';
+                return 'brak przepisu';
             } else {
                 return meal;
             }
