@@ -8,13 +8,17 @@ import Spinner from "../UI/Spinner/Spinner";
 const Schedule = (props) => {
     const width = useWindowWidth();
 
+    const findRecipeByName = (recipeName) => {
+        return props.recipes.find(recipe => recipe.name === recipeName)
+    };
+
     const handleNextScheduleByWeekNumber = () => {
         const newScheduleToShow = [...props.schedules
             .sort((a, b) => a.weekNumber - b.weekNumber)
-            ]
+        ]
             .find(schedule => {
-            return schedule.weekNumber > props.scheduleToShow.weekNumber;
-        })
+                return schedule.weekNumber > props.scheduleToShow.weekNumber;
+            })
         if (newScheduleToShow) {
             props.setSchedule(newScheduleToShow);
         }
@@ -23,10 +27,10 @@ const Schedule = (props) => {
     const handlePreviousScheduleByWeekNumber = () => {
         const newScheduleToShow = [...props.schedules
             .sort((a, b) => b.weekNumber - a.weekNumber)
-            ]
+        ]
             .find(schedule => {
-            return schedule.weekNumber < props.scheduleToShow.weekNumber;
-        })
+                return schedule.weekNumber < props.scheduleToShow.weekNumber;
+            })
         if (newScheduleToShow) {
             props.setSchedule(newScheduleToShow);
         }
@@ -45,9 +49,9 @@ const Schedule = (props) => {
         schedule = (
             width < 900 ?
                 <MobileView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
-                            previousSchedule={handlePreviousScheduleByWeekNumber}/> :
+                            findRecipe={findRecipeByName} previousSchedule={handlePreviousScheduleByWeekNumber}/> :
                 <DesktopView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
-                             previousSchedule={handlePreviousScheduleByWeekNumber}/>
+                             findRecipe={findRecipeByName} previousSchedule={handlePreviousScheduleByWeekNumber}/>
         );
     }
 

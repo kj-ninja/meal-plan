@@ -48,7 +48,10 @@ const Dashboard = (props) => {
                              recipesCount={props.recipes.length}/>}
                 />
                 <Route exact path="/dashboard" render={() => (
-                    <Schedule scheduleToShow={scheduleToShow} schedules={props.schedules} setSchedule={props.setScheduleToShow}/>
+                    <Schedule scheduleToShow={scheduleToShow}
+                              schedules={props.schedules}
+                              setSchedule={props.setScheduleToShow}
+                              recipes={props.recipes}/>
                 )}/>
 
                 <Route path="/dashboard/recipes"
