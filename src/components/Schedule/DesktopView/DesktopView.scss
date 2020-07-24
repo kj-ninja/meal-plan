@@ -61,7 +61,7 @@ $single-column: percentage(1 / $grid-columns);
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px black;
   padding: 16px;
-  max-width: 800px;
+  width: 800px;
   left: calc(50% - 400px);
   top: 30%;
   transition: all 0.3s ease-out;
@@ -91,15 +91,16 @@ $single-column: percentage(1 / $grid-columns);
     .modal__instructions-list {
       width: 60%;
       list-style: decimal inside;
-      line-height: 28px;
+      line-height: 26px;
       li {
         padding: 0 10px;
+        margin-bottom: 10px;
       }
     }
     .modal__ingredients-list {
       width: 40%;
       list-style: disc inside;
-      line-height: 28px;
+      line-height: 26px;
       li {
         padding: 0 10px;
       }
