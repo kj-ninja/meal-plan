@@ -12,9 +12,9 @@ const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule
         setModal(true);
     };
 
-    let modalPopUp = <Modal modal={modal} recipe={null}/>;
+    let modalPopUp = <Modal modal={modal} recipe={null} view="desktop"/>;
     if (recipeToShow) {
-        modalPopUp = <Modal modal={modal} recipe={recipeToShow}/>;
+        modalPopUp = <Modal modal={modal} recipe={recipeToShow} view="desktop"/>;
     }
 
     return (
@@ -35,40 +35,40 @@ const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule
                 <div className="col-1 day">Niedziela</div>
             </div>
             <div className="row">
-                <div className="col-1 day" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[0])}>{scheduleToShow.days[0].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[1].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[2].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[3].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[4].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[5].meals[0]}</div>
-                <div className="col-1 day">{scheduleToShow.days[6].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[0])}>{scheduleToShow.days[0].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[1].meals[0])}>{scheduleToShow.days[1].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[2].meals[0])}>{scheduleToShow.days[2].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[3].meals[0])}>{scheduleToShow.days[3].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[4].meals[0])}>{scheduleToShow.days[4].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[5].meals[0])}>{scheduleToShow.days[5].meals[0]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[6].meals[0])}>{scheduleToShow.days[6].meals[0]}</div>
             </div>
             <div className="row">
-                <div className="col-1 day" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[1])}>{scheduleToShow.days[0].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[1].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[2].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[3].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[4].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[5].meals[1]}</div>
-                <div className="col-1 day">{scheduleToShow.days[6].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[1])}>{scheduleToShow.days[0].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[1].meals[1])}>{scheduleToShow.days[1].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[2].meals[1])}>{scheduleToShow.days[2].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[3].meals[1])}>{scheduleToShow.days[3].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[4].meals[1])}>{scheduleToShow.days[4].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[5].meals[1])}>{scheduleToShow.days[5].meals[1]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[6].meals[1])}>{scheduleToShow.days[6].meals[1]}</div>
             </div>
             <div className="row">
-                <div className="col-1 day" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[2])}>{scheduleToShow.days[0].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[1].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[2].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[3].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[4].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[5].meals[2]}</div>
-                <div className="col-1 day">{scheduleToShow.days[6].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[2])}>{scheduleToShow.days[0].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[1].meals[2])}>{scheduleToShow.days[1].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[2].meals[2])}>{scheduleToShow.days[2].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[3].meals[2])}>{scheduleToShow.days[3].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[4].meals[2])}>{scheduleToShow.days[4].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[5].meals[2])}>{scheduleToShow.days[5].meals[2]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[6].meals[2])}>{scheduleToShow.days[6].meals[2]}</div>
             </div>
             <div className="row">
-                <div className="col-1 day" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[3])}>{scheduleToShow.days[0].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[1].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[2].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[3].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[4].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[5].meals[3]}</div>
-                <div className="col-1 day">{scheduleToShow.days[6].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[0].meals[3])}>{scheduleToShow.days[0].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[1].meals[3])}>{scheduleToShow.days[1].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[2].meals[3])}>{scheduleToShow.days[2].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[3].meals[3])}>{scheduleToShow.days[3].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[4].meals[3])}>{scheduleToShow.days[4].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[5].meals[3])}>{scheduleToShow.days[5].meals[3]}</div>
+                <div className="col-1" onClick={()=>handleShowRecipe(scheduleToShow.days[6].meals[3])}>{scheduleToShow.days[6].meals[3]}</div>
             </div>
             <div className="plan__actions">
                 <div className="plan__action-previous" onClick={previousSchedule}>

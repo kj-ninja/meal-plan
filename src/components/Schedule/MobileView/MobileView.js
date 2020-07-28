@@ -1,54 +1,20 @@
 import React, {useState} from 'react';
 import './MobileView.scss';
 import Backdrop from "../../UI/Backdrop/Backdrop";
+import Modal from "../../UI/Modal/Modal";
 
 const MobileView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}) => {
     const [modal, setModal] = useState(false);
     const [recipeToShow, setRecipeToShow] = useState(null);
 
-    let modalPopUp = null;
-    if (recipeToShow === undefined) {
-        modalPopUp = (
-            <div className="modal--mobile" style={{
-                transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: modal ? '1' : '0',
-                height: '70px',
-                textAlign: 'center'
-            }}>
-                <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania.</h2>
-            </div>
-        );
-    }
+    let modalPopUp = <Modal modal={modal} recipe={null} view="mobile"/>;
     if (recipeToShow) {
-        modalPopUp = (
-            <div className="modal--mobile" style={{
-                transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: modal ? '1' : '0'
-            }}>
-                <h2 className="modal__title--mobile">{recipeToShow.name}</h2>
-                <p className="modal__description--mobile"><span>Opis:</span>{recipeToShow.description}</p>
-                <div className="modal__lists-container--mobile">
-                    <ol className="modal__instructions-list--mobile">
-                        <p className="modal__lists-title--mobile">Instrukcje:</p>
-                        {recipeToShow.instructions.map(instruction => (
-                            <li key={instruction}>{instruction}</li>
-                        ))}
-                    </ol>
-                    <ul className="modal__ingredients-list--mobile">
-                        <p className="modal__lists-title--mobile">Składniki:</p>
-                        {recipeToShow.ingredients.map(ingredient => (
-                            <li key={ingredient}>{ingredient}</li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        );
+        modalPopUp = <Modal modal={modal} recipe={recipeToShow} view="mobile"/>;
     }
 
     const handleShowRecipe = (recipeName) => {
         setRecipeToShow(findRecipe(recipeName));
         setModal(true);
-        console.log(findRecipe(recipeName));
     };
 
     return (
@@ -88,7 +54,7 @@ const MobileView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}
             </div>
 
             <div className="plan__row--mobile plan__days--mobile">
-                <div className="plan__col-8--mobile">Sroda</div>
+                <div className="plan__col-8--mobile">Środa</div>
                 <div className="plan__col-8--mobile">Czwartek</div>
             </div>
             <div className="plan__row--mobile">
@@ -117,7 +83,7 @@ const MobileView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}
             </div>
 
             <div className="plan__row--mobile plan__days--mobile">
-                <div className="plan__col-8--mobile">Piatek</div>
+                <div className="plan__col-8--mobile">Piątek</div>
                 <div className="plan__col-8--mobile">Sobota</div>
             </div>
             <div className="plan__row--mobile">

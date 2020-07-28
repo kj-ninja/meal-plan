@@ -20,6 +20,7 @@ $single-column: percentage(1 / $grid-columns);
     font-weight: 600;
     border-bottom: 1px solid #ccc;
     padding: 5px 0 10px;
+    cursor: default;
   }
   .plans__row {
     color: #919191;
@@ -28,6 +29,7 @@ $single-column: percentage(1 / $grid-columns);
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
     text-align: left;
+    cursor: pointer;
     @include actionIcons();
     i {
       margin-bottom: 20px;

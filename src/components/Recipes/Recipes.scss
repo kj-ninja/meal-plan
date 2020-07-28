@@ -19,7 +19,7 @@ $single-column: percentage(1 / $grid-columns);
     color: $basic-color;
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #cccccc;
     padding: 5px 0 10px;
   }
   .recipes__row {
@@ -37,7 +37,11 @@ $single-column: percentage(1 / $grid-columns);
       .recipes__col-#{$i} {
         width: $single-column * $i;
         padding: 0 10px;
+        cursor: pointer;
       }
+    }
+    .day {
+      cursor: default;
     }
   }
 }

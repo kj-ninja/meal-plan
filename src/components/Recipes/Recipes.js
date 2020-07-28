@@ -14,11 +14,6 @@ const Recipes = (props) => {
     const width = useWindowWidth();
     const {token, userId, loading, findRecipe} = props;
 
-    let modalPopUp = <Modal modal={modal} recipe={null}/>;
-    if (recipeToShow) {
-        modalPopUp = <Modal modal={modal} recipe={recipeToShow}/>
-    }
-
     if (loading) {
         return <Spinner/>;
     }
@@ -42,15 +37,14 @@ const Recipes = (props) => {
         <>
             <div className="recipes">
                 <Backdrop show={modal} cancel={() => setModal(false)}/>
-                {modalPopUp}
+
                 <div className="recipes__header">
                     <h3>LISTA PRZEPISÓW</h3>
                     <i className="fas fa-plus-square" onClick={handleAddRecipe}/>
                 </div>
-                {width < 600 ?
+                {width < 900 ?
                     <>
-                        <Backdrop show={modal} cancel={() => setModal(false)}/>
-                        {modalPopUp}
+                        <Modal modal={modal} recipe={recipeToShow} view="mobile"/>
                         <div className="recipes__row recipes__row-header">
                             <div className="recipes__col-4 day">
                                 NAZWA
@@ -63,14 +57,14 @@ const Recipes = (props) => {
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (
-                            <div className="recipes__row" key={i}>
-                                <div className="recipes__col-4 day">
+                            <div className="recipes__row" key={i} onClick={()=>handleShowRecipe(recipe.name)}>
+                                <div className="recipes__col-4">
                                     {recipe.name}
                                 </div>
-                                <div className="recipes__col-5 day">
+                                <div className="recipes__col-5">
                                     {recipe.description}
                                 </div>
-                                <div className="recipes__col-3 day">
+                                <div className="recipes__col-3">
                                     <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
                                     <i className="fas fa-trash-alt trash"
                                        onClick={() => props.deleteRecipe(token, recipe.id, userId)}/>
@@ -79,6 +73,7 @@ const Recipes = (props) => {
                         ))}
                     </> :
                     <>
+                        <Modal modal={modal} recipe={recipeToShow} view="desktop"/>
                         <div className="recipes__row recipes__row-header">
                             <div className="recipes__col-1 day">
                                 LP
@@ -95,16 +90,16 @@ const Recipes = (props) => {
                         </div>
                         {props.recipes.map((recipe, i) => (
                             <div className="recipes__row" key={i} onClick={()=>handleShowRecipe(recipe.name)}>
-                                <div className="recipes__col-1 day">
+                                <div className="recipes__col-1">
                                     {i + 1}
                                 </div>
-                                <div className="recipes__col-3 day">
+                                <div className="recipes__col-3">
                                     {recipe.name}
                                 </div>
-                                <div className="recipes__col-6 day">
+                                <div className="recipes__col-6">
                                     {recipe.description}
                                 </div>
-                                <div className="recipes__col-2 day">
+                                <div className="recipes__col-2">
                                     <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
                                     <i className="fas fa-trash-alt trash"
                                        onClick={() => props.deleteRecipe(token, recipe.id, userId)}/>

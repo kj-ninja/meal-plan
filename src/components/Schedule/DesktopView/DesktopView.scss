@@ -26,6 +26,15 @@ $single-column: percentage(1 / $grid-columns);
         padding: 0 10px;
       }
     }
+    .col-1 {
+      cursor: pointer;
+      &:hover {
+        color: #FF6600;
+      }
+    }
+    .day {
+      cursor: default;
+    }
   }
   .plan__actions {
     display: flex;
@@ -52,17 +61,4 @@ $single-column: percentage(1 / $grid-columns);
       }
     }
   }
-}
-
-.modal {
-  position: fixed;
-  z-index: 9999;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px black;
-  padding: 16px;
-  width: 800px;
-  left: calc(50% - 400px);
-  top: 30%;
-  transition: all 0.3s ease-out;
 }

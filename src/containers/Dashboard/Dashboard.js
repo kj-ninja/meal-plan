@@ -32,7 +32,11 @@ const Dashboard = (props) => {
     };
 
     const findRecipeByName = (recipeName) => {
-        return props.recipes.find(recipe => recipe.name === recipeName)
+        return props.recipes.find(recipe => recipe.name === recipeName);
+    };
+
+    const findScheduleById = (scheduleId) => {
+        return props.schedules.find(schedule => schedule.id === scheduleId);
     };
 
     return (
@@ -62,7 +66,7 @@ const Dashboard = (props) => {
                 <Route path="/dashboard/recipes"
                        render={() => <Recipes {...props} recipes={props.recipes} findRecipe={findRecipeByName}/>}/>
                 <Route path="/dashboard/schedules"
-                       render={() => <Schedules {...props} schedules={props.schedules}/>}/>
+                       render={() => <Schedules {...props} schedules={props.schedules} findSchedule={findScheduleById}/>}/>
                 <Route path="/dashboard/add-recipe" component={AddRecipe}/>
                 <Route path="/dashboard/add-schedule" component={AddSchedule}/>
             </div>

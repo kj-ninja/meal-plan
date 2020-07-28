@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {deleteSchedule} from '../../store/actions/schedules';
 import {mapScheduleToEdit, clearAddScheduleForm} from '../../store/actions/addScheduleForm';
 import './Schedules.scss';
 import Spinner from "../UI/Spinner/Spinner";
 import useWindowWidth from "../../functions/customHooks/useWindowWidth";
+import Backdrop from "../UI/Backdrop/Backdrop";
+import SchedulesDetails from "./SchedulesDetails";
 
 const Schedules = (props) => {
+    const [modal, setModal] = useState(false);
+    const [scheduleToShow, setScheduleToShow] = useState(null);
     const {token, userId, loading} = props;
     const width = useWindowWidth();
-    console.log('Schedules rendered');
 
     if (loading) {
         return <Spinner/>;
@@ -25,11 +28,18 @@ const Schedules = (props) => {
         props.history.push('/dashboard/add-schedule');
     };
 
+    const handleShowSchedule = (scheduleId) => {
+        setModal(true);
+        setScheduleToShow(props.findSchedule(scheduleId));
+    };
+
     return (
         <>
             <div className="plans">
-                {width < 600 ?
+                {width < 900 ?
                     <>
+                        <Backdrop show={modal} cancel={() => setModal(false)}/>
+                        {modal ? <SchedulesDetails scheduleToShow={scheduleToShow} view="mobile"/> : null}
                         <div className="plans__header">
                             <h3>LISTA PLANÓW</h3>
                             <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
@@ -50,6 +60,8 @@ const Schedules = (props) => {
                         </div>
                     </> :
                     <>
+                        <Backdrop show={modal} cancel={() => setModal(false)}/>
+                        {modal ? <SchedulesDetails scheduleToShow={scheduleToShow} view="desktop"/> : null}
                         <div className="plans__header">
                             <h3>LISTA PLANÓW</h3>
                             <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
@@ -74,8 +86,8 @@ const Schedules = (props) => {
                     </>}
 
                 {props.schedules.map((schedule, i) => (
-                    <div className="plans__row" key={i}>
-                        {width < 600 ?
+                    <div className="plans__row" key={i} onClick={()=>handleShowSchedule(schedule.id)}>
+                        {width < 900 ?
                             <>
                                 <div className="plans__col-3">
                                     {schedule.name}
