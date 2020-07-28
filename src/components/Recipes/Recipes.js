@@ -1,14 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {deleteRecipe} from '../../store/actions/recipes';
 import {mapRecipeToEdit, clearAddRecipeForm} from '../../store/actions/addRecipeForm';
 import './Recipes.scss';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import useWindowWidth from "../../functions/customHooks/useWindowWidth";
+import Backdrop from "../UI/Backdrop/Backdrop";
 
 const Recipes = (props) => {
+    const [modal, setModal] = useState(false);
+    const [recipeToShow, setRecipeToShow] = useState(null);
     const {token, userId, loading} = props;
     const width = useWindowWidth();
+
+    let modalPopUp = null;
+    if (recipeToShow) {
+        modalPopUp = (
+            <div className="modal" style={{
+                transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
+                opacity: modal ? '1' : '0'
+            }}>
+                <h2 className="modal__title">{recipeToShow.name}</h2>
+                <p className="modal__description"><span>Opis:</span>{recipeToShow.description}</p>
+                <div className="modal__lists-container">
+                    <ol className="modal__instructions-list">
+                        <p className="modal__lists-title">Instrukcje:</p>
+                        {recipeToShow.instructions.map(instruction => (
+                            <li key={instruction}>{instruction}</li>
+                        ))}
+                    </ol>
+                    <ul className="modal__ingredients-list">
+                        <p className="modal__lists-title">Składniki:</p>
+                        {recipeToShow.ingredients.map(ingredient => (
+                            <li key={ingredient}>{ingredient}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        );
+    }
 
     if (loading) {
         return <Spinner/>;
@@ -24,6 +54,12 @@ const Recipes = (props) => {
         props.history.push('/dashboard/add-recipe');
     };
 
+    const handleShowRecipe = (recipeName) => {
+        setRecipeToShow(findRecipe(recipeName));
+        setModal(true);
+        console.log(findRecipe(recipeName));
+    };
+
     return (
         <>
             <div className="recipes">
@@ -33,6 +69,8 @@ const Recipes = (props) => {
                 </div>
                 {width < 600 ?
                     <>
+                        <Backdrop show={modal} cancel={() => setModal(false)}/>
+                        {modalPopUp}
                         <div className="recipes__row recipes__row-header">
                             <div className="recipes__col-4 day">
                                 NAZWA
@@ -76,7 +114,7 @@ const Recipes = (props) => {
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (
-                            <div className="recipes__row" key={i}>
+                            <div className="recipes__row" key={i} onClick={()=>console.log(recipe)}>
                                 <div className="recipes__col-1 day">
                                     {i + 1}
                                 </div>

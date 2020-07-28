@@ -15,6 +15,7 @@ import Schedules from "../../components/Schedules/Schedules";
 
 const Dashboard = (props) => {
     const {fetchRecipes, fetchSchedules, token, userId, scheduleToShow} = props;
+    console.log('Dashboard rendered');
 
     useEffect(() => {
         fetchRecipes(token, userId);

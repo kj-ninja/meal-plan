@@ -4,6 +4,8 @@ import './Toolbar.scss';
 import NavigationItems from "../NavigationItems/NavigationItems";
 
 const Toolbar = (props) => {
+    console.log('Toolbar rendered');
+
     return (
         <header>
             <div className="header__container">

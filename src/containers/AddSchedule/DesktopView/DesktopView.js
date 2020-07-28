@@ -4,6 +4,7 @@ import ReactSelect from "react-select";
 import './DesktopView.scss';
 
 const DesktopView = ({control, recipes, days}) => {
+    console.log('AddSchedule rendered');
     return (
         <>
             <div className="add-schedule__row add-schedule__meals">

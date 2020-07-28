@@ -9,6 +9,7 @@ import useWindowWidth from "../../functions/customHooks/useWindowWidth";
 const Schedules = (props) => {
     const {token, userId, loading} = props;
     const width = useWindowWidth();
+    console.log('Schedules rendered');
 
     if (loading) {
         return <Spinner/>;

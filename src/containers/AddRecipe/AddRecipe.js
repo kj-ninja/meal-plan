@@ -17,6 +17,7 @@ const AddRecipe = (props) => {
     const {register, handleSubmit, errors, getValues, setValue} = useForm();
     const [indexToEdit, setIndexToEdit] = useState(null);
     const {recipe} = props;
+    console.log('AddRecipe rendered');
 
     const handleAddInstruction = () => {
         if (props.isListEdit) {

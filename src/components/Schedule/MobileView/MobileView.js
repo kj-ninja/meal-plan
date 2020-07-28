@@ -11,7 +11,9 @@ const MobileView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}
         modalPopUp = (
             <div className="modal--mobile" style={{
                 transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: modal ? '1' : '0'
+                opacity: modal ? '1' : '0',
+                height: '70px',
+                textAlign: 'center'
             }}>
                 <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania.</h2>
             </div>

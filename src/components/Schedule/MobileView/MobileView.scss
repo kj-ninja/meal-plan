@@ -63,10 +63,10 @@ $single-column: percentage(1 / $grid-columns);
   box-shadow: 1px 1px 1px black;
   padding: 16px;
   width: 300px;
-  height: 500px;
+  height: 450px;
   overflow: scroll;
   left: calc(50% - 150px);
-  top: 15%;
+  top: 20%;
   transition: all 0.3s ease-out;
   box-sizing: border-box;
   .modal__title--mobile {

@@ -5,6 +5,7 @@ import './DesktopView.scss';
 const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}) => {
     const [modal, setModal] = useState(false);
     const [recipeToShow, setRecipeToShow] = useState(null);
+    console.log('Schedule rendered');
 
     let modalPopUp = null;
     if (recipeToShow === undefined) {
@@ -13,7 +14,7 @@ const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule
                 transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
                 opacity: modal ? '1' : '0'
             }}>
-                <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania.</h2>
+                <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania planu.</h2>
             </div>
         );
     }
