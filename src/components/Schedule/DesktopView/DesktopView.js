@@ -22,7 +22,7 @@ const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule
             <Backdrop show={modal} cancel={() => setModal(false)}/>
             {modalPopUp}
             <div className="plan__header">
-                Twój plan na <span>{scheduleToShow.weekNumber ? scheduleToShow.weekNumber : null}</span> tydzień
+                Twój plan na <span>{scheduleToShow.weekNumber ? scheduleToShow.weekNumber : null}</span> tydzień roku
             </div>
 
             <div className="row plan__days">

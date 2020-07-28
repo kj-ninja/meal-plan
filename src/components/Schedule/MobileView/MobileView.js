@@ -22,7 +22,7 @@ const MobileView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}
             <Backdrop show={modal} cancel={() => setModal(false)}/>
             {modalPopUp}
             <div className="plan__header--mobile">
-                Twój plan na <span>{scheduleToShow.weekNumber}</span> tydzień
+                Twój plan na <span>{scheduleToShow.weekNumber}</span> tydzień roku
             </div>
             <div className="plan__row--mobile plan__days--mobile">
                 <div className="plan__col-8--mobile">Poniedziałek</div>

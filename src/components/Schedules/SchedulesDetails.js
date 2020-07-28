@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Schedule/DesktopView/DesktopView.scss';
 import '../Schedule/MobileView/MobileView.scss';
+import './SchedulesDetails.scss';
 
 const mobileStyles = {
     position: 'fixed',
@@ -34,7 +35,7 @@ const SchedulesDetails = ({scheduleToShow, view}) => {
         return (
             <section className="plan--mobile" style={mobileStyles}>
                 <div className="plan__header--mobile">
-                    Twój plan na <span>{scheduleToShow.weekNumber}</span> tydzień
+                    Twój plan na <span>{scheduleToShow.weekNumber}</span> tydzień roku
                 </div>
                 <div className="plan__row--mobile plan__days--mobile">
                     <div className="plan__col-8--mobile">Poniedziałek</div>
@@ -121,7 +122,7 @@ const SchedulesDetails = ({scheduleToShow, view}) => {
     return (
         <section className="plan" style={desktopStyles}>
             <div className="plan__header">
-                Twój plan na <span>{scheduleToShow.weekNumber ? scheduleToShow.weekNumber : null}</span> tydzień
+                Twój plan na <span>{scheduleToShow.weekNumber ? scheduleToShow.weekNumber : null}</span> tydzień roku
             </div>
 
             <div className="row plan__days">
@@ -134,40 +135,40 @@ const SchedulesDetails = ({scheduleToShow, view}) => {
                 <div className="col-1 day">Niedziela</div>
             </div>
             <div className="row">
-                <div className="col-1">{scheduleToShow.days[0].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[1].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[2].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[3].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[4].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[5].meals[0]}</div>
-                <div className="col-1">{scheduleToShow.days[6].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[0].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[1].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[2].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[3].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[4].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[5].meals[0]}</div>
+                <div className="col-1 details">{scheduleToShow.days[6].meals[0]}</div>
             </div>
             <div className="row">
-                <div className="col-1">{scheduleToShow.days[0].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[1].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[2].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[3].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[4].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[5].meals[1]}</div>
-                <div className="col-1">{scheduleToShow.days[6].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[0].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[1].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[2].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[3].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[4].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[5].meals[1]}</div>
+                <div className="col-1 details">{scheduleToShow.days[6].meals[1]}</div>
             </div>
             <div className="row">
-                <div className="col-1">{scheduleToShow.days[0].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[1].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[2].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[3].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[4].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[5].meals[2]}</div>
-                <div className="col-1">{scheduleToShow.days[6].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[0].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[1].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[2].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[3].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[4].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[5].meals[2]}</div>
+                <div className="col-1 details">{scheduleToShow.days[6].meals[2]}</div>
             </div>
             <div className="row">
-                <div className="col-1">{scheduleToShow.days[0].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[1].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[2].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[3].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[4].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[5].meals[3]}</div>
-                <div className="col-1">{scheduleToShow.days[6].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[0].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[1].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[2].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[3].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[4].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[5].meals[3]}</div>
+                <div className="col-1 details">{scheduleToShow.days[6].meals[3]}</div>
             </div>
         </section>
     );

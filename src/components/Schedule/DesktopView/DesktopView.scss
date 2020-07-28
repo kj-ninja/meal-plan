@@ -34,6 +34,9 @@ $single-column: percentage(1 / $grid-columns);
     }
     .day {
       cursor: default;
+      &:hover {
+        color: $basic-color;
+      }
     }
   }
   .plan__actions {

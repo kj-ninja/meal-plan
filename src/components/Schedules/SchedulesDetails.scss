@@ -1,0 +1,10 @@
+.plan {
+  .row {
+    .col-1.details {
+      cursor: default;
+      &:hover {
+        color: #4a4a49;
+      }
+    }
+  }
+}
