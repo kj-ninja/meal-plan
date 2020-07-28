@@ -15,7 +15,6 @@ import Schedules from "../../components/Schedules/Schedules";
 
 const Dashboard = (props) => {
     const {fetchRecipes, fetchSchedules, token, userId, scheduleToShow} = props;
-    console.log('Dashboard rendered');
 
     useEffect(() => {
         fetchRecipes(token, userId);
@@ -30,6 +29,10 @@ const Dashboard = (props) => {
     const handleAddSchedule = () => {
         props.clearAddScheduleForm();
         props.history.push('/dashboard/add-schedule');
+    };
+
+    const findRecipeByName = (recipeName) => {
+        return props.recipes.find(recipe => recipe.name === recipeName)
     };
 
     return (
@@ -52,11 +55,12 @@ const Dashboard = (props) => {
                     <Schedule scheduleToShow={scheduleToShow}
                               schedules={props.schedules}
                               setSchedule={props.setScheduleToShow}
-                              recipes={props.recipes}/>
+                              recipes={props.recipes}
+                              findRecipe={findRecipeByName}/>
                 )}/>
 
                 <Route path="/dashboard/recipes"
-                       render={() => <Recipes {...props} recipes={props.recipes}/>}/>
+                       render={() => <Recipes {...props} recipes={props.recipes} findRecipe={findRecipeByName}/>}/>
                 <Route path="/dashboard/schedules"
                        render={() => <Schedules {...props} schedules={props.schedules}/>}/>
                 <Route path="/dashboard/add-recipe" component={AddRecipe}/>

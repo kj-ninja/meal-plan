@@ -8,10 +8,6 @@ import Spinner from "../UI/Spinner/Spinner";
 const Schedule = (props) => {
     const width = useWindowWidth();
 
-    const findRecipeByName = (recipeName) => {
-        return props.recipes.find(recipe => recipe.name === recipeName)
-    };
-
     const handleNextScheduleByWeekNumber = () => {
         const newScheduleToShow = [...props.schedules
             .sort((a, b) => a.weekNumber - b.weekNumber)
@@ -49,9 +45,9 @@ const Schedule = (props) => {
         schedule = (
             width < 900 ?
                 <MobileView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
-                            findRecipe={findRecipeByName} previousSchedule={handlePreviousScheduleByWeekNumber}/> :
+                            findRecipe={props.findRecipe} previousSchedule={handlePreviousScheduleByWeekNumber}/> :
                 <DesktopView scheduleToShow={props.scheduleToShow} nextSchedule={handleNextScheduleByWeekNumber}
-                             findRecipe={findRecipeByName} previousSchedule={handlePreviousScheduleByWeekNumber}/>
+                             findRecipe={props.findRecipe} previousSchedule={handlePreviousScheduleByWeekNumber}/>
         );
     }
 

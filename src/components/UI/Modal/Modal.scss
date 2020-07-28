@@ -1,0 +1,53 @@
+.modal {
+  position: fixed;
+  z-index: 9999;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  width: 800px;
+  left: calc(50% - 400px);
+  top: 30%;
+  transition: all 0.3s ease-out;
+  .modal__title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .modal__description {
+    line-height: 20px;
+    letter-spacing: 0.7px;
+    margin-bottom: 15px;
+    span {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  .modal__lists-container {
+    display: flex;
+    justify-content: space-between;
+    .modal__lists-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .modal__instructions-list {
+      width: 60%;
+      list-style: decimal inside;
+      line-height: 26px;
+      li {
+        padding: 0 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .modal__ingredients-list {
+      width: 40%;
+      list-style: disc inside;
+      line-height: 26px;
+      li {
+        padding: 0 10px;
+      }
+    }
+  }
+}

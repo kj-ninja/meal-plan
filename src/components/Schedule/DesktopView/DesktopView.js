@@ -1,54 +1,21 @@
 import React, {useState} from 'react';
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import './DesktopView.scss';
+import Modal from "../../UI/Modal/Modal";
 
 const DesktopView = ({scheduleToShow, nextSchedule, findRecipe, previousSchedule}) => {
     const [modal, setModal] = useState(false);
     const [recipeToShow, setRecipeToShow] = useState(null);
-    console.log('Schedule rendered');
-
-    let modalPopUp = null;
-    if (recipeToShow === undefined) {
-        modalPopUp = (
-            <div className="modal" style={{
-                transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: modal ? '1' : '0'
-            }}>
-                <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania planu.</h2>
-            </div>
-        );
-    }
-    if (recipeToShow) {
-        modalPopUp = (
-            <div className="modal" style={{
-                transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
-                opacity: modal ? '1' : '0'
-            }}>
-                <h2 className="modal__title">{recipeToShow.name}</h2>
-                <p className="modal__description"><span>Opis:</span>{recipeToShow.description}</p>
-                <div className="modal__lists-container">
-                        <ol className="modal__instructions-list">
-                            <p className="modal__lists-title">Instrukcje:</p>
-                            {recipeToShow.instructions.map(instruction => (
-                                <li key={instruction}>{instruction}</li>
-                            ))}
-                        </ol>
-                        <ul className="modal__ingredients-list">
-                            <p className="modal__lists-title">Składniki:</p>
-                            {recipeToShow.ingredients.map(ingredient => (
-                                <li key={ingredient}>{ingredient}</li>
-                            ))}
-                        </ul>
-                </div>
-            </div>
-        );
-    }
 
     const handleShowRecipe = (recipeName) => {
         setRecipeToShow(findRecipe(recipeName));
         setModal(true);
-        console.log(findRecipe(recipeName));
     };
+
+    let modalPopUp = <Modal modal={modal} recipe={null}/>;
+    if (recipeToShow) {
+        modalPopUp = <Modal modal={modal} recipe={recipeToShow}/>;
+    }
 
     return (
         <section className="plan">
