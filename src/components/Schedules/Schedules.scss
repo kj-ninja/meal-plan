@@ -21,6 +21,9 @@ $single-column: percentage(1 / $grid-columns);
     border-bottom: 1px solid #ccc;
     padding: 5px 0 10px;
     cursor: default;
+    &:hover {
+      color: $basic-color;
+    }
   }
   .plans__row {
     color: #919191;
@@ -29,6 +32,9 @@ $single-column: percentage(1 / $grid-columns);
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
     text-align: left;
+    &:hover {
+      color: #FF6600;
+    }
     @include actionIcons();
     i {
       margin-bottom: 20px;
@@ -39,11 +45,8 @@ $single-column: percentage(1 / $grid-columns);
         padding: 0 5px;
       }
     }
-    .name, .description, .week {
+    .number, .name, .description, .week {
       cursor: pointer;
-      &:hover {
-        color: #FF6600;
-      }
     }
   }
 }

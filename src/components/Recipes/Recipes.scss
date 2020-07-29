@@ -21,6 +21,9 @@ $single-column: percentage(1 / $grid-columns);
     font-weight: 600;
     border-bottom: 1px solid #cccccc;
     padding: 5px 0 10px;
+    &:hover {
+      color: $basic-color;
+    }
   }
   .recipes__row {
     color: #919191;
@@ -29,6 +32,9 @@ $single-column: percentage(1 / $grid-columns);
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
     text-align: left;
+    &:hover {
+      color: #FF6600;
+    }
     @include actionIcons();
     i {
       margin-bottom: 20px;
@@ -45,11 +51,8 @@ $single-column: percentage(1 / $grid-columns);
     .day {
       cursor: default;
     }
-    .name, .description {
+    .number, .name, .description {
       cursor: pointer;
-      &:hover {
-        color: #FF6600;
-      }
     }
   }
 }

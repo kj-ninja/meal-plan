@@ -86,16 +86,16 @@ const Schedules = (props) => {
                     </>}
 
                 {props.schedules.map((schedule, i) => (
-                    <div className="plans__row" key={i} onClick={()=>handleShowSchedule(schedule.id)}>
+                    <div className="plans__row" key={i}>
                         {width < 900 ?
                             <>
-                                <div className="plans__col-3">
+                                <div className="plans__col-3" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.name}
                                 </div>
-                                <div className="plans__col-4">
+                                <div className="plans__col-4" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.description}
                                 </div>
-                                <div className="plans__col-3">
+                                <div className="plans__col-3" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.weekNumber}
                                 </div>
                                 <div className="plans__col-2">
@@ -105,16 +105,16 @@ const Schedules = (props) => {
                                 </div>
                             </> :
                             <>
-                                <div className="plans__col-1">
+                                <div className="plans__col-1 number" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {i + 1}
                                 </div>
-                                <div className="plans__col-3 name">
+                                <div className="plans__col-3 name" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.name}
                                 </div>
-                                <div className="plans__col-4 description">
+                                <div className="plans__col-4 description" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.description}
                                 </div>
-                                <div className="plans__col-2 week">
+                                <div className="plans__col-2 week" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.weekNumber}
                                 </div>
                                 <div className="plans__col-2">

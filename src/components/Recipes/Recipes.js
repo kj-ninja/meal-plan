@@ -11,6 +11,8 @@ import Modal from "../UI/Modal/Modal";
 const Recipes = (props) => {
     const [modal, setModal] = useState(false);
     const [recipeToShow, setRecipeToShow] = useState(null);
+    const [inputValue, setInputValue] = useState('');
+
     const width = useWindowWidth();
     const {token, userId, loading, findRecipe} = props;
 
@@ -41,6 +43,12 @@ const Recipes = (props) => {
         return recipe.hasOwnProperty('isPublic');
     };
 
+    const filteredRecipes = () => {
+        return props.recipes.filter(recipe=> {
+            return recipe.name.toLowerCase().includes(inputValue.toLowerCase())
+        })
+    };
+
     return (
         <>
             <div className="recipes">
@@ -48,6 +56,8 @@ const Recipes = (props) => {
 
                 <div className="recipes__header">
                     <h3>LISTA PRZEPISÓW</h3>
+                    <label htmlFor="search">Szukaj po nazwie</label>
+                    <input type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
                     <i className="fas fa-plus-square" onClick={handleAddRecipe}/>
                 </div>
                 {width < 900 ?
@@ -102,9 +112,9 @@ const Recipes = (props) => {
                                 AKCJE
                             </div>
                         </div>
-                        {props.recipes.map((recipe, i) => (
+                        {filteredRecipes().map((recipe, i) => (
                             <div className="recipes__row" key={i}>
-                                <div className="recipes__col-1">
+                                <div className="recipes__col-1 number" onClick={() => handleShowRecipe(recipe.name)}>
                                     {i + 1}
                                 </div>
                                 <div className="recipes__col-3 name" onClick={() => handleShowRecipe(recipe.name)}>
