@@ -108,13 +108,13 @@ const Schedules = (props) => {
                                 <div className="plans__col-1">
                                     {i + 1}
                                 </div>
-                                <div className="plans__col-3">
+                                <div className="plans__col-3 name">
                                     {schedule.name}
                                 </div>
-                                <div className="plans__col-4">
+                                <div className="plans__col-4 description">
                                     {schedule.description}
                                 </div>
-                                <div className="plans__col-2">
+                                <div className="plans__col-2 week">
                                     {schedule.weekNumber}
                                 </div>
                                 <div className="plans__col-2">

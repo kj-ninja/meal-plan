@@ -19,8 +19,12 @@ const Recipes = (props) => {
     }
 
     const handleEditRecipe = (recipe) => {
-        props.history.push('/dashboard/add-recipe');
-        props.mapRecipeToEdit(recipe);
+        if (isDisabled(recipe)) {
+            alert('Nie możesz edytować ogólnodostępnych przepisów');
+        } else {
+            props.history.push('/dashboard/add-recipe');
+            props.mapRecipeToEdit(recipe);
+        }
     };
 
     const handleAddRecipe = () => {
@@ -31,6 +35,10 @@ const Recipes = (props) => {
     const handleShowRecipe = (recipeName) => {
         setRecipeToShow(findRecipe(recipeName));
         setModal(true);
+    };
+
+    const isDisabled = (recipe) => {
+        return recipe.hasOwnProperty('isPublic');
     };
 
     return (
@@ -58,16 +66,22 @@ const Recipes = (props) => {
                         </div>
                         {props.recipes.map((recipe, i) => (
                             <div className="recipes__row" key={i}>
-                                <div className="recipes__col-4" onClick={()=>handleShowRecipe(recipe.name)}>
+                                <div className="recipes__col-4" onClick={() => handleShowRecipe(recipe.name)}>
                                     {recipe.name}
                                 </div>
-                                <div className="recipes__col-5">
+                                <div className="recipes__col-5" onClick={() => handleShowRecipe(recipe.name)}>
                                     {recipe.description}
                                 </div>
                                 <div className="recipes__col-3">
                                     <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
                                     <i className="fas fa-trash-alt trash"
-                                       onClick={() => props.deleteRecipe(token, recipe.id, userId)}/>
+                                       onClick={() => {
+                                           if (isDisabled(recipe)) {
+                                               alert('Nie możesz usunąć ogólnodostępnych przepisów');
+                                           } else {
+                                               props.deleteRecipe(token, recipe.id, userId)
+                                           }
+                                       }}/>
                                 </div>
                             </div>
                         ))}
@@ -93,21 +107,28 @@ const Recipes = (props) => {
                                 <div className="recipes__col-1">
                                     {i + 1}
                                 </div>
-                                <div className="recipes__col-3" onClick={()=>handleShowRecipe(recipe.name)}>
+                                <div className="recipes__col-3 name" onClick={() => handleShowRecipe(recipe.name)}>
                                     {recipe.name}
                                 </div>
-                                <div className="recipes__col-6" onClick={()=>handleShowRecipe(recipe.name)}>
+                                <div className="recipes__col-6 description"
+                                     onClick={() => handleShowRecipe(recipe.name)}>
                                     {recipe.description}
                                 </div>
                                 <div className="recipes__col-2">
-                                    <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
-                                    <i className="fas fa-trash-alt trash"
-                                       onClick={() => props.deleteRecipe(token, recipe.id, userId)}/>
+                                    <i className={isDisabled(recipe) ? "fas fa-edit edit disabled" : "fas fa-edit edit"}
+                                       onClick={() => handleEditRecipe(recipe)}/>
+                                    <i className={isDisabled(recipe) ? "fas fa-trash-alt trash disabled" : "fas fa-trash-alt trash"}
+                                       onClick={() => {
+                                           if (isDisabled(recipe)) {
+                                               alert('Nie możesz usunąć ogólnodostępnych przepisów');
+                                           } else {
+                                               props.deleteRecipe(token, recipe.id, userId)
+                                           }
+                                       }}/>
                                 </div>
                             </div>
                         ))}
                     </>}
-
             </div>
         </>
     );

@@ -29,7 +29,6 @@ $single-column: percentage(1 / $grid-columns);
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
     text-align: left;
-    cursor: pointer;
     @include actionIcons();
     i {
       margin-bottom: 20px;
@@ -38,6 +37,12 @@ $single-column: percentage(1 / $grid-columns);
       .plans__col-#{$i} {
         width: $single-column * $i;
         padding: 0 5px;
+      }
+    }
+    .name, .description, .week {
+      cursor: pointer;
+      &:hover {
+        color: #FF6600;
       }
     }
   }

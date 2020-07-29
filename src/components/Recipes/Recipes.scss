@@ -33,15 +33,23 @@ $single-column: percentage(1 / $grid-columns);
     i {
       margin-bottom: 20px;
     }
+    .disabled {
+      cursor: not-allowed;
+    }
     @for $i from 1 through $grid-columns {
       .recipes__col-#{$i} {
         width: $single-column * $i;
         padding: 0 10px;
-        cursor: pointer;
       }
     }
     .day {
       cursor: default;
+    }
+    .name, .description {
+      cursor: pointer;
+      &:hover {
+        color: #FF6600;
+      }
     }
   }
 }
