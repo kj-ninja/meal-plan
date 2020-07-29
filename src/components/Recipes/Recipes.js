@@ -57,8 +57,8 @@ const Recipes = (props) => {
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (
-                            <div className="recipes__row" key={i} onClick={()=>handleShowRecipe(recipe.name)}>
-                                <div className="recipes__col-4">
+                            <div className="recipes__row" key={i}>
+                                <div className="recipes__col-4" onClick={()=>handleShowRecipe(recipe.name)}>
                                     {recipe.name}
                                 </div>
                                 <div className="recipes__col-5">
@@ -89,14 +89,14 @@ const Recipes = (props) => {
                             </div>
                         </div>
                         {props.recipes.map((recipe, i) => (
-                            <div className="recipes__row" key={i} onClick={()=>handleShowRecipe(recipe.name)}>
+                            <div className="recipes__row" key={i}>
                                 <div className="recipes__col-1">
                                     {i + 1}
                                 </div>
-                                <div className="recipes__col-3">
+                                <div className="recipes__col-3" onClick={()=>handleShowRecipe(recipe.name)}>
                                     {recipe.name}
                                 </div>
-                                <div className="recipes__col-6">
+                                <div className="recipes__col-6" onClick={()=>handleShowRecipe(recipe.name)}>
                                     {recipe.description}
                                 </div>
                                 <div className="recipes__col-2">

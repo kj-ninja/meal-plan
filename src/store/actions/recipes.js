@@ -18,12 +18,26 @@ export const fetchRecipeFail = (error) => {
 };
 
 export const fetchRecipes = (token, userId) => {
+    const fetchedRecipes = [];
     return dispatch => {
         dispatch(fetchRecipeStart());
+        axios.get('/publicRecipes.json?auth=' + token)
+            .then(res=> {
+                for (let key in res.data) {
+                    fetchedRecipes.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                }
+                dispatch(fetchRecipesSuccess(fetchedRecipes));
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(fetchRecipeFail(error));
+            });
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('/recipes.json' + queryParams)
             .then(res => {
-                const fetchedRecipes = [];
                 for (let key in res.data) {
                     fetchedRecipes.push({
                         ...res.data[key],
