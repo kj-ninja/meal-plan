@@ -45,13 +45,10 @@ const Schedules = (props) => {
                             <i className="fas fa-plus-square" onClick={handleAddSchedule}/>
                         </div>
                         <div className="plans__row plans__row-header">
-                            <div className="plans__col-3">
+                            <div className="plans__col-6">
                                 NAZWA
                             </div>
                             <div className="plans__col-4">
-                                OPIS
-                            </div>
-                            <div className="plans__col-3">
                                 TYDZIEŃ
                             </div>
                             <div className="plans__col-2">
@@ -89,13 +86,10 @@ const Schedules = (props) => {
                     <div className="plans__row" key={i}>
                         {width < 900 ?
                             <>
-                                <div className="plans__col-3" onClick={()=>handleShowSchedule(schedule.id)}>
+                                <div className="plans__col-6" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.name}
                                 </div>
                                 <div className="plans__col-4" onClick={()=>handleShowSchedule(schedule.id)}>
-                                    {schedule.description}
-                                </div>
-                                <div className="plans__col-3" onClick={()=>handleShowSchedule(schedule.id)}>
                                     {schedule.weekNumber}
                                 </div>
                                 <div className="plans__col-2">

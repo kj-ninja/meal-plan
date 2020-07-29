@@ -2,9 +2,8 @@ import React from 'react';
 import {Controller} from "react-hook-form";
 import ReactSelect from "react-select";
 import './MobileView.scss';
-import {ErrorMessage} from "@hookform/error-message";
 
-const MobileView = ({control, recipes, days, errors}) => {
+const MobileView = ({control, recipes, days}) => {
     return (
         <>
             <div className="add-schedule__row--mobile add-schedule__days--mobile">
@@ -16,7 +15,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                 <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -39,11 +37,9 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[0].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`poniedziałek[${i}]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -66,7 +62,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[1].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`wtorek[${i}]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}
@@ -81,7 +76,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                 <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -104,11 +98,9 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[2].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`środa[${i}]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -131,7 +123,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[3].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`czwartek[${i}]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}
@@ -145,7 +136,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                 <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -168,11 +158,9 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[4].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`piątek[${i}]`} as={<p id="error"></p>}/>
                     </div>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -195,7 +183,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[5].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`sobota[${i}]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}
@@ -208,7 +195,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                 <div className="add-schedule__row--mobile" key={i}>
                     <div className="add-schedule__col-2--mobile">
                         <Controller
-                            rules={{required: "Pole wymagane"}}
                             as={ReactSelect}
                             options={
                                 [
@@ -231,7 +217,6 @@ const MobileView = ({control, recipes, days, errors}) => {
                                 label: days[6].meals[i]
                             } : ''}
                         />
-                        <ErrorMessage errors={errors} name={`niedziela[${i}]`} as={<p id="error"></p>}/>
                     </div>
                 </div>
             ))}

@@ -56,31 +56,27 @@ const Recipes = (props) => {
 
                 <div className="recipes__header">
                     <h3>LISTA PRZEPISÓW</h3>
-                    <label htmlFor="search">Szukaj po nazwie</label>
-                    <input type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}/>
                     <i className="fas fa-plus-square" onClick={handleAddRecipe}/>
+                    <div className="recipes__search-bar">
+                        <input type="text" value={inputValue} onChange={(e)=>setInputValue(e.target.value)} placeholder="Szukaj po nazwie..."/>
+                    </div>
                 </div>
+
                 {width < 900 ?
                     <>
                         <Modal modal={modal} recipe={recipeToShow} view="mobile"/>
                         <div className="recipes__row recipes__row-header">
-                            <div className="recipes__col-4 day">
+                            <div className="recipes__col-9 day">
                                 NAZWA
-                            </div>
-                            <div className="recipes__col-5 day">
-                                OPIS
                             </div>
                             <div className="recipes__col-3 day">
                                 AKCJE
                             </div>
                         </div>
-                        {props.recipes.map((recipe, i) => (
+                        {filteredRecipes().map((recipe, i) => (
                             <div className="recipes__row" key={i}>
-                                <div className="recipes__col-4" onClick={() => handleShowRecipe(recipe.name)}>
+                                <div className="recipes__col-9" onClick={() => handleShowRecipe(recipe.name)}>
                                     {recipe.name}
-                                </div>
-                                <div className="recipes__col-5" onClick={() => handleShowRecipe(recipe.name)}>
-                                    {recipe.description}
                                 </div>
                                 <div className="recipes__col-3">
                                     <i className="fas fa-edit edit" onClick={() => handleEditRecipe(recipe)}/>
