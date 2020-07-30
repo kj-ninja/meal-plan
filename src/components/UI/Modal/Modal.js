@@ -8,8 +8,10 @@ const Modal = ({modal, recipe, view}) => {
             <div className="modal--mobile" style={{
                 transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
                 opacity: modal ? '1' : '0',
-                height: '85px',
-                textAlign: 'center'
+                width: '300px',
+                height: '80px',
+                textAlign: 'center',
+                left: 'calc(50% - 150px)'
             }}>
                 <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania planu.</h2>
             </div>
@@ -21,7 +23,8 @@ const Modal = ({modal, recipe, view}) => {
             <div className="modal" style={{
                 transform: modal ? 'translateY(0)' : 'translateY(-100vh)',
                 opacity: modal ? '1' : '0',
-                textAlign: 'center'
+                textAlign: 'center',
+                left: 'calc(50% - 400px)'
             }}>
                 <h2>Brak przepisu na dany posiłek, dodaj przepis w opcji edytowania planu.</h2>
             </div>
@@ -32,17 +35,7 @@ const Modal = ({modal, recipe, view}) => {
         return (
             <div className="modal--mobile" style={{
                 transform: modal ? 'translate(-50%, 0)' : 'translate(-50%, -100vh)',
-                opacity: modal ? '1' : '0',
-                position: 'fixed',
-                zIndex: '9999',
-                maxWidth: '600px',
-                top: '20%',
-                left: '50%',
-                transition: 'all 0.3s ease-out',
-                height: '380px',
-                overflow: 'scroll',
-                margin: '0 auto',
-                boxSizing: 'border-box'
+                opacity: modal ? '1' : '0'
             }}>
                 <h2 className="modal__title--mobile">{recipe.name}</h2>
                 <p className="modal__description--mobile"><span>Opis:</span>{recipe.description}</p>
@@ -68,14 +61,6 @@ const Modal = ({modal, recipe, view}) => {
         <div className="modal" style={{
             transform: modal ? 'translate(-50%, 0)' : 'translate(-50%,-100vh)',
             opacity: modal ? '1' : '0',
-            position: 'fixed',
-            zIndex: '9999',
-            width: '880px',
-            top: '20%',
-            left: '50%',
-            transition: 'all 0.3s ease-out',
-            margin: '0 auto',
-            boxSizing: 'border-box'
         }}>
             <h2 className="modal__title">{recipe.name}</h2>
             <p className="modal__description"><span>Opis:</span>{recipe.description}</p>
